@@ -14,6 +14,7 @@
 		0990B0872A5571FD00CB8CF5 /* SwiftyMarvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0862A5571FD00CB8CF5 /* SwiftyMarvelTests.swift */; };
 		0990B0912A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0902A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift */; };
 		0990B0932A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */; };
+		09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		0990B08C2A5571FD00CB8CF5 /* SwiftyMarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0990B0902A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMarvelUITests.swift; sourceTree = "<group>"; };
 		0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMarvelUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		09F1BD9D2A55E62B00F0EA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +97,14 @@
 		0990B0742A5571FC00CB8CF5 /* SwiftyMarvel */ = {
 			isa = PBXGroup;
 			children = (
+				09F1BD9D2A55E62B00F0EA8B /* Info.plist */,
+				0990B09F2A55A9CB00CB8CF5 /* Core */,
+				0990B0A02A55A9D900CB8CF5 /* Data */,
+				0990B0A12A55A9DE00CB8CF5 /* Domain */,
+				0990B0A22A55A9E400CB8CF5 /* Presentation */,
 				0990B0752A5571FC00CB8CF5 /* SwiftyMarvelApp.swift */,
 				0990B0772A5571FC00CB8CF5 /* ContentView.swift */,
+				09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */,
 				0990B0792A5571FD00CB8CF5 /* Assets.xcassets */,
 				0990B07B2A5571FD00CB8CF5 /* Preview Content */,
 			);
@@ -125,6 +134,74 @@
 				0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */,
 			);
 			path = SwiftyMarvelUITests;
+			sourceTree = "<group>";
+		};
+		0990B09F2A55A9CB00CB8CF5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0990B0A02A55A9D900CB8CF5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0990B0A92A55AAEB00CB8CF5 /* DataSource */,
+				0990B0A82A55AAE400CB8CF5 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0990B0A12A55A9DE00CB8CF5 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0990B0A52A55AAA700CB8CF5 /* Entity */,
+				0990B0A42A55AA8D00CB8CF5 /* UseCase */,
+				0990B0A32A55AA8600CB8CF5 /* Repository */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0990B0A22A55A9E400CB8CF5 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0990B0A32A55AA8600CB8CF5 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		0990B0A42A55AA8D00CB8CF5 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		0990B0A52A55AAA700CB8CF5 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		0990B0A82A55AAE400CB8CF5 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		0990B0A92A55AAEB00CB8CF5 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */,
 				0990B07D2A5571FD00CB8CF5 /* Preview Assets.xcassets in Resources */,
 				0990B07A2A5571FD00CB8CF5 /* Assets.xcassets in Resources */,
 			);
@@ -420,9 +498,10 @@
 				DEVELOPMENT_TEAM = C2QWF96237;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftyMarvel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -449,9 +528,10 @@
 				DEVELOPMENT_TEAM = C2QWF96237;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftyMarvel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
