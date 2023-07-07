@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftyMarvelApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            ContentView()
         }
     }
 }
