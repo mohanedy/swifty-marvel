@@ -89,3 +89,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 SwiftyMarvel/Config.xcconfig
+
+.env
