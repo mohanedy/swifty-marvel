@@ -246,6 +246,7 @@
 		0990B0A12A55A9DE00CB8CF5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				095948672A5887AB00C91E83 /* AppError.swift */,
 				0990B0A52A55AAA700CB8CF5 /* Entity */,
 				0990B0A42A55AA8D00CB8CF5 /* UseCase */,
 				0990B0A32A55AA8600CB8CF5 /* Repository */,
@@ -272,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				095948652A58869800C91E83 /* UseCase.swift */,
-				095948672A5887AB00C91E83 /* AppError.swift */,
 				0959486B2A5888A700C91E83 /* CharactersUC */,
 			);
 			path = UseCase;
