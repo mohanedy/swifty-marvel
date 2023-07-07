@@ -1,0 +1,13 @@
+import_name: ArkanaKeys
+namespace: Keys
+package_manager: spm
+
+environments:
+  - Debug
+  - Release
+
+global_secrets:
+  - MarvelPublicKey
+  - MarvelPrivateKey
+
+environment_secrets:

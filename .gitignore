@@ -91,3 +91,5 @@ iOSInjectionProject/
 SwiftyMarvel/Config.xcconfig
 
 .env
+
+ArkanaKeys/
