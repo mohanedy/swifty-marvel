@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Character
-struct Character: Identifiable {
+struct Character: Identifiable, Equatable {
     let id: Int?
     let name, description: String?
     let modified: String?
@@ -40,6 +40,10 @@ struct Character: Identifiable {
     
     static func dummyCharacter() -> Character {
         return Character(id: 1, name: "Spider Man", description: "Superhero", modified: "", thumbnail: Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239b59f49020", thumbnailExtension: "jpg"), resourceURI: nil, comics: nil, series: nil, stories: nil, events: nil, urls: [])
+    }
+    
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        lhs.id == rhs.id
     }
 }
 

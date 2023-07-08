@@ -11,6 +11,6 @@ class ViewModel {
     @Published var state: ViewState = .initial
 }
 
-enum ViewState {
+enum ViewState: Equatable {
     case initial, loading, error(String), success
 }

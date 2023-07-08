@@ -17,6 +17,7 @@ final class HomeViewModel: ViewModel, ObservableObject {
     var limit = APIConstants.defaultLimit
     var currentOffset = 0
     var totalCount = 0
+    private let debounceTime: Int
     
     
     
@@ -30,8 +31,9 @@ final class HomeViewModel: ViewModel, ObservableObject {
     }
     
     // MARK: - Init
-    init(getCharactersUseCase: any GetCharactersUC) {
+    init(getCharactersUseCase: any GetCharactersUC, debounceTime: Int = 700) {
         self.getCharactersUseCase = getCharactersUseCase
+        self.debounceTime = debounceTime
         super.init()
         
         setupSearchDebouncer()
@@ -39,7 +41,7 @@ final class HomeViewModel: ViewModel, ObservableObject {
     
     private func setupSearchDebouncer(){
         $searchText
-            .debounce(for: .milliseconds(700), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(debounceTime), scheduler: RunLoop.main)
             .assign(to: &$debouncedSearchText)
     }
     
