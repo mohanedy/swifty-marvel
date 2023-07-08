@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct SwiftyMarvelApp: App {
+    init() {
+        /// Injecting all dependencies
+        Resolver.shared.injectModules()
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
