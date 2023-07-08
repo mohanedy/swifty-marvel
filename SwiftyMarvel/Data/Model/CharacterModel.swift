@@ -10,7 +10,7 @@ import Foundation
 struct CharacterModel: Codable {
     let id: Int?
     let name, description: String?
-    let modified: Date?
+    let modified: String?
     let thumbnail: ThumbnailModel?
     let resourceURI: String?
     let comics, series: ComicsModel?
@@ -45,12 +45,7 @@ struct StoriesModel: Codable {
 struct StoriesItemModel: Codable {
     let resourceURI: String?
     let name: String?
-    let type: TypeEnumModel?
-}
-
-enum TypeEnumModel: String, Codable {
-    case cover = "cover"
-    case interiorStory = "interiorStory"
+    let type: String?
 }
 
 // MARK: - Thumbnail

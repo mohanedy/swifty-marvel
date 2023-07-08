@@ -7,10 +7,10 @@
 
 import Foundation
 
-extension PaginatedResponseModel: DomainMapper {
+extension PaginatedResponseModel {
     typealias EntityType = PaginatedResponse
     
-    func toDomain() -> PaginatedResponse<Any> {
-        return PaginatedResponse(offset : offset, limit: limit, total: total, count: count, results: results?.map({$0.toDomain()}))
+    func toDomain<T>(dataType: T.Type) -> PaginatedResponse<T> {
+        return PaginatedResponse(offset : offset, limit: limit, total: total, count: count, results: results?.map({$0.toDomain() as! T}))
     }
 }

@@ -37,7 +37,7 @@ extension StoriesModel: DomainMapper {
 extension StoriesItemModel: DomainMapper {
     
     func toDomain() -> StoriesItem {
-        return StoriesItem(resourceURI: resourceURI, name: name, type: type?.toDomain())
+        return StoriesItem(resourceURI: resourceURI, name: name, type: type)
     }
 }
 
@@ -52,13 +52,6 @@ extension URLElementModel: DomainMapper {
     
     func toDomain() -> URLElement {
         return URLElement(type: type, url: url)
-    }
-}
-
-extension TypeEnumModel: DomainMapper {
-    
-    func toDomain() -> TypeEnum {
-        return TypeEnum(rawValue: self.rawValue) ?? .cover
     }
 }
 
