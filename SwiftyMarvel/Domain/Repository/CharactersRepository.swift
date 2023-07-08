@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CharactersRepository {
-    func getCharacters(offset: Int, limit: Int) async -> Result<PaginatedResponse<Character>, AppError>
+    func getCharacters(from offset: Int, by searchKey: String?) async -> Result<PaginatedResponse<Character>, AppError>
 }

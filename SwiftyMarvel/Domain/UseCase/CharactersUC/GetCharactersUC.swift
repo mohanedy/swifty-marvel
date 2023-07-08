@@ -8,30 +8,27 @@
 import Foundation
 
 // MARK: - Parameters
-struct GetCharacterParams {
+struct GetCharactersParams {
     let offset: Int
-    let limit: Int
+    let searchKey: String?
 }
 
 // MARK: - Protocol
-protocol GetCharacterUC: UseCase {
-    func execute(with params: GetCharacterParams) async -> Result<PaginatedResponse<Character>, AppError>
+protocol GetCharactersUC {
+    func execute(with params: GetCharactersParams) async -> Result<PaginatedResponse<Character>, AppError>
 }
 
-// MARK: - Initialization
-class DefaultGetCharacterUC {
+// MARK: - Implementation
+class DefaultGetCharactersUC: GetCharactersUC {
     
     private var repository: CharactersRepository
     
     init(repository: CharactersRepository) {
         self.repository = repository
     }
-}
-
-// MARK: - Implementation
-extension DefaultGetCharacterUC {
-    func execute(with params: GetCharacterParams) async -> Result<PaginatedResponse<Character>, AppError> {
-        return await repository.getCharacters(offset: params.offset, limit: params.limit)
+    
+    func execute(with params: GetCharactersParams) async -> Result<PaginatedResponse<Character>, AppError> {
+        return await repository.getCharacters(from: params.offset, by: params.searchKey)
     }
 }
 
