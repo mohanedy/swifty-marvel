@@ -30,7 +30,7 @@
 		0990B0872A5571FD00CB8CF5 /* SwiftyMarvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0862A5571FD00CB8CF5 /* SwiftyMarvelTests.swift */; };
 		0990B0912A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0902A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift */; };
 		0990B0932A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */; };
-		09959D8D2A58A58F00C25210 /* ArkanaKeys in Resources */ = {isa = PBXBuildFile; fileRef = 09959D8C2A58A52500C25210 /* ArkanaKeys */; };
+		09E4D72B2A59891900716470 /* ArkanaKeys in Frameworks */ = {isa = PBXBuildFile; productRef = 09E4D72A2A59891900716470 /* ArkanaKeys */; };
 		09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +77,7 @@
 		0990B08C2A5571FD00CB8CF5 /* SwiftyMarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0990B0902A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMarvelUITests.swift; sourceTree = "<group>"; };
 		0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMarvelUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		09959D8C2A58A52500C25210 /* ArkanaKeys */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ArkanaKeys; sourceTree = "<group>"; };
+		09E4D7282A59890900716470 /* ArkanaKeys */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ArkanaKeys; path = ArkanaKeys/ArkanaKeys; sourceTree = "<group>"; };
 		09F1BD9D2A55E62B00F0EA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E4D72B2A59891900716470 /* ArkanaKeys in Frameworks */,
 				095948852A58A3C500C91E83 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,22 +153,15 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
-		095948812A58A2DF00C91E83 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				09959D8C2A58A52500C25210 /* ArkanaKeys */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		0990B0692A5571FC00CB8CF5 = {
 			isa = PBXGroup;
 			children = (
-				095948812A58A2DF00C91E83 /* Packages */,
+				09E4D7272A59890900716470 /* Packages */,
 				0990B0742A5571FC00CB8CF5 /* SwiftyMarvel */,
 				0990B0852A5571FD00CB8CF5 /* SwiftyMarvelTests */,
 				0990B08F2A5571FD00CB8CF5 /* SwiftyMarvelUITests */,
 				0990B0732A5571FC00CB8CF5 /* Products */,
+				09E4D7292A59891900716470 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,6 +296,21 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		09E4D7272A59890900716470 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				09E4D7282A59890900716470 /* ArkanaKeys */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		09E4D7292A59891900716470 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -320,6 +329,7 @@
 			name = SwiftyMarvel;
 			packageProductDependencies = (
 				095948842A58A3C500C91E83 /* Swinject */,
+				09E4D72A2A59891900716470 /* ArkanaKeys */,
 			);
 			productName = SwiftyMarvel;
 			productReference = 0990B0722A5571FC00CB8CF5 /* SwiftyMarvel.app */;
@@ -412,7 +422,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09959D8D2A58A58F00C25210 /* ArkanaKeys in Resources */,
 				09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */,
 				0990B07D2A5571FD00CB8CF5 /* Preview Assets.xcassets in Resources */,
 				0990B07A2A5571FD00CB8CF5 /* Assets.xcassets in Resources */,
@@ -800,6 +809,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		09E4D72A2A59891900716470 /* ArkanaKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArkanaKeys;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
