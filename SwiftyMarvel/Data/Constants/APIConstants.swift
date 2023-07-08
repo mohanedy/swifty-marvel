@@ -8,5 +8,6 @@
 import Foundation
 
 enum APIConstants {
-    static let baseURL = "https://gateway.marvel.com/v1/public/"
+    static let baseURL = "gateway.marvel.com"
+    static let defaultLimit = 20
 }
