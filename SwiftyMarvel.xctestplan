@@ -1,0 +1,46 @@
+{
+  "configurations" : [
+    {
+      "id" : "69B1E4B5-6FB3-4A96-8361-278A7D677FB9",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:SwiftyMarvel.xcodeproj",
+          "identifier" : "0990B0712A5571FC00CB8CF5",
+          "name" : "SwiftyMarvel"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SwiftyMarvel.xcodeproj",
+      "identifier" : "0990B0712A5571FC00CB8CF5",
+      "name" : "SwiftyMarvel"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftyMarvel.xcodeproj",
+        "identifier" : "0990B0812A5571FD00CB8CF5",
+        "name" : "SwiftyMarvelTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftyMarvel.xcodeproj",
+        "identifier" : "0990B08B2A5571FD00CB8CF5",
+        "name" : "SwiftyMarvelUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -110,6 +110,7 @@
 		09E4D7632A59C0C400716470 /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
 		09E4D76A2A59F24100716470 /* Error+AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+AppError.swift"; sourceTree = "<group>"; };
 		09E4D7732A59F84500716470 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		09E4D7752A5A02AC00716470 /* SwiftyMarvel.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftyMarvel.xctestplan; sourceTree = "<group>"; };
 		09F1BD9D2A55E62B00F0EA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +191,7 @@
 		0990B0692A5571FC00CB8CF5 = {
 			isa = PBXGroup;
 			children = (
+				09E4D7752A5A02AC00716470 /* SwiftyMarvel.xctestplan */,
 				09E4D7272A59890900716470 /* Packages */,
 				0990B0742A5571FC00CB8CF5 /* SwiftyMarvel */,
 				0990B0852A5571FD00CB8CF5 /* SwiftyMarvelTests */,
