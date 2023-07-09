@@ -9,18 +9,18 @@ import Foundation
 import XCTest
 @testable import SwiftyMarvel
 
+// swiftlint:disable force_unwrapping
 final class HomeViewModelTests: XCTestCase {
-    
     // MARK: - Properties
     var sut: HomeViewModel!
     var mockGetCharactersUseCase: MockGetCharactersUseCase!
-    
+
     // MARK: - Fake Data
-    let fakeCharacter1 = Character(id: 1, name: "Spider-Man", description: nil, modified: nil, thumbnail: nil, resourceURI: nil, comics: nil, series: nil, stories: nil, events: nil, urls: [])
-    let fakeCharacter2 = Character(id: 2, name: "Iron Man", description: nil, modified: nil, thumbnail: nil, resourceURI: nil, comics: nil, series: nil, stories: nil, events: nil, urls: [])
-    let fakeCharacter3 = Character(id: 3, name: "Hulk", description: nil, modified: nil, thumbnail: nil, resourceURI: nil, comics: nil, series: nil, stories: nil, events: nil, urls: [])
-    let fakeCharacter4 = Character(id: 4, name: "Thor", description: nil, modified: nil, thumbnail: nil, resourceURI: nil, comics: nil, series: nil, stories: nil, events: nil, urls: [])
-    
+    let fakeCharacter1 = Character(id: 1, name: "Spider-Man")
+    let fakeCharacter2 = Character(id: 2, name: "Iron Man")
+    let fakeCharacter3 = Character(id: 3, name: "Hulk")
+    let fakeCharacter4 = Character(id: 4, name: "Thor")
+
     // MARK: - Setup and Teardown
     @MainActor
     override func setUp() {
@@ -28,44 +28,44 @@ final class HomeViewModelTests: XCTestCase {
         mockGetCharactersUseCase = MockGetCharactersUseCase()
         sut = HomeViewModel(getCharactersUseCase: mockGetCharactersUseCase, debounceTime: 0)
     }
-    
+
     override func tearDown() {
         sut = nil
         mockGetCharactersUseCase = nil
         super.tearDown()
     }
-    
+
     // MARK: - Tests
     @MainActor
     func testLoadCharactersSuccess() async throws {
         // Given
         let expectedCharacters = [fakeCharacter1, fakeCharacter2]
         let expectedTotalCount = 2
-        mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 0, limit: 2, total: 2, count: 2, results: expectedCharacters))
-        
+        mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 0,
+                                                                     limit: 2,
+                                                                     total: 2,
+                                                                     count: 2,
+                                                                     results: expectedCharacters))
         // When
         await sut.loadCharacters()
-        
         // Then
         XCTAssertEqual(sut.characters, expectedCharacters)
         XCTAssertEqual(sut.totalCount, expectedTotalCount)
         XCTAssertEqual(sut.state, .success)
     }
-    
+
     @MainActor
     func testLoadCharactersFailure() async throws {
         // Given
         let expectedError = AppError.networkError("Network Error")
         mockGetCharactersUseCase.result = .failure(expectedError)
-        
         // When
         await sut.loadCharacters()
-        
         // Then
         XCTAssertTrue(sut.characters.isEmpty)
         XCTAssertEqual(sut.state, .error(expectedError.localizedDescription))
     }
-    
+
     @MainActor
     func testSearchCharactersSuccess() async throws {
         // Given
@@ -73,12 +73,14 @@ final class HomeViewModelTests: XCTestCase {
         let expectedDebouncedSearchText = "Hulk"
         let expectedCharacters = [fakeCharacter3]
         let expectedTotalCount = 1
-        mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 0, limit: 1, total: 1, count: 1, results: expectedCharacters))
-        
+        mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 0,
+                                                                     limit: 1,
+                                                                     total: 1,
+                                                                     count: 1,
+                                                                     results: expectedCharacters))
         // When
         sut.searchText = expectedSearchText
         await sut.searchCharacters()
-        
         // Then
         XCTAssertEqual(sut.searchText, expectedSearchText)
         XCTAssertEqual(sut.debouncedSearchText, expectedDebouncedSearchText)
@@ -86,49 +88,45 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(sut.totalCount, expectedTotalCount)
         XCTAssertEqual(sut.state, .success)
     }
-    
+
     @MainActor
     func testLoadMoreCharactersIfNeededSuccess() async throws {
         // Given
         let initialCharacters = [fakeCharacter1,
                                  fakeCharacter2]
-        
         let moreCharacters = [fakeCharacter3,
                               fakeCharacter4]
-        
         let allCharacters = initialCharacters + moreCharacters
-        
         let initialTotalCount = 4
-        
-        mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 0, limit: 2, total: initialTotalCount, count: 2, results: initialCharacters))
-        
+        mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 0,
+                                                                     limit: 2,
+                                                                     total: initialTotalCount,
+                                                                     count: 2,
+                                                                     results: initialCharacters))
         // When
         await sut.loadCharacters()
-        
         // Then
         XCTAssertEqual(sut.characters.count, initialCharacters.count)
-        
         // Given
-         mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 2, limit: 2, total: initialTotalCount, count: 2, results: moreCharacters))
-        
+         mockGetCharactersUseCase.result = .success(PaginatedResponse(offset: 2,
+                                                                      limit: 2,
+                                                                      total: initialTotalCount,
+                                                                      count: 2,
+                                                                      results: moreCharacters))
          // When
-         await sut.loadMoreCharactersIfNeeded(currentItem:sut.characters.last!)
-         
+         await sut.loadMoreCharactersIfNeeded(currentItem: sut.characters.last!)
          // Then
          XCTAssertEqual(sut.characters.count, allCharacters.count)
-         XCTAssertEqual(sut.characters.last?.id , allCharacters.last?.id)
-         XCTAssertEqual(sut.state , .success)
-
+         XCTAssertEqual(sut.characters.last?.id, allCharacters.last?.id)
+         XCTAssertEqual(sut.state, .success)
     }
 }
 
-// MARK:- Mocks
-
-class MockGetCharactersUseCase : GetCharactersUC {
-    
-    var result : Result<PaginatedResponse<Character> , AppError>!
-    
-    func execute(with params:GetCharactersParams) async -> Result<PaginatedResponse<Character> , AppError> {
+// MARK: - Mocks
+class MockGetCharactersUseCase: GetCharactersUC {
+    var result: Result<PaginatedResponse<Character>, AppError>!
+    func execute(with params: GetCharactersParams) async -> Result<PaginatedResponse<Character>, AppError> {
        return result
     }
 }
+// swiftlint:enable force_unwrapping

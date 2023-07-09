@@ -18,13 +18,14 @@ struct Character: Identifiable, Equatable {
     let stories: Stories?
     let events: Comics?
     let urls: [URLElement]?
-    
     var imageURL: URL? {
         guard let path = thumbnail?.path, let ext = thumbnail?.thumbnailExtension else { return nil }
         return URL(string: "\(path).\(ext)")
     }
-    
-    init(id: Int?, name: String?, description: String?, modified: String?, thumbnail: Thumbnail?, resourceURI: String?, comics: Comics?, series: Comics?, stories: Stories?, events: Comics?, urls: [URLElement]?) {
+    init(id: Int?, name: String?, description: String? = nil, modified: String? = nil,
+         thumbnail: Thumbnail? = nil, resourceURI: String? = nil, comics: Comics? = nil,
+         series: Comics? = nil, stories: Stories? = nil, events: Comics? = nil,
+         urls: [URLElement]? = []) {
         self.id = id
         self.name = name
         self.description = description
@@ -37,11 +38,22 @@ struct Character: Identifiable, Equatable {
         self.events = events
         self.urls = urls
     }
-    
     static func dummyCharacter() -> Character {
-        return Character(id: 1, name: "Spider Man", description: "Superhero", modified: "", thumbnail: Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239b59f49020", thumbnailExtension: "jpg"), resourceURI: nil, comics: nil, series: nil, stories: nil, events: nil, urls: [])
+        return Character(id: 1,
+                         name: "Spider Man",
+                         description: "Superhero",
+                         modified: "",
+                         thumbnail: Thumbnail(
+                            path: "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239b59f49020",
+                            thumbnailExtension: "jpg"
+                         ),
+                         resourceURI: nil,
+                         comics: nil,
+                         series: nil,
+                         stories: nil,
+                         events: nil,
+                         urls: [])
     }
-    
     static func == (lhs: Character, rhs: Character) -> Bool {
         lhs.id == rhs.id
     }
@@ -70,7 +82,7 @@ struct Stories {
 }
 
 // MARK: - StoriesItem
-struct StoriesItem  {
+struct StoriesItem {
     let resourceURI: String?
     let name: String?
     let type: String?
@@ -87,4 +99,3 @@ struct URLElement {
     let type: String?
     let url: String?
 }
-

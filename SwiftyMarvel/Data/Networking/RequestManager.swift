@@ -13,7 +13,6 @@ protocol RequestManager {
   func makeRequest<T: Decodable>(with requestData: RequestProtocol) async throws -> T
 }
 
-
 class DefaultRequestManager: RequestManager {
   let networkManager: NetworkManager
 

@@ -10,9 +10,8 @@ import Kingfisher
 
 struct CharacterView: View {
     let character: Character
-    
     var body: some View {
-        ZStack(alignment: .bottom){
+        ZStack(alignment: .bottom) {
             KFImage.url(character.imageURL)
                 .placeholder({
                     ProgressView()

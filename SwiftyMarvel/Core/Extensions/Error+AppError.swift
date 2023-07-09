@@ -15,4 +15,3 @@ extension Error {
         return AppError.unknownError("Unknown Error")
     }
 }
-

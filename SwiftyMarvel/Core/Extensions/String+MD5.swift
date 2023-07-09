@@ -17,7 +17,7 @@ extension String {
                 CC_MD5(body, CC_LONG(data.count), &digest)
             }
         }
-        
+
         return (0..<length).reduce("") {
             $0 + String(format: "%02x", digest[$1])
         }

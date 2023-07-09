@@ -13,4 +13,3 @@ enum AppError: Error {
     case serverError(String)
     case unknownError(String)
 }
-

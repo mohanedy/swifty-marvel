@@ -8,18 +8,15 @@
 import Foundation
 
 enum CharactersRequest: RequestProtocol {
-    
 case getCharacters(offset: Int, searchKey: String?)
-    
-    
     var path: String {
         "/v1/public/characters"
     }
-    var urlParams: [String : String?] {
+    var urlParams: [String: String?] {
         switch self {
         case .getCharacters(let offset, let searchKey):
             var params = ["offset": "\(offset)", "limit": "\(APIConstants.defaultLimit)"]
-            if let searchKey = searchKey {
+            if let searchKey {
                 params["nameStartsWith"] = searchKey
             }
             return params

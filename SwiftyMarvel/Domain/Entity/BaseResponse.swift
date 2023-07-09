@@ -12,4 +12,3 @@ struct BaseResponse<T> {
     let status: String
     let data: T
 }
-
