@@ -1,0 +1,30 @@
+excluded: # case-sensitive paths to ignore during linting. Takes precedence over `included`
+  - Carthage
+  - Pods
+  - ArkanaKeys
+  
+opt_in_rules:
+  # Prefer checking isEmpty over comparing count to zero
+  - empty_count
+  
+  # Force casts should be avoided
+  - force_cast
+  
+  # Force unwrapping should be avoided
+  - force_unwrapping
+  
+  # Header comments should be consistent with project patterns.
+  - file_header
+  
+  # MARK comment should be in valid format. e.g. ‘// MARK: …’ or ‘// MARK: - …’
+  - mark
+  
+  # Function parameters should be aligned vertically if they’re in multiple lines in a method call
+  - vertical_parameter_alignment_on_call
+  
+  # Use shorthand syntax for optional binding
+  - shorthand_optional_binding
+  
+disabled_rules: # rule identifiers turned on by default to exclude from running
+  # TODOs and FIXMEs should be resolved.
+  - todo
