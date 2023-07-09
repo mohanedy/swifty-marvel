@@ -8,6 +8,7 @@
 import Foundation
 
 extension Error {
+    /// Converts any error to an `AppError` object.
     var toAppError: AppError {
         if self is NetworkError {
             return .networkError("Network Error")
