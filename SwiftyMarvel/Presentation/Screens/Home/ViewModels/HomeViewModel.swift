@@ -8,14 +8,16 @@
 import Foundation
 
 @MainActor
-final class HomeViewModel: ViewModel, ObservableObject {
+final class HomeViewModel: ViewModel {
     // MARK: - Dependencies
     private let getCharactersUseCase: any GetCharactersUC
+
     // MARK: - Properties
-    var limit = APIConstants.defaultLimit
-    var currentOffset = 0
-    var totalCount = 0
+    private var limit = APIConstants.defaultLimit
+    private var currentOffset = 0
+    private var totalCount = 0
     private let debounceTime: Int
+
     // MARK: - Observable Properties
     @Published var characters: [Character] = []
     @Published var searchText = ""
@@ -23,6 +25,7 @@ final class HomeViewModel: ViewModel, ObservableObject {
     var isSearching: Bool {
         return !debouncedSearchText.isEmpty
     }
+
     // MARK: - Init
     init(getCharactersUseCase: any GetCharactersUC, debounceTime: Int = 700) {
         self.getCharactersUseCase = getCharactersUseCase
@@ -30,12 +33,17 @@ final class HomeViewModel: ViewModel, ObservableObject {
         super.init()
         setupSearchDebouncer()
     }
+
     private func setupSearchDebouncer() {
         $searchText
             .debounce(for: .milliseconds(debounceTime), scheduler: RunLoop.main)
             .assign(to: &$debouncedSearchText)
     }
-    // MARK: - Methods
+}
+
+// MARK: - Actions
+extension HomeViewModel {
+
     func loadCharacters(from offset: Int = 0) async {
         state = .loading
         let result = await getCharactersUseCase.execute(with: GetCharactersParams(offset: offset,
@@ -45,7 +53,11 @@ final class HomeViewModel: ViewModel, ObservableObject {
         case .success(let data):
             characters.append(contentsOf: data.results ?? [])
             totalCount = data.total ?? 0
-            state = .success
+            if characters.isEmpty {
+                state = .empty
+            } else {
+                state = .success
+            }
         case .failure(let err):
             state = .error(err.localizedDescription)
         }

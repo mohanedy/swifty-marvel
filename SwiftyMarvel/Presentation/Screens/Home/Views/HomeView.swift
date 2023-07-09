@@ -8,34 +8,35 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel = Resolver.shared.resolve(HomeViewModel.self)
+    @StateObject private var viewModel = Resolver.shared.resolve(HomeViewModel.self)
     var body: some View {
         NavigationStack {
             ZStack {
-                ScrollView {
-                    LazyVStack {
-                        ForEach(viewModel.characters) { item in
-                            CharacterView(character: item)
-                                .task {
-                                    await viewModel.loadMoreCharactersIfNeeded(currentItem: item)
+                BaseStateView(
+                    viewModel: viewModel,
+                    successView: AnyView(
+                        ScrollView {
+                            LazyVStack {
+                                ForEach(viewModel.characters) { item in
+                                    CharacterView(character: item)
+                                        .task {
+                                            await viewModel.loadMoreCharactersIfNeeded(currentItem: item)
+                                        }
                                 }
+                            }
                         }
-                    }
-                }
-                .padding()
-                .navigationTitle("SwiftyMarvel")
-                .searchable(text: $viewModel.searchText, prompt: "Type character name...")
-                .onChange(of: viewModel.debouncedSearchText, perform: { _ in
-                    Task {
-                        await viewModel.searchCharacters()
-                    }
-                })
-                .navigationBarTitleDisplayMode(.large)
-                if case .loading = viewModel.state {
-                    ProgressView()
-                }
-            }
-        }
+                            .padding()
+                            .navigationTitle("SwiftyMarvel")
+                            .searchable(text: $viewModel.searchText, prompt: "Type character name...")
+                            .onChange(of: viewModel.debouncedSearchText, perform: { _ in
+                                Task {
+                                    await viewModel.searchCharacters()
+                                }
+                            })
+                    )//: AnyView
+                )//: BaseStateView
+            } //: ZStack
+        } //: NavigationStack
         .task {
             await viewModel.loadCharacters()
         }

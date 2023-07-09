@@ -7,10 +7,11 @@
 
 import Foundation
 
-class ViewModel {
+@MainActor
+class ViewModel: ObservableObject {
     @Published var state: ViewState = .initial
 }
 
 enum ViewState: Equatable {
-    case initial, loading, error(String), success
+    case initial, loading, error(String), success, empty
 }
