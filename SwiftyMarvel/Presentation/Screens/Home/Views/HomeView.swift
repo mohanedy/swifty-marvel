@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel = HomeViewModel(getCharactersUseCase: Resolver.shared.resolve(GetCharactersUC.self))
-    
+    @ObservedObject var viewModel = Resolver.shared.resolve(HomeViewModel.self)
     var body: some View {
         NavigationStack {
             ZStack {
-                ScrollView{
+                ScrollView {
                     LazyVStack {
                         ForEach(viewModel.characters) { item in
                             CharacterView(character: item)
@@ -26,13 +25,12 @@ struct HomeView: View {
                 .padding()
                 .navigationTitle("SwiftyMarvel")
                 .searchable(text: $viewModel.searchText, prompt: "Type character name...")
-                .onChange(of: viewModel.debouncedSearchText, perform: { newValue in
+                .onChange(of: viewModel.debouncedSearchText, perform: { _ in
                     Task {
                         await viewModel.searchCharacters()
                     }
                 })
                 .navigationBarTitleDisplayMode(.large)
-                
                 if case .loading = viewModel.state {
                     ProgressView()
                 }
