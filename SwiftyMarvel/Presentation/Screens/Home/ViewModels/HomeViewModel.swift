@@ -20,7 +20,7 @@ final class HomeViewModel: ViewModel, ObservableObject {
     @Published var characters: [Character] = []
     @Published var searchText = ""
     @Published var debouncedSearchText = ""
-    var isSearcing: Bool {
+    var isSearching: Bool {
         return !debouncedSearchText.isEmpty
     }
     // MARK: - Init
