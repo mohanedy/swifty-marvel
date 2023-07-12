@@ -93,3 +93,9 @@ SwiftyMarvel/Config.xcconfig
 .env
 
 ArkanaKeys/
+
+# Generated
+*.generated.swift
+
+# Caches
+**/*.xcodeproj/MockingbirdCache/
