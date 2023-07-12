@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0937EBA72A5EB65C006A78FC /* Mockingbird in Frameworks */ = {isa = PBXBuildFile; productRef = 0937EBA62A5EB65C006A78FC /* Mockingbird */; };
 		095948582A58751100C91E83 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095948572A58751100C91E83 /* BaseResponse.swift */; };
 		0959485A2A58756000C91E83 /* BaseResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095948592A58756000C91E83 /* BaseResponseModel.swift */; };
 		0959485C2A58759300C91E83 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959485B2A58759300C91E83 /* CharacterModel.swift */; };
@@ -51,16 +52,10 @@
 		09E4D76B2A59F24100716470 /* Error+AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D76A2A59F24100716470 /* Error+AppError.swift */; };
 		09E4D7742A59F84500716470 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7732A59F84500716470 /* HomeViewModelTests.swift */; };
 		09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */; };
+		4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0990B0832A5571FD00CB8CF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0990B06A2A5571FC00CB8CF5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0990B0712A5571FC00CB8CF5;
-			remoteInfo = SwiftyMarvel;
-		};
 		0990B08D2A5571FD00CB8CF5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0990B06A2A5571FC00CB8CF5 /* Project object */;
@@ -118,6 +113,8 @@
 		09E4D7762A5A055900716470 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		09F1BD9D2A55E62B00F0EA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift"; path = "MockingbirdMocks/SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift"; sourceTree = "<group>"; };
+		E92A19FAA3E3CA01E8749701 /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift"; path = "MockingbirdMocks/SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0937EBA72A5EB65C006A78FC /* Mockingbird in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +202,7 @@
 				0990B08F2A5571FD00CB8CF5 /* SwiftyMarvelUITests */,
 				0990B0732A5571FC00CB8CF5 /* Products */,
 				09E4D7292A59891900716470 /* Frameworks */,
+				4243B3BC6EA881013E5DF71D /* Generated Mocks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -538,6 +537,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		4243B3BC6EA881013E5DF71D /* Generated Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */,
+			);
+			name = "Generated Mocks";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -569,6 +576,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0990B0992A5571FD00CB8CF5 /* Build configuration list for PBXNativeTarget "SwiftyMarvelTests" */;
 			buildPhases = (
+				8FCED0AB7A4238A93CC396A6 /* Generate Mockingbird Mocks */,
 				0990B07E2A5571FD00CB8CF5 /* Sources */,
 				0990B07F2A5571FD00CB8CF5 /* Frameworks */,
 				0990B0802A5571FD00CB8CF5 /* Resources */,
@@ -576,9 +584,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				0990B0842A5571FD00CB8CF5 /* PBXTargetDependency */,
+				094F3A442A5EB0E90060E930 /* PBXTargetDependency */,
 			);
 			name = SwiftyMarvelTests;
+			packageProductDependencies = (
+				0937EBA62A5EB65C006A78FC /* Mockingbird */,
+			);
 			productName = SwiftyMarvelTests;
 			productReference = 0990B0822A5571FD00CB8CF5 /* SwiftyMarvelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -637,6 +648,7 @@
 				095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */,
 				09E4D73F2A599AA300716470 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				09E4D75C2A59BAB500716470 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0937EBA52A5EB65C006A78FC /* XCRemoteSwiftPackageReference "mockingbird" */,
 			);
 			productRefGroup = 0990B0732A5571FC00CB8CF5 /* Products */;
 			projectDirPath = "";
@@ -695,6 +707,22 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		8FCED0AB7A4238A93CC396A6 /* Generate Mockingbird Mocks */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Mockingbird Mocks";
+			outputPaths = (
+				"$(SRCROOT)/MockingbirdMocks/SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -eu\n\n# Prevent Xcode 13 from running this script while indexing.\n[[ \"${ACTION}\" == \"indexbuild\" ]] && exit 0\n\n# Infer the derived data location from the build environment.\n[[ -z \"${DERIVED_DATA+x}\" ]] && DERIVED_DATA=\"$(echo \"${BUILD_ROOT}\" | sed -n 's|\\(.*\\)/Build/.*|\\1|p')\"\n\n\"${DERIVED_DATA}/SourcePackages/checkouts/mockingbird/mockingbird\" generate --targets \"SwiftyMarvel\" --only-protocols --disable-swiftlint --outputs \"${SRCROOT}/MockingbirdMocks/SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -744,6 +772,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09E4D7742A59F84500716470 /* HomeViewModelTests.swift in Sources */,
+				4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,10 +788,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0990B0842A5571FD00CB8CF5 /* PBXTargetDependency */ = {
+		094F3A442A5EB0E90060E930 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0990B0712A5571FC00CB8CF5 /* SwiftyMarvel */;
-			targetProxy = 0990B0832A5571FD00CB8CF5 /* PBXContainerItemProxy */;
+			productRef = 094F3A432A5EB0E90060E930 /* Mockingbird */;
 		};
 		0990B08E2A5571FD00CB8CF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1064,6 +1092,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		091A01EB2A5EAF0A0089E440 /* XCRemoteSwiftPackageReference "mockingbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/birdrides/mockingbird";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.20.0;
+			};
+		};
+		0937EBA52A5EB65C006A78FC /* XCRemoteSwiftPackageReference "mockingbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/birdrides/mockingbird";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.20.0;
+			};
+		};
 		095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject";
@@ -1091,6 +1135,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0937EBA62A5EB65C006A78FC /* Mockingbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0937EBA52A5EB65C006A78FC /* XCRemoteSwiftPackageReference "mockingbird" */;
+			productName = Mockingbird;
+		};
+		094F3A432A5EB0E90060E930 /* Mockingbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091A01EB2A5EAF0A0089E440 /* XCRemoteSwiftPackageReference "mockingbird" */;
+			productName = Mockingbird;
+		};
 		095948842A58A3C500C91E83 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */;
