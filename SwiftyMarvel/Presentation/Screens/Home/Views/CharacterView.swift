@@ -9,22 +9,21 @@ import SwiftUI
 import Kingfisher
 
 struct CharacterView: View {
+    
+    // MARK: - Properties -
+
     let character: Character
+    
     var body: some View {
         ZStack(alignment: .bottom) {
-            KFImage.url(character.imageURL)
-                .placeholder({
-                    ProgressView()
-                })
-                .fade(duration: 0.25)
-                .resizable()
+            CachedImageView(character.imageURL)
                 .aspectRatio(2/1, contentMode: .fit)
                 .cornerRadius(15)
                 .frame(
                     alignment: .center
                 )
             ZStack {
-                VisualEffectView(effect: UIBlurEffect(style: .regular))
+                VisualEffectView(effect: UIBlurEffect(style: .dark))
                     .frame(height: 50)
                     .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
                 Text(character.name ?? "")
