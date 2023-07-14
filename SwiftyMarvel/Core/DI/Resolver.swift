@@ -84,7 +84,7 @@ extension Resolver {
     private func injectViewModels() {
         container.register(HomeViewModel.self) { resolver in
             HomeViewModel(getCharactersUseCase: resolver.resolve(GetCharactersUC.self)!)
-        }.inObjectScope(.container)
+        }
     }
 }
 // swiftlint:enable force_unwrapping
