@@ -9,12 +9,14 @@ import Foundation
 
 typealias CharactersResponse = BaseResponseModel<PaginatedResponseModel<CharacterModel>>
 
-// MARK: - CharactersDataSource
+// MARK: - Protocol -
+
 protocol CharactersDataSource {
     func getCharacters(from offset: Int, by searchKey: String?) async throws -> PaginatedResponseModel<CharacterModel>
 }
 
-// MARK: - DefaultCharactersDataSource
+// MARK: - Implementation -
+
 class DefaultCharactersDataSource: CharactersDataSource {
     private let requestManager: RequestManager
     init(requestManager: RequestManager) {

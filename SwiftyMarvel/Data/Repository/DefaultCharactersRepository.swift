@@ -8,10 +8,13 @@
 import Foundation
 
 class DefaultCharactersRepository: CharactersRepository {
+    
     private let charactersDataSource: CharactersDataSource
+    
     init(charactersDataSource: CharactersDataSource) {
         self.charactersDataSource = charactersDataSource
     }
+    
     func getCharacters(from offset: Int, by searchKey: String?) async
     -> Result<PaginatedResponse<Character>, AppError> {
         do {

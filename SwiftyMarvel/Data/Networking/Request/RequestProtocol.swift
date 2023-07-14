@@ -72,7 +72,8 @@ extension RequestProtocol {
         if !params.isEmpty {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params)
         }
-
+        
+        print(urlRequest.debugDescription)
         return urlRequest
     }
 }
