@@ -13,17 +13,21 @@ import Mockingbird
 // swiftlint:disable force_unwrapping
 @MainActor
 final class HomeViewModelTests: XCTestCase {
-    // MARK: - Properties
+    
+    // MARK: - Properties -
+    
     var sut: HomeViewModel!
     var getCharactersUCMock: GetCharactersUCMock!
     
-    // MARK: - Fake Data
+    // MARK: - Fake Data -
+    
     let fakeCharacter1 = Character(id: 1, name: "Spider-Man")
     let fakeCharacter2 = Character(id: 2, name: "Iron Man")
     let fakeCharacter3 = Character(id: 3, name: "Hulk")
     let fakeCharacter4 = Character(id: 4, name: "Thor")
     
-    // MARK: - Setup and Teardown
+    // MARK: - Setup and Teardown -
+    
     override func setUp() {
         super.setUp()
         getCharactersUCMock = mock(GetCharactersUC.self)
@@ -36,7 +40,8 @@ final class HomeViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Tests
+    // MARK: - Tests -
+    
     func testLoadCharactersSuccess() async throws {
         // Given
         let expectedCharacters = [fakeCharacter1, fakeCharacter2]
@@ -47,12 +52,24 @@ final class HomeViewModelTests: XCTestCase {
                               count: 2,
                               results: expectedCharacters)))
         
+        let loadingExpectation = expectation(description: "Loading state changed")
+        
+        let observation = sut.$state.sink { state in
+            if state == .loading {
+                loadingExpectation.fulfill()
+            }
+        }
+        
         // When
         await sut.loadCharacters()
+        
+        waitForExpectations(timeout: 1)
         
         // Then
         XCTAssertEqual(sut.characters, expectedCharacters)
         XCTAssertEqual(sut.state, .success)
+        
+        observation.cancel()
     }
     
     func testLoadCharactersFailure() async throws {
@@ -61,8 +78,18 @@ final class HomeViewModelTests: XCTestCase {
         await given(getCharactersUCMock.execute(with: any()))
             .willReturn(.failure(expectedError))
         
+        let loadingExpectation = expectation(description: "Loading state changed")
+        
+        let observation = sut.$state.sink { state in
+            if state == .loading {
+                loadingExpectation.fulfill()
+            }
+        }
+        
         // When
         await sut.loadCharacters()
+        
+        waitForExpectations(timeout: 1)
         
         // Then
         XCTAssertTrue(sut.characters.isEmpty)
@@ -81,9 +108,20 @@ final class HomeViewModelTests: XCTestCase {
                               count: 1,
                               results: expectedCharacters)))
         
+        // expectation
+        let loadingExpectation = expectation(description: "Loading state changed")
+        
+        let observation = sut.$state.sink { state in
+            if state == .loading {
+                loadingExpectation.fulfill()
+            }
+        }
+        
         // When
         sut.searchText = expectedSearchText
         await sut.searchCharacters()
+        
+        waitForExpectations(timeout: 1)
         
         // Then
         XCTAssertEqual(sut.searchText, expectedSearchText)
