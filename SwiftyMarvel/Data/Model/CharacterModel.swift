@@ -12,40 +12,18 @@ struct CharacterModel: Codable {
     let name, description: String?
     let modified: String?
     let thumbnail: ThumbnailModel?
-    let resourceURI: String?
-    let comics, series: ComicsModel?
-    let stories: StoriesModel?
-    let events: ComicsModel?
-    let urls: [URLElementModel]?
-}
-
-// MARK: - Comics
-struct ComicsModel: Codable {
-    let available: Int?
-    let collectionURI: String?
-    let items: [ComicsItemModel]?
-    let returned: Int?
-}
-
-// MARK: - ComicsItem
-struct ComicsItemModel: Codable {
-    let resourceURI: String?
-    let name: String?
-}
-
-// MARK: - Stories
-struct StoriesModel: Codable {
-    let available: Int?
-    let collectionURI: String?
-    let items: [StoriesItemModel]?
-    let returned: Int?
-}
-
-// MARK: - StoriesItem
-struct StoriesItemModel: Codable {
-    let resourceURI: String?
-    let name: String?
-    let type: String?
+    
+    init(id: Int? = nil,
+         name: String? = nil,
+         description: String? = nil,
+         modified: String? = nil,
+         thumbnail: ThumbnailModel? = nil) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.modified = modified
+        self.thumbnail = thumbnail
+    }
 }
 
 // MARK: - Thumbnail
@@ -57,10 +35,4 @@ struct ThumbnailModel: Codable {
         case path
         case thumbnailExtension = "extension"
     }
-}
-
-// MARK: - URLElement
-struct URLElementModel: Codable {
-    let type: String?
-    let url: String?
 }

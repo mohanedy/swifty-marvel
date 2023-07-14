@@ -15,11 +15,6 @@ struct Character: Identifiable, Equatable {
     let name, description: String?
     let modified: String?
     let thumbnail: Thumbnail?
-    let resourceURI: String?
-    let comics, series: Comics?
-    let stories: Stories?
-    let events: Comics?
-    let urls: [URLElement]?
     
     // MARK: - Computed Properties -
     
@@ -32,21 +27,16 @@ struct Character: Identifiable, Equatable {
         description! : "No Description Found"
     }
     
-    init(id: Int?, name: String?, description: String? = nil, modified: String? = nil,
-         thumbnail: Thumbnail? = nil, resourceURI: String? = nil, comics: Comics? = nil,
-         series: Comics? = nil, stories: Stories? = nil, events: Comics? = nil,
-         urls: [URLElement]? = []) {
+    init(id: Int?,
+         name: String?,
+         description: String? = nil,
+         modified: String? = nil,
+         thumbnail: Thumbnail? = nil) {
         self.id = id
         self.name = name
         self.description = description
         self.modified = modified
         self.thumbnail = thumbnail
-        self.resourceURI = resourceURI
-        self.comics = comics
-        self.series = series
-        self.stories = stories
-        self.events = events
-        self.urls = urls
     }
     static func dummyCharacter() -> Character {
         return Character(id: 1016181,
@@ -59,50 +49,11 @@ struct Character: Identifiable, Equatable {
                          thumbnail: Thumbnail(
                             path: "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239b59f49020",
                             thumbnailExtension: "jpg"
-                         ),
-                         resourceURI: nil,
-                         comics: nil,
-                         series: nil,
-                         stories: nil,
-                         events: nil,
-                         urls: [])
+                         ))
     }
     static func == (lhs: Character, rhs: Character) -> Bool {
         lhs.id == rhs.id
     }
-}
-
-// MARK: - Comics -
-
-struct Comics {
-    let available: Int?
-    let collectionURI: String?
-    let items: [ComicsItem]?
-    let returned: Int?
-}
-
-// MARK: - ComicsItem -
-
-struct ComicsItem {
-    let resourceURI: String?
-    let name: String?
-}
-
-// MARK: - Stories -
-
-struct Stories {
-    let available: Int?
-    let collectionURI: String?
-    let items: [StoriesItem]?
-    let returned: Int?
-}
-
-// MARK: - StoriesItem -
-
-struct StoriesItem {
-    let resourceURI: String?
-    let name: String?
-    let type: String?
 }
 
 // MARK: - Thumbnail -
@@ -110,12 +61,5 @@ struct StoriesItem {
 struct Thumbnail {
     let path: String?
     let thumbnailExtension: String?
-}
-
-// MARK: - URLElement -
-
-struct URLElement {
-    let type: String?
-    let url: String?
 }
 // swiftlint:enable line_length

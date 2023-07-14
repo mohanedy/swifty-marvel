@@ -37,6 +37,8 @@
 		095948852A58A3C500C91E83 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 095948842A58A3C500C91E83 /* Swinject */; };
 		097AFE1A2A61EF11002B94F6 /* ComicItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AFE192A61EF11002B94F6 /* ComicItemView.swift */; };
 		097AFE1C2A61EFCC002B94F6 /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AFE1B2A61EFCC002B94F6 /* CachedImageView.swift */; };
+		097AFE1F2A61F961002B94F6 /* GetCharactersUCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AFE1E2A61F961002B94F6 /* GetCharactersUCTests.swift */; };
+		097AFE222A61FC9B002B94F6 /* DefaultCharactersRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AFE212A61FC9B002B94F6 /* DefaultCharactersRepositoryTests.swift */; };
 		098B70EF2A5B5BC9004D5F52 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B70EE2A5B5BC9004D5F52 /* MessageView.swift */; };
 		098B70F12A5B5DA2004D5F52 /* BaseStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B70F02A5B5DA2004D5F52 /* BaseStateView.swift */; };
 		0990B0762A5571FC00CB8CF5 /* SwiftyMarvelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0752A5571FC00CB8CF5 /* SwiftyMarvelApp.swift */; };
@@ -108,6 +110,8 @@
 		0959487F2A58985A00C91E83 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		097AFE192A61EF11002B94F6 /* ComicItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicItemView.swift; sourceTree = "<group>"; };
 		097AFE1B2A61EFCC002B94F6 /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
+		097AFE1E2A61F961002B94F6 /* GetCharactersUCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersUCTests.swift; sourceTree = "<group>"; };
+		097AFE212A61FC9B002B94F6 /* DefaultCharactersRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCharactersRepositoryTests.swift; sourceTree = "<group>"; };
 		098B70EE2A5B5BC9004D5F52 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		098B70F02A5B5DA2004D5F52 /* BaseStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStateView.swift; sourceTree = "<group>"; };
 		0990B0722A5571FC00CB8CF5 /* SwiftyMarvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyMarvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +256,22 @@
 				0959487F2A58985A00C91E83 /* Resolver.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		097AFE1D2A61F945002B94F6 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				097AFE1E2A61F961002B94F6 /* GetCharactersUCTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		097AFE202A61FC7A002B94F6 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				097AFE212A61FC9B002B94F6 /* DefaultCharactersRepositoryTests.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		0990B0692A5571FC00CB8CF5 = {
@@ -575,6 +595,7 @@
 		09E4D76E2A59F7D200716470 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				097AFE1D2A61F945002B94F6 /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -582,6 +603,7 @@
 		09E4D76F2A59F7DA00716470 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				097AFE202A61FC7A002B94F6 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -859,6 +881,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				09E4D7742A59F84500716470 /* HomeViewModelTests.swift in Sources */,
+				097AFE222A61FC9B002B94F6 /* DefaultCharactersRepositoryTests.swift in Sources */,
+				097AFE1F2A61F961002B94F6 /* GetCharactersUCTests.swift in Sources */,
 				4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
