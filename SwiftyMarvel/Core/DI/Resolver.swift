@@ -39,7 +39,8 @@ class Resolver {
     }
 }
 
-// MARK: - Injecting Utils
+// MARK: - Injecting Utils -
+
 extension Resolver {
     private func injectUtils() {
         container.register(NetworkManager.self) { _ in
@@ -51,39 +52,58 @@ extension Resolver {
     }
 }
 
-// MARK: - Injecting DataSources
+// MARK: - Injecting DataSources -
+
 extension Resolver {
     private func injectDataSources() {
         container.register(CharactersDataSource.self) { resolver in
             DefaultCharactersDataSource(requestManager: resolver.resolve(RequestManager.self)!)
         }.inObjectScope(.container)
+        container.register(ComicsDataSource.self) { resolver in
+            DefaultComicsDataSource(requestManager: resolver.resolve(RequestManager.self)!)
+        }.inObjectScope(.container)
     }
 }
 
-// MARK: - Injecting Repositories
+// MARK: - Injecting Repositories -
+
 extension Resolver {
+    
     private func injectRepositories() {
         container.register(CharactersRepository.self) { resolver in
             DefaultCharactersRepository(charactersDataSource: resolver.resolve(CharactersDataSource.self)!)
         }.inObjectScope(.container)
-    }
-}
-
-// MARK: - Injecting Use Cases
-extension Resolver {
-    private func injectUseCases() {
-        container.register(GetCharactersUC.self) { resolver in
-            DefaultGetCharactersUC(repository: resolver.resolve(CharactersRepository.self)!)
+        container.register(ComicsRepository.self) { resolver in
+            DefaultComicsRepository(comicsDataSource: resolver.resolve(ComicsDataSource.self)!)
         }.inObjectScope(.container)
     }
 }
 
-// MARK: - Injecting ViewModels
+// MARK: - Injecting Use Cases -
+
 extension Resolver {
+    
+    private func injectUseCases() {
+        container.register(GetCharactersUC.self) { resolver in
+            DefaultGetCharactersUC(repository: resolver.resolve(CharactersRepository.self)!)
+        }.inObjectScope(.container)
+        container.register(GetComicsUC.self) { resolver in
+            DefaultGetComicsUC(repository: resolver.resolve(ComicsRepository.self)!)
+        }.inObjectScope(.container)
+    }
+}
+
+// MARK: - Injecting ViewModels -
+
+extension Resolver {
+    
     @MainActor
     private func injectViewModels() {
         container.register(HomeViewModel.self) { resolver in
             HomeViewModel(getCharactersUseCase: resolver.resolve(GetCharactersUC.self)!)
+        }
+        container.register(CharacterProfileViewModel.self) { resolver in
+            CharacterProfileViewModel(getComicsUC: resolver.resolve(GetComicsUC.self)!)
         }
     }
 }
