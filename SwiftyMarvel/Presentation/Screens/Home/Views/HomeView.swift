@@ -18,9 +18,12 @@ struct HomeView: View {
                         ScrollView {
                             LazyVStack {
                                 ForEach(viewModel.characters) { item in
-                                    CharacterView(character: item)
-                                        .task {
-                                            await viewModel.loadMoreCharactersIfNeeded(currentItem: item)
+                                    NavigationLink(
+                                        destination: CharacterProfileView(character: item)) {
+                                            CharacterView(character: item)
+                                                .task {
+                                                    await viewModel.loadMoreCharactersIfNeeded(currentItem: item)
+                                                }
                                         }
                                 }
                             }
