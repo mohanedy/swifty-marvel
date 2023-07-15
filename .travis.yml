@@ -12,6 +12,8 @@ before_install:
 install:
   - gem install buildr
   - gem install bundler
+  - bundle install
+  - bundle binstubs arkana
   - bin/arkana
 script:
   - xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
