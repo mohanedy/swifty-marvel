@@ -94,6 +94,7 @@ final class HomeViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(sut.characters.isEmpty)
         XCTAssertEqual(sut.state, .error(expectedError.localizedDescription))
+        observation.cancel()
     }
     
     func testSearchCharactersSuccess() async throws {
@@ -128,6 +129,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(sut.debouncedSearchText, expectedDebouncedSearchText)
         XCTAssertEqual(sut.characters, expectedCharacters)
         XCTAssertEqual(sut.state, .success)
+        observation.cancel()
     }
     
     func testLoadMoreCharactersIfNeededSuccess() async throws {
