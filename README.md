@@ -16,12 +16,13 @@ alt="License: MIT" />
 <a href="https://codecov.io/gh/Mohanedy98/swifty-marvel">
 <img src="https://codecov.io/gh/Mohanedy98/swifty-marvel/branch/main/graph/badge.svg" alt="codecov">
 </a>
+<a href="https://github.com/Mohanedy98/swifty-marvel/actions/workflows/testing.yml">
+<img src="https://github.com/Mohanedy98/swifty-marvel/actions/workflows/testing.yml/badge.svg" alt="Build Status">
+</a>
 <a href="https://github.com/Mohanedy98/swifty-marvel">
 <img src="https://img.shields.io/github/stars/mohanedy98/swifty-marvel.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github">
 </a>
-<a href="https://app.travis-ci.com/Mohanedy98/swifty-marvel">
-<img src="https://app.travis-ci.com/Mohanedy98/swifty-marvel.svg?token=xvs3R25gpxCbSW4X4Yex&branch=main" alt="Build Status">
-</a>
+
 <br>
 SwiftyMarvel is a SwiftUI app that uses the Marvel API to display a list of Marvel characters and their details. You can browse through hundreds of heroes and villains from the Marvel universe, see their comics, and learn more about their powers and abilities.
  <br>
@@ -138,7 +139,7 @@ This project uses Clean Architecture and is separated into four main layers:
 
 ## CI Pipeline
 
-This project uses [Travis CI](https://www.travis-ci.com/)
+This project uses [GitHub Actions](https://docs.github.com/en/actions)
 and [Codecov](https://docs.codecov.com/docs/codecov-uploader) to automate the building, testing, and
 code coverage analysis of the project. The CI pipeline runs whenever a new commit or pull request is
 made to the main branch.
