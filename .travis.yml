@@ -8,4 +8,4 @@ before_install:
 install:
   - gem install buildr
 script:
-  - xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvelTests -destination "platform=iOS Simulator,OS=16.4,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+  - xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.4,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
