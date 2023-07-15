@@ -99,3 +99,7 @@ ArkanaKeys/
 
 # Caches
 **/*.xcodeproj/MockingbirdCache/
+
+Gemfile.lock
+
+cobertura.xml

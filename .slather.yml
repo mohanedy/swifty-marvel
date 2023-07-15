@@ -1,0 +1,4 @@
+coverage_service: cobertura_xml
+xcodeproj: SwiftyMarvel.xcodeproj
+scheme: SwiftyMarvel
+output_directory: ./

@@ -20,5 +20,5 @@ script:
   - set -o pipefail
   - travis_wait xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES -enableCodeCoverage YES
 after_success:
-  - slather coverage -s --scheme SwiftyMarvel SwiftyMarvel.xcodeproj
+  - slather
   - bash <(curl -s https://codecov.io/bash) -f ./cobertura.xml -X coveragepy -X gcov -X xcode
