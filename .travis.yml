@@ -1,0 +1,4 @@
+language: swift
+xcode_project: SwiftyMarvel.xcodeproj
+xcode_scheme: SwiftyMarvelTests
+xcode_destination: platform=iOS Simulator,OS=16.4,name=iPhone 14
