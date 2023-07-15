@@ -10,14 +10,14 @@ jobs:
   build-and-test:
     runs-on: macos-latest
   steps:
-    - name: prepare Arkana
+    - uses: actions/checkout@v2
+    - name: Select Xcode
+      run: sudo Xcode-select -switch /Applications/Xcode_14.3.1.app
+    - name: Add .env file
       run: |
         touch .env
         echo "MarvelPublicKey=$MarvelPublicKey" >> .env
         echo "MarvelPrivateKey=$MarvelPrivateKey" >> .env
-    - uses: actions/checkout@v2
-    - name: Select Xcode
-      run: sudo Xcode-select -switch /Applications/Xcode_14.3.1.app
     - name: Install Bundler
       run: gem install bundler
     - name: Install xcpretty
