@@ -69,16 +69,6 @@
 		4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0990B08D2A5571FD00CB8CF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0990B06A2A5571FC00CB8CF5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0990B0712A5571FC00CB8CF5;
-			remoteInfo = SwiftyMarvel;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		090475A02A61E30C00A4E23D /* GetComicsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetComicsUC.swift; sourceTree = "<group>"; };
 		090475A22A61E48100A4E23D /* ComicModel+DomainMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComicModel+DomainMapper.swift"; sourceTree = "<group>"; };
@@ -117,7 +107,6 @@
 		0990B0792A5571FD00CB8CF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0990B07C2A5571FD00CB8CF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0990B0822A5571FD00CB8CF5 /* SwiftyMarvelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMarvelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0990B08C2A5571FD00CB8CF5 /* SwiftyMarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A630F42A62AAD4001A96E5 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		09E4D7282A59890900716470 /* ArkanaKeys */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ArkanaKeys; path = ArkanaKeys/ArkanaKeys; sourceTree = "<group>"; };
 		09E4D7312A59964C00716470 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
@@ -162,13 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0937EBA72A5EB65C006A78FC /* Mockingbird in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0990B0892A5571FD00CB8CF5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +262,6 @@
 				09E4D7272A59890900716470 /* Packages */,
 				0990B0742A5571FC00CB8CF5 /* SwiftyMarvel */,
 				0990B0852A5571FD00CB8CF5 /* SwiftyMarvelTests */,
-				0990B08F2A5571FD00CB8CF5 /* SwiftyMarvelUITests */,
 				0990B0732A5571FC00CB8CF5 /* Products */,
 				09E4D7292A59891900716470 /* Frameworks */,
 				4243B3BC6EA881013E5DF71D /* Generated Mocks */,
@@ -292,7 +273,6 @@
 			children = (
 				0990B0722A5571FC00CB8CF5 /* SwiftyMarvel.app */,
 				0990B0822A5571FD00CB8CF5 /* SwiftyMarvelTests.xctest */,
-				0990B08C2A5571FD00CB8CF5 /* SwiftyMarvelUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,13 +310,6 @@
 				09E4D76D2A59F7C700716470 /* Presentaion */,
 			);
 			path = SwiftyMarvelTests;
-			sourceTree = "<group>";
-		};
-		0990B08F2A5571FD00CB8CF5 /* SwiftyMarvelUITests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SwiftyMarvelUITests;
 			sourceTree = "<group>";
 		};
 		0990B09F2A55A9CB00CB8CF5 /* Core */ = {
@@ -685,24 +658,6 @@
 			productReference = 0990B0822A5571FD00CB8CF5 /* SwiftyMarvelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0990B08B2A5571FD00CB8CF5 /* SwiftyMarvelUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0990B09C2A5571FD00CB8CF5 /* Build configuration list for PBXNativeTarget "SwiftyMarvelUITests" */;
-			buildPhases = (
-				0990B0882A5571FD00CB8CF5 /* Sources */,
-				0990B0892A5571FD00CB8CF5 /* Frameworks */,
-				0990B08A2A5571FD00CB8CF5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0990B08E2A5571FD00CB8CF5 /* PBXTargetDependency */,
-			);
-			name = SwiftyMarvelUITests;
-			productName = SwiftyMarvelUITests;
-			productReference = 0990B08C2A5571FD00CB8CF5 /* SwiftyMarvelUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -717,10 +672,6 @@
 						CreatedOnToolsVersion = 14.3.1;
 					};
 					0990B0812A5571FD00CB8CF5 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = 0990B0712A5571FC00CB8CF5;
-					};
-					0990B08B2A5571FD00CB8CF5 = {
 						CreatedOnToolsVersion = 14.3.1;
 						TestTargetID = 0990B0712A5571FC00CB8CF5;
 					};
@@ -747,7 +698,6 @@
 			targets = (
 				0990B0712A5571FC00CB8CF5 /* SwiftyMarvel */,
 				0990B0812A5571FD00CB8CF5 /* SwiftyMarvelTests */,
-				0990B08B2A5571FD00CB8CF5 /* SwiftyMarvelUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -764,13 +714,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0990B0802A5571FD00CB8CF5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0990B08A2A5571FD00CB8CF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -883,24 +826,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0990B0882A5571FD00CB8CF5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		094F3A442A5EB0E90060E930 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 094F3A432A5EB0E90060E930 /* Mockingbird */;
-		};
-		0990B08E2A5571FD00CB8CF5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0990B0712A5571FC00CB8CF5 /* SwiftyMarvel */;
-			targetProxy = 0990B08D2A5571FD00CB8CF5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1121,42 +1052,6 @@
 			};
 			name = Release;
 		};
-		0990B09D2A5571FD00CB8CF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C2QWF96237;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.mohanedy98.SwiftyMarvelUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftyMarvel;
-			};
-			name = Debug;
-		};
-		0990B09E2A5571FD00CB8CF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C2QWF96237;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.mohanedy98.SwiftyMarvelUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftyMarvel;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1183,15 +1078,6 @@
 			buildConfigurations = (
 				0990B09A2A5571FD00CB8CF5 /* Debug */,
 				0990B09B2A5571FD00CB8CF5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0990B09C2A5571FD00CB8CF5 /* Build configuration list for PBXNativeTarget "SwiftyMarvelUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0990B09D2A5571FD00CB8CF5 /* Debug */,
-				0990B09E2A5571FD00CB8CF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
