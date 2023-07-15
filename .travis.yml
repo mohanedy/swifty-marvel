@@ -18,7 +18,7 @@ install:
   - bin/arkana
 script:
   - set -o pipefail
-  - travis_wait xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES -verbose
+  - travis_wait xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES
 after_success:
-  - slather coverage -s --scheme SwiftyMarvelTests SwiftyMarvel.xcodeproj
+  - slather coverage -s --scheme SwiftyMarvel SwiftyMarvel.xcodeproj
   - bash <(curl -s https://codecov.io/bash) -f ./cobertura.xml -X coveragepy -X gcov -X xcode

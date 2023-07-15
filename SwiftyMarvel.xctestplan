@@ -32,15 +32,6 @@
         "identifier" : "0990B0812A5571FD00CB8CF5",
         "name" : "SwiftyMarvelTests"
       }
-    },
-    {
-      "enabled" : false,
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:SwiftyMarvel.xcodeproj",
-        "identifier" : "0990B08B2A5571FD00CB8CF5",
-        "name" : "SwiftyMarvelUITests"
-      }
     }
   ],
   "version" : 1
