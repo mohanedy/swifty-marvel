@@ -1,11 +1,12 @@
 language: swift
+osx_image: xcode14.2
 xcode_project: SwiftyMarvel.xcodeproj
 xcode_scheme: SwiftyMarvelTests
-xcode_destination: platform=iOS Simulator,OS=16.4,name=iPhone 14
+xcode_destination: platform=iOS Simulator,OS=16.2,name=iPhone 14
 before_install:
   - rvm install 2.6.9
   - rvm use 2.6.9
 install:
   - gem install buildr
 script:
-  - xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.4,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+  - xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
