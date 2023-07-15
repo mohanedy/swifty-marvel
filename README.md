@@ -5,22 +5,22 @@
   <h1 align="center">SwiftyMarvel 🦸‍♂️</h1>
 
 <p align="center">
-<a href="https://flutter.dev">
-  <img src="https://img.shields.io/badge/Platform-SwiftUI-02569R?logo=swift"
+<a href="https://developer.apple.com/xcode/swiftui/">
+  <img src="https://img.shields.io/badge/Platform-SwiftUI-orange?logo=swift"
     alt="Platform" />
 </a>
 <a href="https://github.com/Mohanedy98/swifty-marvel/blob/main/LICENSE">
 <img src="https://img.shields.io/github/license/aagarwal1012/animated-text-kit?color=red"
 alt="License: MIT" />
 </a>
+<a href="https://github.com/Mohanedy98/swifty-marvel">
+<img src="https://img.shields.io/github/stars/mohanedy98/swifty-marvel.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github">
+</a>
 <a href="https://codecov.io/gh/Mohanedy98/swifty-marvel">
 <img src="https://codecov.io/gh/Mohanedy98/swifty-marvel/branch/main/graph/badge.svg" alt="codecov">
 </a>
 <a href="https://github.com/Mohanedy98/swifty-marvel/actions/workflows/testing.yml">
 <img src="https://github.com/Mohanedy98/swifty-marvel/actions/workflows/testing.yml/badge.svg" alt="Build Status">
-</a>
-<a href="https://github.com/Mohanedy98/swifty-marvel">
-<img src="https://img.shields.io/github/stars/mohanedy98/swifty-marvel.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github">
 </a>
 
 <br>
