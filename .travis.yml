@@ -3,7 +3,9 @@ xcode_project: SwiftyMarvel.xcodeproj
 xcode_scheme: SwiftyMarvelTests
 xcode_destination: platform=iOS Simulator,OS=16.4,name=iPhone 14
 before_install:
-  - rvm implode --force
-  - \curl -sSL https://get.rvm.io | bash -s 1.27.0
-  - rvm reload
   - rvm install 2.6.9
+  - rvm use 2.6.9
+install:
+  - gem install buildr
+script:
+  - xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvelTests -destination "platform=iOS Simulator,OS=16.4,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
