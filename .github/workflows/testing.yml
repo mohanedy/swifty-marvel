@@ -29,7 +29,7 @@ jobs:
           bundle binstubs arkana
           bin/arkana
       - name: Build & Test
-        run: xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES -verbose | xcpretty
+        run: xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES -enableCodeCoverage YES -verbose | xcpretty
       - name: Prepare code coverage report
         run: slather coverage -s --scheme SwiftyMarvel SwiftyMarvel.xcodeproj
       - name: Upload Code Coverage to Codecov
