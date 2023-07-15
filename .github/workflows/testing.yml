@@ -1,0 +1,31 @@
+name: Test SwiftyMarvel
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+  steps:
+    - name: prepare Arkana
+      run: |
+        touch .env
+        echo "MarvelPublicKey=$MarvelPublicKey" >> .env
+        echo "MarvelPrivateKey=$MarvelPrivateKey" >> .env
+    - uses: actions/checkout@v2
+    - name: Select Xcode
+      run: sudo Xcode-select -switch /Applications/Xcode_14.3.1.app
+    - name: Install Bundler
+      run: gem install bundler
+    - name: Install xcpretty
+      run: gem install xcpretty
+    - name: Install Gems
+      run: |
+        bundle install
+        bundle binstubs arkana
+        bin/arkana
+    - name: Build & Test
+      run: xcodebuild clean build test -project SwiftyMarvel.xcodeproj -scheme SwiftyMarvel -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES -verbose | xcpretty
