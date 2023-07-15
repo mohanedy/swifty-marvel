@@ -34,6 +34,7 @@
       }
     },
     {
+      "enabled" : false,
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:SwiftyMarvel.xcodeproj",
