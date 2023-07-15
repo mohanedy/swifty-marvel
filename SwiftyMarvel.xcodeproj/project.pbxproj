@@ -44,8 +44,6 @@
 		0990B0762A5571FC00CB8CF5 /* SwiftyMarvelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0752A5571FC00CB8CF5 /* SwiftyMarvelApp.swift */; };
 		0990B07A2A5571FD00CB8CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0990B0792A5571FD00CB8CF5 /* Assets.xcassets */; };
 		0990B07D2A5571FD00CB8CF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0990B07C2A5571FD00CB8CF5 /* Preview Assets.xcassets */; };
-		0990B0912A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0902A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift */; };
-		0990B0932A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */; };
 		09E4D72B2A59891900716470 /* ArkanaKeys in Frameworks */ = {isa = PBXBuildFile; productRef = 09E4D72A2A59891900716470 /* ArkanaKeys */; };
 		09E4D7322A59964C00716470 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7312A59964C00716470 /* DataParser.swift */; };
 		09E4D7342A5996C400716470 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7332A5996C400716470 /* NetworkError.swift */; };
@@ -120,8 +118,6 @@
 		0990B07C2A5571FD00CB8CF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0990B0822A5571FD00CB8CF5 /* SwiftyMarvelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMarvelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0990B08C2A5571FD00CB8CF5 /* SwiftyMarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyMarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0990B0902A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMarvelUITests.swift; sourceTree = "<group>"; };
-		0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMarvelUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		09A630F42A62AAD4001A96E5 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		09E4D7282A59890900716470 /* ArkanaKeys */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ArkanaKeys; path = ArkanaKeys/ArkanaKeys; sourceTree = "<group>"; };
 		09E4D7312A59964C00716470 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
@@ -339,8 +335,6 @@
 		0990B08F2A5571FD00CB8CF5 /* SwiftyMarvelUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0990B0902A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift */,
-				0990B0922A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift */,
 			);
 			path = SwiftyMarvelUITests;
 			sourceTree = "<group>";
@@ -893,8 +887,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0990B0912A5571FD00CB8CF5 /* SwiftyMarvelUITests.swift in Sources */,
-				0990B0932A5571FD00CB8CF5 /* SwiftyMarvelUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
