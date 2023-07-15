@@ -6,6 +6,10 @@ xcode_destination: platform=iOS Simulator,OS=16.2,name=iPhone 14
 before_install:
   - rvm install 2.6.9
   - rvm use 2.6.9
+  - touch .env
+  - echo "MarvelPublicKey=$MarvelPublicKey" >> .env
+  - echo "MarvelPrivateKey=$MarvelPrivateKey" >> .env
+  - bin/arkana
 install:
   - gem install buildr
 script:
