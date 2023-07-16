@@ -128,7 +128,7 @@ This project uses Clean Architecture and is separated into four main layers:
 | [Swinject](https://github.com/Swinject/Swinject)                                                      | Dependency Injection                                                 |
 | [Arkana](https://github.com/rogerluan/arkana)                                                         | Securely storing secrets and keys                                    |
 | [Kingfisher](https://github.com/onevcat/Kingfisher)                                                   | Image Caching                                                        |
-| [Lint](https://github.com/realm/SwiftLint)                                                            | Project Linting                                                      |
+| [SwiftLint](https://github.com/realm/SwiftLint)                                                       | Code Linting                                                         |
 | [Mockingbird](https://github.com/birdrides/mockingbird)                                               | Generating mock, stub, and verify objects in Swift unit tests        |
 
 ## Development Environment
