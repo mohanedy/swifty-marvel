@@ -78,18 +78,18 @@ get them by following these steps:
 
 This project uses Clean Architecture and is separated into four main layers:
 
-* **Data**: Holds the data access layer, which contains the repositories responsible for abstracting
+* **Data**: Contains the repositories implementations responsible for abstracting
   the data source used. In this case, the data source is a REST API, but it could be anything else,
-  like a REST API, database, or cache.
+  like a database, or cache.
 * **Domain**: Holds the business logic layer, which contains the use cases responsible for handling
   the business logic of the application and the abstract repositories. The use cases are the entry
   point to the domain layer.
-* **Presentation**: Holds the presentation layer, which contains the UI responsible for presenting
-  the data to the user and handling user interactions. It also contains the ViewModels, which are
+* **Presentation**: Contains the UI responsible for presenting the data to the user and handling
+  user interactions. It also contains the ViewModels, which are
   responsible for preparing the data to be presented and for handling the interactions between the
   view and the use cases.
-* **Core**: Holds the core layer, which contains the common code between the other layers, like
-  extensions and the dependency injection.
+* **Core**: Contains the common code between the other layers, like the extensions and the dependency
+  injection code.
 
 ### Folder Structure
 
