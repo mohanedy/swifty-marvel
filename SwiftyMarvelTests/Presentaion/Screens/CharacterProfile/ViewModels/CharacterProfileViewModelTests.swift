@@ -43,7 +43,6 @@ final class CharacterProfileViewModelTests: XCTestCase {
         XCTAssertEqual(sut.state, .initial)
     }
     
-    
     func testLoadComicsSuccess() async throws {
         // Given
         let expectedComics = [fakeComic1, fakeComic2]
