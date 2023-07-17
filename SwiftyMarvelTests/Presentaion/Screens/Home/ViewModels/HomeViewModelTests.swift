@@ -28,16 +28,16 @@ final class HomeViewModelTests: XCTestCase {
     
     // MARK: - Setup and Teardown -
     
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        try super.setUpWithError()
         getCharactersUCMock = mock(GetCharactersUC.self)
         sut = HomeViewModel(getCharactersUseCase: getCharactersUCMock, debounceTime: 0)
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         sut = nil
         getCharactersUCMock = nil
-        super.tearDown()
+        try super.tearDownWithError()
     }
     
     // MARK: - Tests -
