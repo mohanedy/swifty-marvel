@@ -5,7 +5,6 @@
 //  Created by Mohaned Yossry on 08/07/2023.
 //
 
-import Foundation
 import XCTest
 import Mockingbird
 @testable import SwiftyMarvel
