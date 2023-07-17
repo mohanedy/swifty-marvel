@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct Comic: Identifiable, Equatable {
+// MARK: - Comic -
+
+struct Comic: Identifiable {
+    
     let id: Int?
     let title, description: String?
     let modified: String?
@@ -16,13 +19,36 @@ struct Comic: Identifiable, Equatable {
     let thumbnail: Thumbnail?
     
     // MARK: - Computed Properties -
+    
     var imageURL: URL? {
         guard let path = thumbnail?.path, let ext = thumbnail?.thumbnailExtension else { return nil }
         return URL(string: "\(path).\(ext)")
     }
     
-    static func == (lhs: Comic, rhs: Comic) -> Bool {
-        lhs.id == rhs.id
+    // MARK: - Init -
+    
+    init(id: Int?,
+         title: String?,
+         description: String? = nil,
+         modified: String? = nil,
+         isbn: String? = nil,
+         upc: String? = nil,
+         diamondCode: String? = nil,
+         ean: String? = nil,
+         issn: String? = nil,
+         format: String? = nil,
+         thumbnail: Thumbnail? = nil) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.modified = modified
+        self.isbn = isbn
+        self.upc = upc
+        self.diamondCode = diamondCode
+        self.ean = ean
+        self.issn = issn
+        self.format = format
+        self.thumbnail = thumbnail
     }
     
     static func dummyComic() -> Comic {
@@ -42,4 +68,14 @@ struct Comic: Identifiable, Equatable {
                 thumbnailExtension: "jpg"))
         
     }
+}
+
+// MARK: - Comic + Equatable -
+
+extension Comic: Equatable {
+    
+    static func == (lhs: Comic, rhs: Comic) -> Bool {
+        lhs.id == rhs.id
+    }
+    
 }

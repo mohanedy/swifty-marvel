@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Character -
 
-struct Character: Identifiable, Equatable {
+struct Character: Identifiable {
     
     let id: Int?
     let name, description: String?
@@ -51,15 +51,18 @@ struct Character: Identifiable, Equatable {
                             thumbnailExtension: "jpg"
                          ))
     }
+
+}
+
+// MARK: - Character + Equatable -
+
+extension Character: Equatable {
+    
     static func == (lhs: Character, rhs: Character) -> Bool {
         lhs.id == rhs.id
     }
+    
 }
 
-// MARK: - Thumbnail -
 
-struct Thumbnail {
-    let path: String?
-    let thumbnailExtension: String?
-}
 // swiftlint:enable line_length
