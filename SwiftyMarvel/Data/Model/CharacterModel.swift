@@ -6,7 +6,8 @@
 //
 import Foundation
 
-// MARK: - CharacterModel
+// MARK: - CharacterModel -
+
 struct CharacterModel: Codable {
     let id: Int?
     let name, description: String?
@@ -26,7 +27,8 @@ struct CharacterModel: Codable {
     }
 }
 
-// MARK: - Thumbnail
+// MARK: - ThumbnailModel -
+
 struct ThumbnailModel: Codable {
     let path: String?
     let thumbnailExtension: String?

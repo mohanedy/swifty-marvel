@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - CharacterModel -
+
 extension CharacterModel: DomainMapper {
     func toDomain() -> Character {
         return Character(id: id,
@@ -17,6 +19,7 @@ extension CharacterModel: DomainMapper {
     }
 }
 
+// MARK: - ThumbnailModel -
 
 extension ThumbnailModel: DomainMapper {
     func toDomain() -> Thumbnail {

@@ -7,7 +7,8 @@
 
 import Foundation
 
-// MARK: - Request Manager Protocol
+// MARK: - Request Manager Protocol -
+
 protocol RequestManager {
     var networkManager: NetworkManager { get }
     var parser: DataParser { get }
@@ -38,7 +39,8 @@ class DefaultRequestManager: RequestManager {
     }
 }
 
-// MARK: - Returns Data Parser
+// MARK: - Returns Data Parser -
+
 extension RequestManager {
     var parser: DataParser {
         return DefaultDataParser()
