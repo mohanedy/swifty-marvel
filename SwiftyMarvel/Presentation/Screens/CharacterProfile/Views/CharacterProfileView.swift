@@ -32,7 +32,7 @@ struct CharacterProfileView: View {
         .ignoresSafeArea()
         .onAppear {
             Task {
-                await viewModel.loadComics(byCharacter: character.id ?? 0)
+                await viewModel.loadComics(forCharacter: character.id ?? 0)
             }
         }
     }

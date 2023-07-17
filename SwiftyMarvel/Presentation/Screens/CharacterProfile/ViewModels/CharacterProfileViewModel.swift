@@ -35,7 +35,7 @@ final class CharacterProfileViewModel: ViewModel {
 
 extension CharacterProfileViewModel {
     
-    func loadComics(byCharacter id: Int) async {
+    func loadComics(forCharacter id: Int) async {
         state = .loading
         let result = await getComicsUC.execute(with: GetComicsParams(offset: 0, characterID: id))
         switch result {
