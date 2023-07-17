@@ -128,7 +128,7 @@ This project uses Clean Architecture and is separated into four main layers:
 | [MVVM](https://www.hackingwithswift.com/books/ios-swiftui/introducing-mvvm-into-your-swiftui-project) | Architectural design pattern for separating the logic form the views |
 | [Swinject](https://github.com/Swinject/Swinject)                                                      | Dependency Injection                                                 |
 | [Arkana](https://github.com/rogerluan/arkana)                                                         | Securely storing secrets and keys                                    |
-| [Kingfisher](https://github.com/onevcat/Kingfisher)                                                   | Image Caching                                                        |
+| [Nuke](https://github.com/kean/Nuke)                                                                  | Image Loading & Caching                                              |
 | [SwiftLint](https://github.com/realm/SwiftLint)                                                       | Code Linting                                                         |
 | [Mockingbird](https://github.com/birdrides/mockingbird)                                               | Generating mock, stub, and verify objects in Swift unit tests        |
 
