@@ -46,6 +46,7 @@
 		0990B0762A5571FC00CB8CF5 /* SwiftyMarvelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990B0752A5571FC00CB8CF5 /* SwiftyMarvelApp.swift */; };
 		0990B07A2A5571FD00CB8CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0990B0792A5571FD00CB8CF5 /* Assets.xcassets */; };
 		0990B07D2A5571FD00CB8CF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0990B07C2A5571FD00CB8CF5 /* Preview Assets.xcassets */; };
+		099A6EC72A65C5250025178F /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 099A6EC62A65C5250025178F /* NukeUI */; };
 		09E4D72B2A59891900716470 /* ArkanaKeys in Frameworks */ = {isa = PBXBuildFile; productRef = 09E4D72A2A59891900716470 /* ArkanaKeys */; };
 		09E4D7322A59964C00716470 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7312A59964C00716470 /* DataParser.swift */; };
 		09E4D7342A5996C400716470 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7332A5996C400716470 /* NetworkError.swift */; };
@@ -62,7 +63,6 @@
 		09E4D7512A59A51900716470 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7502A59A51900716470 /* HomeViewModel.swift */; };
 		09E4D7592A59B7A100716470 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7582A59B7A100716470 /* ViewModel.swift */; };
 		09E4D75B2A59B87E00716470 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D75A2A59B87E00716470 /* CharacterView.swift */; };
-		09E4D75E2A59BAB500716470 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 09E4D75D2A59BAB500716470 /* Kingfisher */; };
 		09E4D7622A59C09000716470 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7612A59C09000716470 /* VisualEffectView.swift */; };
 		09E4D7642A59C0C400716470 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7632A59C0C400716470 /* View+CornerRadius.swift */; };
 		09E4D76B2A59F24100716470 /* Error+AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D76A2A59F24100716470 /* Error+AppError.swift */; };
@@ -142,10 +142,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09E4D75E2A59BAB500716470 /* Kingfisher in Frameworks */,
 				09E4D72B2A59891900716470 /* ArkanaKeys in Frameworks */,
 				095948852A58A3C500C91E83 /* Swinject in Frameworks */,
 				09E4D7412A599AA300716470 /* CryptoSwift in Frameworks */,
+				099A6EC72A65C5250025178F /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,7 +650,7 @@
 				095948842A58A3C500C91E83 /* Swinject */,
 				09E4D72A2A59891900716470 /* ArkanaKeys */,
 				09E4D7402A599AA300716470 /* CryptoSwift */,
-				09E4D75D2A59BAB500716470 /* Kingfisher */,
+				099A6EC62A65C5250025178F /* NukeUI */,
 			);
 			productName = SwiftyMarvel;
 			productReference = 0990B0722A5571FC00CB8CF5 /* SwiftyMarvel.app */;
@@ -709,8 +709,8 @@
 			packageReferences = (
 				095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */,
 				09E4D73F2A599AA300716470 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
-				09E4D75C2A59BAB500716470 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0937EBA52A5EB65C006A78FC /* XCRemoteSwiftPackageReference "mockingbird" */,
+				099A6EC52A65C5250025178F /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 0990B0732A5571FC00CB8CF5 /* Products */;
 			projectDirPath = "";
@@ -1131,20 +1131,20 @@
 				minimumVersion = 2.8.0;
 			};
 		};
+		099A6EC52A65C5250025178F /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
 		09E4D73F2A599AA300716470 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.7.2;
-			};
-		};
-		09E4D75C2A59BAB500716470 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1165,6 +1165,11 @@
 			package = 095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
 		};
+		099A6EC62A65C5250025178F /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 099A6EC52A65C5250025178F /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
 		09E4D72A2A59891900716470 /* ArkanaKeys */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ArkanaKeys;
@@ -1173,11 +1178,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 09E4D73F2A599AA300716470 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
-		};
-		09E4D75D2A59BAB500716470 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 09E4D75C2A59BAB500716470 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
