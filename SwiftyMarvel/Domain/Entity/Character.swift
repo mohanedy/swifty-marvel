@@ -64,5 +64,4 @@ extension Character: Equatable {
     
 }
 
-
 // swiftlint:enable line_length

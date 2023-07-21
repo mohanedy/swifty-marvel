@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - PaginatedResponse -
 
-struct PaginatedResponse<T: Equatable>: Equatable{
+struct PaginatedResponse<T: Equatable>: Equatable {
     let offset, limit, total, count: Int?
     let results: [T]?
     

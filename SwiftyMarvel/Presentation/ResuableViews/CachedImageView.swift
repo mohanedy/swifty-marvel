@@ -25,7 +25,6 @@ struct CachedImageView: View {
             } else {
                 loadingView
             }
-            
         }
     }
     
@@ -33,7 +32,7 @@ struct CachedImageView: View {
         ZStack(alignment: .center) {
             Color.gray.aspectRatio(contentMode: .fill)
             ProgressView()
-        }//:- ZStack
+        }// :- ZStack
     }
     
     private var errorView: some View {
