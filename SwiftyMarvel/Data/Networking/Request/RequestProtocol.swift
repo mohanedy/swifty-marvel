@@ -7,6 +7,7 @@
 
 import Foundation
 import ArkanaKeys
+import OSLog
 
 protocol RequestProtocol {
     var path: String { get }
@@ -73,7 +74,8 @@ extension RequestProtocol {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params)
         }
         
-        print(urlRequest.debugDescription)
+        Logger.networking.info("🚀 [REQUEST] [\(requestType.rawValue)] \(urlRequest, privacy: .private)")
+
         return urlRequest
     }
 }

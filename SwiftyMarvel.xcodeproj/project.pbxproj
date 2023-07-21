@@ -68,6 +68,7 @@
 		09E4D76B2A59F24100716470 /* Error+AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D76A2A59F24100716470 /* Error+AppError.swift */; };
 		09E4D7742A59F84500716470 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7732A59F84500716470 /* HomeViewModelTests.swift */; };
 		09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */; };
+		09F6A3A62A6AAEEA00317A19 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F6A3A52A6AAEEA00317A19 /* Logger.swift */; };
 		4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +135,7 @@
 		09E4D7762A5A055900716470 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		09F1BD9D2A55E62B00F0EA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		09F6A3A52A6AAEEA00317A19 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift"; path = "MockingbirdMocks/SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,6 +335,7 @@
 		0990B09F2A55A9CB00CB8CF5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				09F6A3A42A6AAEDB00317A19 /* Utils */,
 				09E4D73C2A59999500716470 /* Extensions */,
 				0959487C2A58983100C91E83 /* DI */,
 			);
@@ -621,6 +624,22 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		09F6A3A32A6AAED300317A19 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				09F6A3A52A6AAEEA00317A19 /* Logger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		09F6A3A42A6AAEDB00317A19 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				09F6A3A32A6AAED300317A19 /* Logger */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		4243B3BC6EA881013E5DF71D /* Generated Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -829,6 +848,7 @@
 				09E4D7462A599DEF00716470 /* CharactersRequest.swift in Sources */,
 				09E4D73E2A5999A500716470 /* String+MD5.swift in Sources */,
 				097AFE1A2A61EF11002B94F6 /* ComicItemView.swift in Sources */,
+				09F6A3A62A6AAEEA00317A19 /* Logger.swift in Sources */,
 				09E4D7342A5996C400716470 /* NetworkError.swift in Sources */,
 				09E4D7432A599BF600716470 /* RequestType.swift in Sources */,
 				09E4D7642A59C0C400716470 /* View+CornerRadius.swift in Sources */,

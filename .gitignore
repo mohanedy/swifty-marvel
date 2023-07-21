@@ -103,3 +103,5 @@ ArkanaKeys/
 Gemfile.lock
 
 cobertura.xml
+
+.idea/
