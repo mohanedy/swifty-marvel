@@ -29,8 +29,9 @@ struct HomeView: View {
                             }
                         }
                             .padding()
-                            .navigationTitle("SwiftyMarvel")
-                            .searchable(text: $viewModel.searchText, prompt: "Type character name...")
+                            .navigationTitle("swiftyMarvel".localized())
+                            .searchable(text: $viewModel.searchText,
+                                        prompt: "typeCharacterName".localized())
                             .onChange(of: viewModel.debouncedSearchText, perform: { _ in
                                 Task {
                                     await viewModel.searchCharacters()

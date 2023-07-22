@@ -11,8 +11,8 @@ extension Error {
     /// Converts any error to an `AppError` object.
     var toAppError: AppError {
         if self is NetworkError {
-            return .networkError("Network Error")
+            return .networkError("errorWhileFetchingData")
         }
-        return AppError.unknownError("Unknown Error")
+        return AppError.unknownError("unknownError")
     }
 }

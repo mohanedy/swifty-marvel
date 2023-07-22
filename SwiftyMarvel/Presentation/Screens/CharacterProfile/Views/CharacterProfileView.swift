@@ -77,7 +77,7 @@ struct CharacterProfileView: View {
     private var comicsSection: some View {
         BaseStateView(viewModel: viewModel,
                       successView: AnyView(VStack(alignment: .leading) {
-            Text("Comics")
+            Text("comics".localized())
                 .font(.system(.title2, weight: .bold))
                 .padding([.bottom], 5)
             ScrollView(.horizontal, showsIndicators: false) {
