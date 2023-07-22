@@ -19,6 +19,8 @@
 		09081BD82A61E18E003AF407 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081BD72A61E18E003AF407 /* ComicModel.swift */; };
 		09081BDA2A61E217003AF407 /* ComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081BD92A61E217003AF407 /* ComicsRepository.swift */; };
 		09081BDC2A61E250003AF407 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081BDB2A61E250003AF407 /* Comic.swift */; };
+		092917792A6BE7FE00E3FEE5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0929177B2A6BE7FE00E3FEE5 /* Localizable.strings */; };
+		0929177E2A6BEB8900E3FEE5 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0929177D2A6BEB8900E3FEE5 /* String+Localization.swift */; };
 		092E58BF2A651337005AC237 /* CharacterProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E58BE2A651337005AC237 /* CharacterProfileViewModelTests.swift */; };
 		092E58C12A651532005AC237 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E58C02A651532005AC237 /* Thumbnail.swift */; };
 		0937EBA72A5EB65C006A78FC /* Mockingbird in Frameworks */ = {isa = PBXBuildFile; productRef = 0937EBA62A5EB65C006A78FC /* Mockingbird */; };
@@ -85,6 +87,8 @@
 		09081BD72A61E18E003AF407 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
 		09081BD92A61E217003AF407 /* ComicsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsRepository.swift; sourceTree = "<group>"; };
 		09081BDB2A61E250003AF407 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		0929177A2A6BE7FE00E3FEE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0929177D2A6BEB8900E3FEE5 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		092E58BE2A651337005AC237 /* CharacterProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProfileViewModelTests.swift; sourceTree = "<group>"; };
 		092E58C02A651532005AC237 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		095948572A58751100C91E83 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -196,6 +200,14 @@
 			path = CharacterProfile;
 			sourceTree = "<group>";
 		};
+		0929177C2A6BE92600E3FEE5 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				0929177B2A6BE7FE00E3FEE5 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		092E58BC2A6512F8005AC237 /* CharacterProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +312,7 @@
 		0990B0742A5571FC00CB8CF5 /* SwiftyMarvel */ = {
 			isa = PBXGroup;
 			children = (
+				0929177C2A6BE92600E3FEE5 /* Localization */,
 				09F1BD9D2A55E62B00F0EA8B /* Info.plist */,
 				0990B09F2A55A9CB00CB8CF5 /* Core */,
 				0990B0A02A55A9D900CB8CF5 /* Data */,
@@ -473,6 +486,7 @@
 			children = (
 				09E4D73D2A5999A500716470 /* String+MD5.swift */,
 				09E4D76A2A59F24100716470 /* Error+AppError.swift */,
+				0929177D2A6BEB8900E3FEE5 /* String+Localization.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -747,6 +761,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */,
+				092917792A6BE7FE00E3FEE5 /* Localizable.strings in Resources */,
 				0990B07D2A5571FD00CB8CF5 /* Preview Assets.xcassets in Resources */,
 				0990B07A2A5571FD00CB8CF5 /* Assets.xcassets in Resources */,
 			);
@@ -830,6 +845,7 @@
 				0959486F2A58899100C91E83 /* PaginatedResponseModel+DomainMapper.swift in Sources */,
 				09E4D76B2A59F24100716470 /* Error+AppError.swift in Sources */,
 				095948712A588A1B00C91E83 /* PaginatedResponse.swift in Sources */,
+				0929177E2A6BEB8900E3FEE5 /* String+Localization.swift in Sources */,
 				095948622A5879D200C91E83 /* Character.swift in Sources */,
 				09E4D7512A59A51900716470 /* HomeViewModel.swift in Sources */,
 				090475AC2A61E88C00A4E23D /* CharacterProfileViewModel.swift in Sources */,
@@ -876,6 +892,17 @@
 			productRef = 094F3A432A5EB0E90060E930 /* Mockingbird */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0929177B2A6BE7FE00E3FEE5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0929177A2A6BE7FE00E3FEE5 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0990B0942A5571FD00CB8CF5 /* Debug */ = {
@@ -934,6 +961,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -987,6 +1015,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

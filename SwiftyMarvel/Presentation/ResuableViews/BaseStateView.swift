@@ -27,7 +27,7 @@ struct BaseStateView: View {
     ///  - Note: The default value for each view is nil, so you have to provide at least the successView.
     init(viewModel: ViewModel,
          successView: AnyView,
-         emptyView: AnyView? = AnyView(MessageView(message: "No Data Found")),
+         emptyView: AnyView? = AnyView(MessageView(message: "noDataFound".localized())),
          errorView: AnyView? = nil,
          loadingView: AnyView? = AnyView(ProgressView())) {
         self.viewModel = viewModel
@@ -45,7 +45,7 @@ struct BaseStateView: View {
                     .loading:
                 loadingView
             case .error(let errorMessage):
-                errorView ?? AnyView(MessageView(message: errorMessage))
+                errorView ?? AnyView(MessageView(message: errorMessage.localized()))
             case .empty:
                 emptyView
             default:
