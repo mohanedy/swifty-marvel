@@ -1,0 +1,23 @@
+/* 
+ Localizable.strings
+ SwiftyMarvel
+ 
+ Created by Mohaned Yossry on 22/07/2023.
+ 
+ */
+
+"comics" = "Comics";
+
+"swiftyMarvel" = "SwiftyMarvel";
+
+"typeCharacterName" = "Type character name...";
+
+"noDataFound" = "No Data Found";
+
+"unknownError" = "Unexpected error occured";
+
+"noInternetConnection" = "No Internet Connection";
+
+"noInternetConnectionMessage" = "Please check your internet connection and try again";
+
+"errorWhileFetchingData" = "Error While Fetching Data";
