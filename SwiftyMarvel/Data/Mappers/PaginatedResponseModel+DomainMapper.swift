@@ -5,7 +5,6 @@
 //  Created by Mohaned Yossry on 07/07/2023.
 //
 
-// swiftlint:disable force_cast
 import Foundation
 
 extension PaginatedResponseModel {
@@ -15,9 +14,8 @@ extension PaginatedResponseModel {
                                     limit: limit,
                                     total: total,
                                     count: count,
-                                    results: results?.map({$0.toDomain() as! T}
-                                                         )
+                                    results: (results ?? []).compactMap({$0.toDomain() as? T}
+                                                                )
         )
     }
 }
-// swiftlint:enable force_cast

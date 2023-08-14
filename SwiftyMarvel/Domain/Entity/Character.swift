@@ -23,8 +23,11 @@ struct Character: Identifiable {
         return URL(string: "\(path).\(ext)")
     }
     var safeDescription: String {
-        return description != nil && description?.isEmpty != true ?
-        description! : "No Description Found"
+        if let description, !description.isEmpty {
+            return description
+        } else {
+            return "No Description Found"
+        }
     }
     
     init(id: Int?,
