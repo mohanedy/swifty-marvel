@@ -19,19 +19,21 @@ struct CharacterProfileView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        ScrollView {
-            ZStack(alignment: .topLeading) {
-                coverImageView
-                contentView
-            }//: ZStack
-        }//: ScrollView
-        .scrollIndicators(.hidden)
-        .navigationBarBackButtonHidden(true)
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .ignoresSafeArea()
-        .onAppear {
-            Task {
-                await viewModel.loadComics(forCharacter: character.id ?? 0)
+        NavigationStack {
+            ScrollView {
+                ZStack(alignment: .topLeading) {
+                    coverImageView
+                    contentView
+                }//: ZStack
+            }//: ScrollView
+            .scrollIndicators(.hidden)
+            .navigationBarBackButtonHidden(true)
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .ignoresSafeArea()
+            .onAppear {
+                Task {
+                    await viewModel.loadComics(forCharacter: character.id ?? 0)
+                }
             }
         }
     }
