@@ -15,7 +15,7 @@ struct CharacterView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            CachedImageView(character.imageURL)
+            CachedImageView(character.thumbnailURL)
                 .aspectRatio(2/1, contentMode: .fit)
                 .cornerRadius(15)
                 .frame(

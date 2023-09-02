@@ -13,7 +13,7 @@ struct ComicItemView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            CachedImageView(comic.imageURL)
+            CachedImageView(comic.thumbnailURL)
                 .aspectRatio(2/3, contentMode: .fit)
                 .cornerRadius(15)
                 .frame(height: 200)
