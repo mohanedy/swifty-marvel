@@ -7,18 +7,19 @@
 
 import Foundation
 import Swinject
+import CoreData
 
 // swiftlint:disable force_unwrapping
 
 /// Resolver is a singleton class that is responsible for injecting all dependencies in the app.
 class Resolver {
-
+    
     /// The shared instance of the resolver.
     static let shared = Resolver()
-
+    
     /// The container that holds all the dependencies.
     private var container = Container()
-
+    
     /// This method is responsible for injecting all dependencies in the app.
     ///
     /// > It should be called only once in the app's lifecycle.
@@ -29,7 +30,7 @@ class Resolver {
         injectUseCases()
         injectViewModels()
     }
-
+    
     /// This method is responsible for resolving a dependency.
     ///
     /// - Parameter type: The type of the dependency to be resolved.
@@ -62,6 +63,9 @@ extension Resolver {
         container.register(ComicsDataSource.self) { resolver in
             DefaultComicsDataSource(requestManager: resolver.resolve(RequestManager.self)!)
         }.inObjectScope(.container)
+        container.register(FavoritesDataSource.self) { _ in
+            DefaultFavoritesDataSource(dataContainer: NSPersistentContainer(name: "SwiftyMarvel"))
+        }.inObjectScope(.container)
     }
 }
 
@@ -75,6 +79,9 @@ extension Resolver {
         }.inObjectScope(.container)
         container.register(ComicsRepository.self) { resolver in
             DefaultComicsRepository(comicsDataSource: resolver.resolve(ComicsDataSource.self)!)
+        }.inObjectScope(.container)
+        container.register(FavoritesRepository.self) { resolver in
+            DefaultFavoritesRepository(dataSource: resolver.resolve(FavoritesDataSource.self)!)
         }.inObjectScope(.container)
     }
 }
@@ -90,6 +97,18 @@ extension Resolver {
         container.register(GetComicsUC.self) { resolver in
             DefaultGetComicsUC(repository: resolver.resolve(ComicsRepository.self)!)
         }.inObjectScope(.container)
+        
+        // MARK: - Favorites UC -
+        
+        container.register(CheckFavoriteUC.self) { resolver in
+            DefaultCheckFavoriteUC(favoritesRepository: resolver.resolve(FavoritesRepository.self)!)
+        }.inObjectScope(.container)
+        container.register(GetFavoritesUC.self) { resolver in
+            DefaultGetFavoritesUC(favoritesRepository: resolver.resolve(FavoritesRepository.self)!)
+        }.inObjectScope(.container)
+        container.register(ToggleFavoriteUC.self) { resolver in
+            DefaultToggleFavoriteUC(favoritesRepository: resolver.resolve(FavoritesRepository.self)!)
+        }.inObjectScope(.container)
     }
 }
 
@@ -103,7 +122,14 @@ extension Resolver {
             HomeViewModel(getCharactersUseCase: resolver.resolve(GetCharactersUC.self)!)
         }
         container.register(CharacterProfileViewModel.self) { resolver in
-            CharacterProfileViewModel(getComicsUC: resolver.resolve(GetComicsUC.self)!)
+            CharacterProfileViewModel(
+                getComicsUC: resolver.resolve(GetComicsUC.self)!,
+                checkFavoriteUC: resolver.resolve(CheckFavoriteUC.self)!,
+                toggleFavoriteUC: resolver.resolve(ToggleFavoriteUC.self)!
+            )
+        }
+        container.register(FavoritesViewModel.self) { resolver in
+            FavoritesViewModel(getFavoritesUseCase: resolver.resolve(GetFavoritesUC.self)!)
         }
     }
 }

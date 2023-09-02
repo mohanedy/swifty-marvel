@@ -17,7 +17,7 @@ struct SwiftyMarvelApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            ContainerView()
         }
     }
 }
