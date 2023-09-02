@@ -51,8 +51,11 @@ This app is created as a personal project to showcase my skills and passion for 
 
 ## Screenshots
 
- <img src="https://i.imgur.com/7zaNdE4.png" alt="Splash"  height=350> &nbsp; <img src="https://i.imgur.com/reC3HbH.png" alt="Home"  height=350>
- <img src="https://i.imgur.com/aIA52mv.png" alt="Search while typing"  height=350> &nbsp; <img src="https://i.imgur.com/xp3t1cu.png" alt="Character Profile"  height=350>
+<img src="https://i.imgur.com/7zaNdE4.png" alt="Splash"  height=350>
+<img src="https://i.imgur.com/weyzrK3.png" alt="Home"  height=350>
+<img src="https://i.imgur.com/MNAP73r.png" alt="Search while typing"  height=350>
+<img src="https://i.imgur.com/385wJN3.png" alt="Favorites"  height=350>
+<img src="https://i.imgur.com/taEiix2.png" alt="Character Profile"  height=350>
 
 ## Quick start
 
