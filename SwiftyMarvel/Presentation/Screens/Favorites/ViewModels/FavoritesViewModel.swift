@@ -9,12 +9,25 @@ import Foundation
 
 @MainActor
 class FavoritesViewModel: ViewModel {
+    
+    // MARK: - Dependencies -
+    
     private let getFavoritesUseCase: GetFavoritesUC
+    
+    // MARK: - Observable Properties -
+    
     @Published var favorites: [Character] = []
+    
+    // MARK: - Init -
     
     init(getFavoritesUseCase: GetFavoritesUC) {
         self.getFavoritesUseCase = getFavoritesUseCase
     }
+}
+
+// MARK: - Actions -
+
+extension FavoritesViewModel {
     
     func getFavorites() {
         state = .loading
@@ -31,5 +44,4 @@ class FavoritesViewModel: ViewModel {
             state = .error(error.localizedDescription)
         }
     }
-    
 }
