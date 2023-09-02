@@ -22,6 +22,8 @@ struct ContainerView: View {
     }
 }
 
-#Preview {
-    ContainerView()
+struct ContainerView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContainerView()
+    }
 }
