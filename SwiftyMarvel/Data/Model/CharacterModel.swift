@@ -8,33 +8,34 @@ import Foundation
 
 // MARK: - CharacterModel -
 
-struct CharacterModel: Codable {
+struct CharacterModel {
     let id: Int?
-    let name, description: String?
+    let name, characterDescription: String?
     let modified: String?
     let thumbnail: ThumbnailModel?
     
     init(id: Int? = nil,
          name: String? = nil,
-         description: String? = nil,
+         characterDescription: String? = nil,
          modified: String? = nil,
          thumbnail: ThumbnailModel? = nil) {
         self.id = id
         self.name = name
-        self.description = description
+        self.characterDescription = characterDescription
         self.modified = modified
         self.thumbnail = thumbnail
     }
 }
 
-// MARK: - ThumbnailModel -
+// MARK: - CharacterModel + Codable -
 
-struct ThumbnailModel: Codable {
-    let path: String?
-    let thumbnailExtension: String?
-
+extension CharacterModel: Codable {
+    
     enum CodingKeys: String, CodingKey {
-        case path
-        case thumbnailExtension = "extension"
+        case id
+        case name
+        case characterDescription = "description"
+        case modified
+        case thumbnail
     }
 }

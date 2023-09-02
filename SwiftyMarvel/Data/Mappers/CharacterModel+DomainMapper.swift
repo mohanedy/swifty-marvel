@@ -13,17 +13,8 @@ extension CharacterModel: DomainMapper {
     func toDomain() -> Character {
         return Character(id: id,
                          name: name,
-                         description: description,
+                         description: characterDescription,
                          modified: modified,
-                         thumbnail: thumbnail?.toDomain())
-    }
-}
-
-// MARK: - ThumbnailModel -
-
-extension ThumbnailModel: DomainMapper {
-    func toDomain() -> Thumbnail {
-        return Thumbnail(path: path,
-                         thumbnailExtension: thumbnailExtension)
+                         thumbnailURL: thumbnail?.url)
     }
 }
