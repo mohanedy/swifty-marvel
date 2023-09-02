@@ -114,4 +114,19 @@ final class CharacterProfileViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(sut.isFavorite)
     }
+    
+    func testIsFavorite() async throws {
+        // Given
+        let character = Character(id: 1, name: "Character 1")
+        let isFavorite = true
+        
+        await given(checkFavoriteUCMock.execute(character: character))
+            .willReturn(isFavorite)
+        
+        // When
+        sut.checkFavorite(character: character)
+        
+        // Then
+        XCTAssertEqual(sut.isFavorite, isFavorite)
+    }
 }
