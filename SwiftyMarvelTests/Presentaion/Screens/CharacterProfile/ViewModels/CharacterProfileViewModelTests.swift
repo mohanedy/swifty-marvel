@@ -11,11 +11,13 @@ import Mockingbird
 
 @MainActor
 final class CharacterProfileViewModelTests: XCTestCase {
-
+    
     // MARK: - Properties -
     
     var sut: CharacterProfileViewModel!
     var getComicsUCMock: GetComicsUCMock!
+    var checkFavoriteUCMock: CheckFavoriteUCMock!
+    var toggleFavoriteUCMock: ToggleFavoriteUCMock!
     
     // MARK: - Fake Data -
     
@@ -27,7 +29,14 @@ final class CharacterProfileViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         getComicsUCMock = mock(GetComicsUC.self)
-        sut = CharacterProfileViewModel(getComicsUC: getComicsUCMock)
+        checkFavoriteUCMock = mock(CheckFavoriteUC.self)
+        toggleFavoriteUCMock = mock(ToggleFavoriteUC.self)
+        
+        sut = CharacterProfileViewModel(
+            getComicsUC: getComicsUCMock,
+            checkFavoriteUC: checkFavoriteUCMock,
+            toggleFavoriteUC: toggleFavoriteUCMock
+        )
     }
     
     override func tearDownWithError() throws {
@@ -97,5 +106,27 @@ final class CharacterProfileViewModelTests: XCTestCase {
         XCTAssertEqual(sut.state, .error(expectedError.localizedDescription))
         observation.cancel()
     }
-
+    
+    func testFavoriteToggleChanges() async throws {
+        // When
+        sut.toggleFavorite(character: Character(id: 1, name: "Character 1"))
+        
+        // Then
+        XCTAssertTrue(sut.isFavorite)
+    }
+    
+    func testIsFavorite() async throws {
+        // Given
+        let character = Character(id: 1, name: "Character 1")
+        let isFavorite = true
+        
+        await given(checkFavoriteUCMock.execute(character: character))
+            .willReturn(isFavorite)
+        
+        // When
+        sut.checkFavorite(character: character)
+        
+        // Then
+        XCTAssertEqual(sut.isFavorite, isFavorite)
+    }
 }

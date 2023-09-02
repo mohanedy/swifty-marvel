@@ -21,7 +21,7 @@ extension ComicModel: DomainMapper {
             ean: ean,
             issn: issn,
             format: format,
-            thumbnail: thumbnail?.toDomain()
+            thumbnailURL: thumbnail?.url
         )
     }
 }

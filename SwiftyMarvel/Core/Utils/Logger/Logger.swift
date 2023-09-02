@@ -14,4 +14,7 @@ extension Logger {
     
     /// Logs related to the networking.
     static let networking = Logger(subsystem: subsystem, category: "networking")
+    
+    /// Logs related to local data source errors and debugging
+    static let localDataSource = Logger(subsystem: subsystem, category: "local data source")
 }

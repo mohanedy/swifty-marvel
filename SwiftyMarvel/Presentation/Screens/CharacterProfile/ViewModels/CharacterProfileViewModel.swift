@@ -14,7 +14,9 @@ final class CharacterProfileViewModel: ViewModel {
     
     // MARK: - Dependencies -
     
-    private let getComicsUC: any GetComicsUC
+    private let getComicsUC: GetComicsUC
+    private let checkFavoriteUC: CheckFavoriteUC
+    private let toggleFavoriteUC: ToggleFavoriteUC
     
     // MARK: - Properties -
     
@@ -23,11 +25,16 @@ final class CharacterProfileViewModel: ViewModel {
     // MARK: - Observable Properties -
     
     @Published var comics: [Comic] = []
+    @Published var isFavorite: Bool = false
     
     // MARK: - Init -
     
-    init(getComicsUC: any GetComicsUC) {
+    init(getComicsUC: GetComicsUC,
+         checkFavoriteUC: CheckFavoriteUC,
+         toggleFavoriteUC: ToggleFavoriteUC) {
         self.getComicsUC = getComicsUC
+        self.checkFavoriteUC = checkFavoriteUC
+        self.toggleFavoriteUC = toggleFavoriteUC
     }
 }
 
@@ -45,5 +52,15 @@ extension CharacterProfileViewModel {
         case .failure(let err):
             state = .error(err.localizedDescription)
         }
+    }
+    
+    func checkFavorite(character: Character) {
+        let result = checkFavoriteUC.execute(character: character)
+        isFavorite = result
+    }
+    
+    func toggleFavorite(character: Character) {
+        toggleFavoriteUC.execute(character: character)
+        isFavorite.toggle()
     }
 }

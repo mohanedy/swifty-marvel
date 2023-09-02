@@ -32,6 +32,7 @@ struct CharacterProfileView: View {
             .ignoresSafeArea()
             .onAppear {
                 Task {
+                    viewModel.checkFavorite(character: character)
                     await viewModel.loadComics(forCharacter: character.id ?? 0)
                 }
             }
@@ -41,7 +42,7 @@ struct CharacterProfileView: View {
     // MARK: - View Sections -
     
     private var coverImageView: some View {
-        CachedImageView(character.imageURL)
+        CachedImageView(character.thumbnailURL)
             .aspectRatio(contentMode: .fill)
             .frame(
                 height: 350,
@@ -52,14 +53,31 @@ struct CharacterProfileView: View {
     
     private var contentView: some View {
         LazyVStack(alignment: .leading) {
-            Button {
-                self.presentationMode.wrappedValue.dismiss()
-            } label: {
-                Image(systemName: "arrow.backward")
-                    .foregroundColor(.white)
+            HStack {
+                Button {
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "arrow.backward")
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
+                }
+                Spacer()
+                Button {
+                    viewModel.toggleFavorite(character: character)
+                } label: {
+                    Image(
+                        systemName: viewModel.isFavorite ? 
+                        "heart.fill" : "heart"
+                    )
+                    .foregroundColor(
+                        viewModel.isFavorite ? 
+                            .red : .white
+                    )
                     .font(.system(size: 20))
-                    .padding([.top], 60)
+                }
+                .padding([.leading, .trailing], 20)
             }
+            .padding([.top], 60)
             Spacer()
                 .frame(height: 280)
             Text(character.name ?? "")
