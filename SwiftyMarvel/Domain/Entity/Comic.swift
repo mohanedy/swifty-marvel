@@ -16,14 +16,7 @@ struct Comic: Identifiable {
     let modified: String?
     let isbn, upc, diamondCode, ean: String?
     let issn, format: String?
-    let thumbnail: Thumbnail?
-    
-    // MARK: - Computed Properties -
-    
-    var imageURL: URL? {
-        guard let path = thumbnail?.path, let ext = thumbnail?.thumbnailExtension else { return nil }
-        return URL(string: "\(path).\(ext)")
-    }
+    let thumbnailURL: URL?
     
     // MARK: - Init -
     
@@ -37,7 +30,7 @@ struct Comic: Identifiable {
          ean: String? = nil,
          issn: String? = nil,
          format: String? = nil,
-         thumbnail: Thumbnail? = nil) {
+         thumbnailURL: URL? = nil) {
         self.id = id
         self.title = title
         self.description = description
@@ -48,7 +41,7 @@ struct Comic: Identifiable {
         self.ean = ean
         self.issn = issn
         self.format = format
-        self.thumbnail = thumbnail
+        self.thumbnailURL = thumbnailURL
     }
     
     static func dummyComic() -> Comic {
@@ -63,9 +56,8 @@ struct Comic: Identifiable {
             ean: "Dummy Comic EAN",
             issn: "Dummy Comic ISSN",
             format: "Dummy Comic Format",
-            thumbnail: Thumbnail(
-                path: "http://i.annihil.us/u/prod/marvel/i/mg/9/30/64762a4dbb0e7",
-                thumbnailExtension: "jpg"))
+            thumbnailURL: URL(string: "http://i.annihil.us/u/prod/marvel/i/mg/9/30/64762a4dbb0e7.jpg")
+        )
         
     }
 }
