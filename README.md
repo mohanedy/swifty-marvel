@@ -27,7 +27,7 @@ alt="License: MIT" />
 SwiftyMarvel is a SwiftUI app that uses the Marvel API to display a list of Marvel characters and their details. You can browse through hundreds of heroes and villains from the Marvel universe, see their comics, and learn more about their powers and abilities.
  <br>
  <br>
-This app is created as a personal project to showcase my skills and passion for iOS development. This app demonstrates how to implement Clean Architecture and some of best practices for iOS app development using SwiftUI, Combine, MVVM, Dependency Injection, Unit Testing, Code Coverage, and more.
+This app is created as a personal project to showcase my skills and passion for iOS development. This app demonstrates how to implement Clean Architecture and some of best practices for iOS app development using SwiftUI, CoreData, Combine, MVVM, Dependency Injection, Unit Testing, Code Coverage, and more.
     <br>
     <a href="https://github.com/Mohanedy98/swifty-marvel/issues/new">Report bug</a>
     ·
@@ -37,14 +37,16 @@ This app is created as a personal project to showcase my skills and passion for 
 
 
 <!-- TOC -->
-  * [Screenshots](#screenshots)
-  * [Quick start](#quick-start)
-  * [Project Structure](#project-structure)
+
+* [Screenshots](#screenshots)
+* [Quick start](#quick-start)
+* [Project Structure](#project-structure)
     * [Folder Structure](#folder-structure)
-  * [Tools & Frameworks Used](#tools--frameworks-used)
-  * [Development Environment](#development-environment)
-  * [CI Pipeline](#ci-pipeline)
-  * [License](#license)
+* [Tools & Frameworks Used](#tools--frameworks-used)
+* [Development Environment](#development-environment)
+* [CI Pipeline](#ci-pipeline)
+* [License](#license)
+
 <!-- TOC -->
 
 ## Screenshots
@@ -80,8 +82,7 @@ get them by following these steps:
 This project uses Clean Architecture and is separated into four main layers:
 
 * **Data**: Contains the repositories implementations responsible for abstracting
-  the data source used. In this case, the data source is a REST API, but it could be anything else,
-  like a database, or cache.
+  the data source used. In this case, the data sources are a REST API and a Core Data database.
 * **Domain**: Holds the business logic layer, which contains the use cases responsible for handling
   the business logic of the application and the abstract repositories. The use cases are the entry
   point to the domain layer.
@@ -126,6 +127,7 @@ This project uses Clean Architecture and is separated into four main layers:
 | Tool                                                                                                  | Used for                                                             |
 |-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | [MVVM](https://www.hackingwithswift.com/books/ios-swiftui/introducing-mvvm-into-your-swiftui-project) | Architectural design pattern for separating the logic form the views |
+| [Core Data](https://developer.apple.com/documentation/coredata/)                                      | Storing favorite characters                                          |
 | [Swinject](https://github.com/Swinject/Swinject)                                                      | Dependency Injection                                                 |
 | [Arkana](https://github.com/rogerluan/arkana)                                                         | Securely storing secrets and keys                                    |
 | [Nuke](https://github.com/kean/Nuke)                                                                  | Image Loading & Caching                                              |
