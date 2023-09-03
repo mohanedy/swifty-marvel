@@ -66,11 +66,11 @@ struct CharacterProfileView: View {
                     viewModel.toggleFavorite(character: character)
                 } label: {
                     Image(
-                        systemName: viewModel.isFavorite ? 
+                        systemName: viewModel.isFavorite ?
                         "heart.fill" : "heart"
                     )
                     .foregroundColor(
-                        viewModel.isFavorite ? 
+                        viewModel.isFavorite ?
                             .red : .white
                     )
                     .font(.system(size: 20))
@@ -95,19 +95,20 @@ struct CharacterProfileView: View {
     }
     
     private var comicsSection: some View {
-        BaseStateView(viewModel: viewModel,
-                      successView: AnyView(VStack(alignment: .leading) {
-            Text("comics".localized())
-                .font(.system(.title2, weight: .bold))
-                .padding([.bottom], 5)
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack {
-                    ForEach(viewModel.comics) { item in
-                        ComicItemView(comic: item)
+        BaseStateView(viewModel: viewModel) {
+            VStack(alignment: .leading) {
+                Text("comics".localized())
+                    .font(.system(.title2, weight: .bold))
+                    .padding([.bottom], 5)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack {
+                        ForEach(viewModel.comics) { item in
+                            ComicItemView(comic: item)
+                        }
                     }
                 }
             }
-        }))
+        }
     }
     
 }

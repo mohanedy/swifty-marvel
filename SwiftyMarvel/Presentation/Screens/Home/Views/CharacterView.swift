@@ -29,8 +29,8 @@ struct CharacterView: View {
                     .font(.body)
                     .foregroundColor(.white)
                     .fontWeight(.bold)
-            }
-        }
+            }//: ZStack
+        }//: ZStack
     }
 }
 

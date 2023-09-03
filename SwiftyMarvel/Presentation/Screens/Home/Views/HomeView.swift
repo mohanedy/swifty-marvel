@@ -13,46 +13,33 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                BaseStateView(
-                    viewModel: viewModel,
-                    successView: AnyView(
-                        content
-                            .padding([.leading, .trailing], 15)
-                            .navigationTitle("swiftyMarvel".localized())
-                            .searchable(text: $viewModel.searchText,
-                                        prompt: "typeCharacterName".localized())
-                            .onChange(of: viewModel.debouncedSearchText, perform: { _ in
-                                Task {
-                                    await viewModel.searchCharacters()
-                                }
-                            })
-                    )//: AnyView
-                )//: BaseStateView
+                BaseStateView(viewModel: viewModel) {
+                    content
+                        .padding([.leading, .trailing], 15)
+                        .navigationTitle("swiftyMarvel".localized())
+                        .searchable(text: $viewModel.searchText,
+                                    prompt: "typeCharacterName".localized())
+                        .onChange(of: viewModel.debouncedSearchText, perform: { _ in
+                            Task {
+                                await viewModel.searchCharacters()
+                            }
+                        })
+                }//: BaseStateView
             } //: ZStack
-            .task {
-                await viewModel.loadCharacters()
-            }
         } //: NavigationStack
     }
     
     var content: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(viewModel.characters) { item in
-                    NavigationLink(
-                        destination: CharacterProfileView(character: item)
-                            .toolbar(.hidden, for: .tabBar)
-                    ) {
-                        CharacterView(character: item)
-                            .task {
-                                await viewModel
-                                    .loadMoreCharactersIfNeeded(currentItem: item)
-                            }
-                    }
-                }
-            }
+        CustomListView(items: viewModel.characters) { item in
+            CharacterProfileView(character: item)
         }
-        .scrollIndicators(.hidden)
+    itemView: { item in
+        CharacterView(character: item)
+            .task {
+                await viewModel
+                    .loadMoreCharactersIfNeeded(currentItem: item)
+            }
+    }
     }
 }
 

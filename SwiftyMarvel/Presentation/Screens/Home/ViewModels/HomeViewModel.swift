@@ -39,6 +39,10 @@ final class HomeViewModel: ViewModel {
         self.debounceTime = debounceTime
         super.init()
         setupSearchDebouncer()
+        
+        Task {
+          await  loadCharacters()
+        }
     }
     
     private func setupSearchDebouncer() {

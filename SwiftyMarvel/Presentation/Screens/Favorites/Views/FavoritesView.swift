@@ -12,17 +12,11 @@ struct FavoritesView: View {
     
     var body: some View {
         NavigationStack {
-            BaseStateView(
-                viewModel: viewModel,
-                successView: AnyView(
-                    content
-                        .padding([.leading, .trailing], 15)
-                )
-            )
+            BaseStateView(viewModel: viewModel) {
+                content
+                    .padding([.leading, .trailing], 15)
+            }//: BaseStateView
             .navigationTitle("Favorites")
-        }
-        .refreshable {
-            viewModel.getFavorites()
         }
         .task {
             viewModel.getFavorites()
@@ -31,19 +25,14 @@ struct FavoritesView: View {
     }
     
     var content: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(viewModel.favorites) { item in
-                    NavigationLink(
-                        destination: CharacterProfileView(character: item)
-                            .toolbar(.hidden, for: .tabBar)
-                    ) {
-                        CharacterView(character: item)
-                    }
-                }
-            }
+        CustomListView(items: viewModel.favorites) { item in
+            CharacterProfileView(character: item)
+        } itemView: { item in
+            CharacterView(character: item)
+        } 
+        .refreshable {
+            viewModel.getFavorites()
         }
-        .scrollIndicators(.hidden)
     }
 }
 
