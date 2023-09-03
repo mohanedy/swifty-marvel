@@ -65,9 +65,6 @@ class DefaultFavoritesDataSourceTests: XCTestCase {
     }
     
     func testAddFavoriteSuccess() {
-        // Given
-        let characterEntity = CharacterEntity()
-        
         // When
         do {
             try sut.addFavorite(character: fakeCharacter1)
