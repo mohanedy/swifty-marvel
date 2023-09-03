@@ -8,12 +8,15 @@
 import SwiftUI
 
 /// Handle changes in the state of the given [ViewModel] and display the appropriate view.
-struct BaseStateView: View {
-    @ObservedObject var viewModel: ViewModel
-    let successView: AnyView
-    let emptyView: AnyView?
-    let errorView: AnyView?
-    let loadingView: AnyView?
+struct BaseStateView<VM, SuccessView, NoItemsView, ErrorView, LoadingView>: View
+where VM: ViewModel, SuccessView: View, NoItemsView: View, ErrorView: View,
+      LoadingView: View {
+    
+    @ObservedObject var viewModel: VM
+    let successView: () -> SuccessView
+    let emptyView: () -> NoItemsView
+    let errorView: (String) -> ErrorView
+    let loadingView: () -> LoadingView
     
     /// Initialize the view with the given [ViewModel] and views to display in each state.
     ///
@@ -25,29 +28,32 @@ struct BaseStateView: View {
     ///  - loadingView: The view to display when the state is [ViewState.loading].
     ///
     ///  - Note: The default value for each view is nil, so you have to provide at least the successView.
-    init(viewModel: ViewModel,
-         successView: AnyView,
-         emptyView: AnyView? = AnyView(MessageView(message: "noDataFound".localized())),
-         errorView: AnyView? = nil,
-         loadingView: AnyView? = AnyView(ProgressView())) {
+    init(viewModel: VM,
+         @ViewBuilder successView: @escaping () -> SuccessView,
+         @ViewBuilder emptyView: @escaping () -> NoItemsView 
+         = { MessageView(message: "noDataFound".localized()) },
+         @ViewBuilder errorView: @escaping (String) -> ErrorView 
+         = {MessageView(message: $0)},
+         @ViewBuilder loadingView: @escaping () -> LoadingView 
+         = { ProgressView() }) {
         self.viewModel = viewModel
         self.successView = successView
         self.emptyView = emptyView
         self.errorView = errorView
         self.loadingView = loadingView
     }
-
+    
     var body: some View {
         ZStack {
-            successView
+            successView()
             switch viewModel.state {
             case .initial,
-                    .loading:
-                loadingView
+                 .loading:
+                loadingView()
             case .error(let errorMessage):
-                errorView ?? AnyView(MessageView(message: errorMessage.localized()))
+                errorView(errorMessage)
             case .empty:
-                emptyView
+                emptyView()
             default:
                 EmptyView()
             }

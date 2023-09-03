@@ -30,6 +30,7 @@
 		091BF2652AA3A54D00B783F1 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BF2642AA3A54D00B783F1 /* FavoritesView.swift */; };
 		091BF2672AA3A6D900B783F1 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BF2662AA3A6D900B783F1 /* FavoritesViewModel.swift */; };
 		091BF2692AA3D02A00B783F1 /* DefaultFavoritesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BF2682AA3D02A00B783F1 /* DefaultFavoritesRepositoryTests.swift */; };
+		091BF2702AA3D3D000B783F1 /* DefaultFavoritesDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BF26F2AA3D3D000B783F1 /* DefaultFavoritesDataSourceTests.swift */; };
 		092917792A6BE7FE00E3FEE5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0929177B2A6BE7FE00E3FEE5 /* Localizable.strings */; };
 		0929177E2A6BEB8900E3FEE5 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0929177D2A6BEB8900E3FEE5 /* String+Localization.swift */; };
 		092E58BF2A651337005AC237 /* CharacterProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E58BE2A651337005AC237 /* CharacterProfileViewModelTests.swift */; };
@@ -62,6 +63,9 @@
 		09B074E42AA22E4D00A46775 /* ThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B074E32AA22E4D00A46775 /* ThumbnailModel.swift */; };
 		09B074E72AA2319200A46775 /* GetFavoritesUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B074E62AA2319200A46775 /* GetFavoritesUC.swift */; };
 		09B074EA2AA232B500A46775 /* FavoritesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B074E92AA232B500A46775 /* FavoritesDataSource.swift */; };
+		09E4BE952AA46DE000C935A2 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4BE942AA46DE000C935A2 /* TestCoreDataStack.swift */; };
+		09E4BE972AA4732900C935A2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4BE962AA4732900C935A2 /* CoreDataStack.swift */; };
+		09E4BE9B2AA4E12C00C935A2 /* CustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4BE9A2AA4E12C00C935A2 /* CustomListView.swift */; };
 		09E4D72B2A59891900716470 /* ArkanaKeys in Frameworks */ = {isa = PBXBuildFile; productRef = 09E4D72A2A59891900716470 /* ArkanaKeys */; };
 		09E4D7322A59964C00716470 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7312A59964C00716470 /* DataParser.swift */; };
 		09E4D7342A5996C400716470 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7332A5996C400716470 /* NetworkError.swift */; };
@@ -111,6 +115,7 @@
 		091BF2642AA3A54D00B783F1 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		091BF2662AA3A6D900B783F1 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		091BF2682AA3D02A00B783F1 /* DefaultFavoritesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFavoritesRepositoryTests.swift; sourceTree = "<group>"; };
+		091BF26F2AA3D3D000B783F1 /* DefaultFavoritesDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DefaultFavoritesDataSourceTests.swift; path = SwiftyMarvelTests/Data/DefaultFavoritesDataSourceTests.swift; sourceTree = SOURCE_ROOT; };
 		0929177A2A6BE7FE00E3FEE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0929177D2A6BEB8900E3FEE5 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		092E58BE2A651337005AC237 /* CharacterProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProfileViewModelTests.swift; sourceTree = "<group>"; };
@@ -142,6 +147,9 @@
 		09B074E32AA22E4D00A46775 /* ThumbnailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailModel.swift; sourceTree = "<group>"; };
 		09B074E62AA2319200A46775 /* GetFavoritesUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoritesUC.swift; sourceTree = "<group>"; };
 		09B074E92AA232B500A46775 /* FavoritesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDataSource.swift; sourceTree = "<group>"; };
+		09E4BE942AA46DE000C935A2 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		09E4BE962AA4732900C935A2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		09E4BE9A2AA4E12C00C935A2 /* CustomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListView.swift; sourceTree = "<group>"; };
 		09E4D7282A59890900716470 /* ArkanaKeys */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ArkanaKeys; path = ArkanaKeys/ArkanaKeys; sourceTree = "<group>"; };
 		09E4D7312A59964C00716470 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		09E4D7332A5996C400716470 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -221,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				091BF24A2AA33DA800B783F1 /* SwiftyMarvel.xcdatamodeld */,
+				09E4BE962AA4732900C935A2 /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -264,6 +273,23 @@
 				091BF2662AA3A6D900B783F1 /* FavoritesViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		091BF26D2AA3D3B700B783F1 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				091BF26E2AA3D3C100B783F1 /* Local */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		091BF26E2AA3D3C100B783F1 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				091BF26F2AA3D3D000B783F1 /* DefaultFavoritesDataSourceTests.swift */,
+				09E4BE942AA46DE000C935A2 /* TestCoreDataStack.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		092123902A5EF0E600C91B7E /* CharacterProfile */ = {
@@ -662,6 +688,7 @@
 				098B70EE2A5B5BC9004D5F52 /* MessageView.swift */,
 				098B70F02A5B5DA2004D5F52 /* BaseStateView.swift */,
 				097AFE1B2A61EFCC002B94F6 /* CachedImageView.swift */,
+				09E4BE9A2AA4E12C00C935A2 /* CustomListView.swift */,
 			);
 			path = ResuableViews;
 			sourceTree = "<group>";
@@ -711,6 +738,7 @@
 		09E4D76F2A59F7DA00716470 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				091BF26D2AA3D3B700B783F1 /* DataSource */,
 				097AFE202A61FC7A002B94F6 /* Repository */,
 			);
 			path = Data;
@@ -960,6 +988,7 @@
 				0929177E2A6BEB8900E3FEE5 /* String+Localization.swift in Sources */,
 				091BF2542AA347E900B783F1 /* CoreDataMapper.swift in Sources */,
 				095948622A5879D200C91E83 /* Character.swift in Sources */,
+				09E4BE972AA4732900C935A2 /* CoreDataStack.swift in Sources */,
 				09E4D7512A59A51900716470 /* HomeViewModel.swift in Sources */,
 				090475AC2A61E88C00A4E23D /* CharacterProfileViewModel.swift in Sources */,
 				0959485C2A58759300C91E83 /* CharacterModel.swift in Sources */,
@@ -971,6 +1000,7 @@
 				09E4D73B2A59985100716470 /* RequestProtocol.swift in Sources */,
 				090475A32A61E48100A4E23D /* ComicModel+DomainMapper.swift in Sources */,
 				09B074EA2AA232B500A46775 /* FavoritesDataSource.swift in Sources */,
+				09E4BE9B2AA4E12C00C935A2 /* CustomListView.swift in Sources */,
 				09E4D7592A59B7A100716470 /* ViewModel.swift in Sources */,
 				0990B0762A5571FC00CB8CF5 /* SwiftyMarvelApp.swift in Sources */,
 				090475A52A61E51500A4E23D /* ComicsRequest.swift in Sources */,
@@ -994,7 +1024,9 @@
 				092E58BF2A651337005AC237 /* CharacterProfileViewModelTests.swift in Sources */,
 				091BF2692AA3D02A00B783F1 /* DefaultFavoritesRepositoryTests.swift in Sources */,
 				09E4D7742A59F84500716470 /* HomeViewModelTests.swift in Sources */,
+				09E4BE952AA46DE000C935A2 /* TestCoreDataStack.swift in Sources */,
 				097AFE222A61FC9B002B94F6 /* DefaultCharactersRepositoryTests.swift in Sources */,
+				091BF2702AA3D3D000B783F1 /* DefaultFavoritesDataSourceTests.swift in Sources */,
 				097AFE1F2A61F961002B94F6 /* GetCharactersUCTests.swift in Sources */,
 				4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */,
 			);

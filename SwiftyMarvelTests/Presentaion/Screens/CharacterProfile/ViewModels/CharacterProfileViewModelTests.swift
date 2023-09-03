@@ -120,7 +120,7 @@ final class CharacterProfileViewModelTests: XCTestCase {
         let character = Character(id: 1, name: "Character 1")
         let isFavorite = true
         
-        await given(checkFavoriteUCMock.execute(character: character))
+        given(checkFavoriteUCMock.execute(character: character))
             .willReturn(isFavorite)
         
         // When
