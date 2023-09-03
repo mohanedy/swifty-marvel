@@ -50,6 +50,9 @@ extension Resolver {
         container.register(RequestManager.self) { resolver in
             DefaultRequestManager(networkManager: resolver.resolve(NetworkManager.self)!)
         }.inObjectScope(.container)
+        container.register(CoreDataStack.self) { _ in
+            CoreDataStack()
+        }.inObjectScope(.container)
     }
 }
 
@@ -63,8 +66,8 @@ extension Resolver {
         container.register(ComicsDataSource.self) { resolver in
             DefaultComicsDataSource(requestManager: resolver.resolve(RequestManager.self)!)
         }.inObjectScope(.container)
-        container.register(FavoritesDataSource.self) { _ in
-            DefaultFavoritesDataSource(dataContainer: NSPersistentContainer(name: "SwiftyMarvel"))
+        container.register(FavoritesDataSource.self) { resolver in
+            DefaultFavoritesDataSource(dataStack: resolver.resolve(CoreDataStack.self)!)
         }.inObjectScope(.container)
     }
 }

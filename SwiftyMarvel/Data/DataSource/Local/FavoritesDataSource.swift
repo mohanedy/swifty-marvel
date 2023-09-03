@@ -20,21 +20,14 @@ protocol FavoritesDataSource {
 // MARK: - DefaultFavoritesDataSource -
 
 class DefaultFavoritesDataSource: FavoritesDataSource {
-    private let dataContainer: NSPersistentContainer
+    private let dataStack: CoreDataStack
     
-    var managedObjectContext: NSManagedObjectContext {
-        dataContainer.viewContext
+    private var managedObjectContext: NSManagedObjectContext {
+        dataStack.mainContext
     }
     
-    init(dataContainer: NSPersistentContainer) {
-        self.dataContainer = dataContainer
-        
-        dataContainer.loadPersistentStores { _, error in
-            if let error {
-                fatalError("Unresolved error \(error)")
-            }
-        }
-        
+    init(dataStack: CoreDataStack) {
+        self.dataStack = dataStack
     }
     
     func getFavorites() throws -> [Character] {
@@ -45,7 +38,7 @@ class DefaultFavoritesDataSource: FavoritesDataSource {
     
     func addFavorite(character: Character) throws {
         let characterEntity = character.toCoreDataEntity(in: managedObjectContext)
-        try managedObjectContext.save()
+        dataStack.saveContext()
     }
     
     func removeFavorite(character: Character) throws {
@@ -54,7 +47,7 @@ class DefaultFavoritesDataSource: FavoritesDataSource {
         let result = try managedObjectContext.fetch(fetchRequest)
         result.forEach({managedObjectContext.delete($0)})
         
-        try managedObjectContext.save()
+        dataStack.saveContext()
     }
     
     func isFavorite(character: Character) throws -> Bool {
