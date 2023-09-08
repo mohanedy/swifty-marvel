@@ -57,7 +57,7 @@ struct CharacterProfileView: View {
                 Button {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Image(systemName: "arrow.backward")
+                    Image(systemName: "chevron.backward")
                         .foregroundColor(.white)
                         .font(.system(size: 20))
                 }
