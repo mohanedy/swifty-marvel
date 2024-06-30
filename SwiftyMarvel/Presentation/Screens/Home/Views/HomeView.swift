@@ -6,45 +6,55 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct HomeView: View {
-    @StateObject private var viewModel = Resolver.shared.resolve(HomeViewModel.self)
+    let store: StoreOf<CharactersListFeature>
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                BaseStateView(viewModel: viewModel) {
-                    content
-                        .padding([.leading, .trailing], 15)
-                        .navigationTitle("swiftyMarvel".localized())
-                        .searchable(text: $viewModel.searchText,
-                                    prompt: "typeCharacterName".localized())
-                        .onChange(of: viewModel.debouncedSearchText, perform: { _ in
-                            Task {
-                                await viewModel.searchCharacters()
-                            }
-                        })
-                }//: BaseStateView
-            } //: ZStack
-        } //: NavigationStack
+        WithViewStore(store, observe: {$0}) { viewStore in
+            NavigationStack {
+                BaseStateViewMod(viewStatus: viewStore.state) {
+                    ZStack {
+                        content
+                            .padding([.leading, .trailing], 15)
+                            .navigationTitle("swiftyMarvel".localized())
+                            .searchable(
+                                text: viewStore.binding(
+                                    get: \.searchText,
+                                    send: {.searchTextDidChange($0)}
+                                ),
+                                prompt: "typeCharacterName".localized()
+                            )
+                    }
+                }
+                //: ZStack
+            }.task {
+                viewStore.send(.loadCharacters)
+            } //: NavigationStack
+        }//: WithViewStore
     }
     
     var content: some View {
-        CustomListView(items: viewModel.characters) { item in
-            CharacterProfileView(character: item)
-        }
-    itemView: { item in
-        CharacterView(character: item)
-            .task {
-                await viewModel
-                    .loadMoreCharactersIfNeeded(currentItem: item)
+        WithViewStore(store, observe: \.characters) { viewStore in
+            CustomListView(items: viewStore.state) { item in
+                CharacterProfileView(character: item)
             }
-    }
+        itemView: { item in
+            CharacterView(character: item)
+                .onAppear {
+                    viewStore.send(.loadCharactersIfNeeded(item))
+                }
+        }
+        }
+        
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(
+            store: Resolver.shared.resolve(StoreOf<CharactersListFeature>.self)
+        )
     }
 }

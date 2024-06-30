@@ -10,7 +10,7 @@ import SwiftUI
 struct CharacterView: View {
     
     // MARK: - Properties -
-
+    
     let character: Character
     
     var body: some View {
@@ -18,9 +18,7 @@ struct CharacterView: View {
             CachedImageView(character.thumbnailURL)
                 .aspectRatio(2/1, contentMode: .fit)
                 .cornerRadius(15)
-                .frame(
-                    alignment: .center
-                )
+                .frame(alignment: .center)
             ZStack {
                 VisualEffectView(effect: UIBlurEffect(style: .dark))
                     .frame(height: 50)

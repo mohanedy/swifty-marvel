@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ContainerView: View {
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(
+                store: Resolver.shared.resolve(StoreOf<CharactersListFeature>.self)
+            )
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }

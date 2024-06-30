@@ -8,6 +8,7 @@
 import Foundation
 import Swinject
 import CoreData
+import ComposableArchitecture
 
 // swiftlint:disable force_unwrapping
 
@@ -121,6 +122,11 @@ extension Resolver {
     
     @MainActor
     private func injectViewModels() {
+        container.register(StoreOf<CharactersListFeature>.self) { resolver in
+            Store(initialState: CharactersListFeature.State()) {
+                CharactersListFeature()
+            }
+        }
         container.register(HomeViewModel.self) { resolver in
             HomeViewModel(getCharactersUseCase: resolver.resolve(GetCharactersUC.self)!)
         }

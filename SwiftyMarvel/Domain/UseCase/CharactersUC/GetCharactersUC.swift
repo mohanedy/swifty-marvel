@@ -25,7 +25,7 @@ protocol GetCharactersUC {
 
 // MARK: - Implementation -
 
-class DefaultGetCharactersUC: GetCharactersUC {
+struct DefaultGetCharactersUC: GetCharactersUC {
     
     private var repository: CharactersRepository
     
