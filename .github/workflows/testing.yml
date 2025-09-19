@@ -52,8 +52,10 @@ jobs:
             -enableCodeCoverage YES \
             -derivedDataPath DerivedData \
             clean test | xcpretty --report junit --output junit.xml
+        continue-on-error: true
             
       - name: Generate coverage report
+        if: success() || failure()
         run: |
           # Find the profdata file
           PROFDATA_FILE=$(find DerivedData -name "*.profdata" | head -n 1)

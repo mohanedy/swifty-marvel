@@ -91,6 +91,16 @@
 		4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		091568602E7DD96A00885DD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0990B06A2A5571FC00CB8CF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0990B0712A5571FC00CB8CF5;
+			remoteInfo = SwiftyMarvel;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		090475A02A61E30C00A4E23D /* GetComicsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetComicsUC.swift; sourceTree = "<group>"; };
 		090475A22A61E48100A4E23D /* ComicModel+DomainMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComicModel+DomainMapper.swift"; sourceTree = "<group>"; };
@@ -833,6 +843,7 @@
 			);
 			dependencies = (
 				094F3A442A5EB0E90060E930 /* PBXTargetDependency */,
+				091568612E7DD96A00885DD5 /* PBXTargetDependency */,
 			);
 			name = SwiftyMarvelTests;
 			packageProductDependencies = (
@@ -1036,6 +1047,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		091568612E7DD96A00885DD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0990B0712A5571FC00CB8CF5 /* SwiftyMarvel */;
+			targetProxy = 091568602E7DD96A00885DD5 /* PBXContainerItemProxy */;
+		};
 		094F3A442A5EB0E90060E930 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 094F3A432A5EB0E90060E930 /* Mockingbird */;
