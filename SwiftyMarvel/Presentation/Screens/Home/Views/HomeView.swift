@@ -19,11 +19,11 @@ struct HomeView: View {
                         .navigationTitle("swiftyMarvel".localized())
                         .searchable(text: $viewModel.searchText,
                                     prompt: "typeCharacterName".localized())
-                        .onChange(of: viewModel.debouncedSearchText, perform: { _ in
+                        .onChange(of: viewModel.debouncedSearchText) { _, _ in
                             Task {
                                 await viewModel.searchCharacters()
                             }
-                        })
+                        }
                 }//: BaseStateView
             } //: ZStack
         } //: NavigationStack

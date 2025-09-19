@@ -37,7 +37,7 @@ class DefaultFavoritesDataSource: FavoritesDataSource {
     }
     
     func addFavorite(character: Character) throws {
-        let characterEntity = character.toCoreDataEntity(in: managedObjectContext)
+        _ = character.toCoreDataEntity(in: managedObjectContext)
         dataStack.saveContext()
     }
     
