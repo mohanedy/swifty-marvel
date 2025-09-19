@@ -62,7 +62,7 @@ final class HomeViewModelTests: XCTestCase {
         // When
         await sut.loadCharacters()
         
-        waitForExpectations(timeout: 1)
+        await fulfillment(of: [loadingExpectation], timeout: 1)
         
         // Then
         XCTAssertEqual(sut.characters, expectedCharacters)
@@ -88,7 +88,7 @@ final class HomeViewModelTests: XCTestCase {
         // When
         await sut.loadCharacters()
         
-        waitForExpectations(timeout: 1)
+        await fulfillment(of: [loadingExpectation], timeout: 1)
         
         // Then
         XCTAssertTrue(sut.characters.isEmpty)
@@ -121,7 +121,7 @@ final class HomeViewModelTests: XCTestCase {
         sut.searchText = expectedSearchText
         await sut.searchCharacters()
         
-        waitForExpectations(timeout: 1)
+        await fulfillment(of: [loadingExpectation], timeout: 1)
         
         // Then
         XCTAssertEqual(sut.searchText, expectedSearchText)

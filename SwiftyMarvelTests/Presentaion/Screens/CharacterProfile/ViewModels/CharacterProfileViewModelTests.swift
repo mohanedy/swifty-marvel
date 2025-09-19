@@ -73,7 +73,7 @@ final class CharacterProfileViewModelTests: XCTestCase {
         // When
         await sut.loadComics(forCharacter: 1)
         
-        waitForExpectations(timeout: 1)
+        await fulfillment(of: [loadingExpectation], timeout: 1)
         
         // Then
         XCTAssertEqual(sut.comics, expectedComics)
@@ -99,7 +99,7 @@ final class CharacterProfileViewModelTests: XCTestCase {
         // When
         await sut.loadComics(forCharacter: 1)
         
-        waitForExpectations(timeout: 1)
+        await fulfillment(of: [loadingExpectation], timeout: 1)
         
         // Then
         XCTAssertTrue(sut.comics.isEmpty)
