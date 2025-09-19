@@ -47,6 +47,29 @@ jobs:
           bundle binstubs arkana
           bin/arkana
           
+      - name: Setup iOS Simulator
+        run: |
+          # List available simulators
+          xcrun simctl list devices
+          
+          # Delete any existing simulators to start fresh
+          xcrun simctl delete unavailable
+          
+          # Create a fresh iPhone 17 simulator
+          DEVICE_ID=$(xcrun simctl create "iPhone 17 Test" "iPhone 17" "iOS17.0" 2>/dev/null || xcrun simctl create "iPhone 17 Test" "iPhone 17" "latest")
+          echo "Created simulator: $DEVICE_ID"
+          
+          # Boot the simulator
+          xcrun simctl boot "$DEVICE_ID"
+          
+          # Wait for the simulator to be ready
+          while ! xcrun simctl list devices | grep "$DEVICE_ID" | grep -q "Booted"; do
+            echo "Waiting for simulator to boot..."
+            sleep 2
+          done
+          
+          echo "Simulator is ready"
+          
       - name: Build for testing
         timeout-minutes: 15
         run: |
@@ -54,7 +77,7 @@ jobs:
           NSUnbufferedIO=YES xcodebuild \
             -project SwiftyMarvel.xcodeproj \
             -scheme SwiftyMarvel \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -destination 'platform=iOS Simulator,name=iPhone 17 Test' \
             -enableCodeCoverage YES \
             -derivedDataPath DerivedData \
             -parallelizeTargets \
@@ -69,7 +92,7 @@ jobs:
           NSUnbufferedIO=YES xcodebuild \
             -project SwiftyMarvel.xcodeproj \
             -scheme SwiftyMarvel \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -destination 'platform=iOS Simulator,name=iPhone 17 Test' \
             -enableCodeCoverage YES \
             -derivedDataPath DerivedData \
             test-without-building | xcpretty --report junit --output junit.xml
