@@ -50,13 +50,15 @@ jobs:
       - name: Build for testing
         run: |
           set -o pipefail
-          NSUnbufferedIO=YES xcodebuild \
+          timeout 900 NSUnbufferedIO=YES xcodebuild \
             -project SwiftyMarvel.xcodeproj \
             -scheme SwiftyMarvel \
             -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
             -enableCodeCoverage YES \
             -derivedDataPath DerivedData \
             -parallelizeTargets \
+            -skipPackagePluginValidation \
+            -skipMacroValidation \
             clean build-for-testing | xcpretty
             
       - name: Run tests with coverage
