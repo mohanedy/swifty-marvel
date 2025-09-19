@@ -21,10 +21,12 @@ jobs:
           echo "MarvelPrivateKey=$MarvelPrivateKey" >> .env
       - name: Install Bundler
         run: gem install bundler
-      - name: Install xcpretty and slather
+      - name: Install xcpretty and coverage tools
         run: |
           gem install xcpretty
           gem install slather
+          # Install xcparse for better xcresult handling
+          brew install chargepoint/xcparse/xcparse
       - name: Install Gems
         run: |
           bundle install
@@ -36,19 +38,49 @@ jobs:
             -project SwiftyMarvel.xcodeproj \
             -scheme SwiftyMarvel \
             -destination "platform=iOS Simulator,name=iPhone 15" \
-            -testPlan SwiftyMarvel \
-            -derivedDataPath DerivedData \
+            -derivedDataPath ./DerivedData \
+            -resultBundlePath ./TestResults.xcresult \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             ONLY_ACTIVE_ARCH=YES \
             -enableCodeCoverage YES | xcpretty
+      - name: Debug - List coverage files
+        run: |
+          echo "Checking for coverage files..."
+          find ./DerivedData -name "*.profdata" 2>/dev/null || echo "No .profdata files found in DerivedData"
+          find ./TestResults.xcresult -name "*.xccovreport" 2>/dev/null || echo "No .xccovreport files found in TestResults"
+          echo "TestResults.xcresult contents:"
+          ls -la ./TestResults.xcresult/ || echo "TestResults.xcresult not found"
+          echo "DerivedData contents:"
+          find ./DerivedData -type d -name "*coverage*" 2>/dev/null || echo "No coverage directories found"
       - name: Prepare code coverage report
         run: |
-          slather coverage \
-            --build-directory DerivedData \
-            --scheme SwiftyMarvel \
-            --configuration Debug \
-            SwiftyMarvel.xcodeproj
+          echo "Extracting coverage using xcparse..."
+          # Use xcparse to extract coverage from xcresult bundle
+          xcparse codecov ./TestResults.xcresult coverage.xml --legacy
+          
+          # If xcparse succeeds, we have our coverage file
+          if [ -f "coverage.xml" ]; then
+            echo "Coverage extracted successfully with xcparse"
+            mv coverage.xml cobertura.xml
+          else
+            echo "xcparse failed, trying slather..."
+            # Fallback to slather
+            slather coverage \
+              --scheme SwiftyMarvel \
+              --configuration Debug \
+              --build-directory ./DerivedData \
+              SwiftyMarvel.xcodeproj
+          fi
+      - name: Verify coverage file
+        run: |
+          if [ -f "cobertura.xml" ]; then
+            echo "✅ cobertura.xml found"
+            head -20 cobertura.xml
+          else
+            echo "❌ cobertura.xml not found"
+            ls -la *.xml || echo "No XML files found"
+          fi
       - name: Upload Code Coverage to Codecov
         uses: codecov/codecov-action@v3
         with:

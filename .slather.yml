@@ -2,7 +2,7 @@ coverage_service: cobertura_xml
 xcodeproj: SwiftyMarvel.xcodeproj
 scheme: SwiftyMarvel
 output_directory: ./
-build_directory: DerivedData
+build_directory: ./DerivedData
 ignore:
   - "SwiftyMarvelTests/*"
   - "SwiftyMarvelUITests/*"
