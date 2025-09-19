@@ -48,6 +48,7 @@ jobs:
           bin/arkana
           
       - name: Build for testing
+        timeout-minutes: 15
         run: |
           set -o pipefail
           NSUnbufferedIO=YES xcodebuild \
@@ -62,6 +63,7 @@ jobs:
             clean build-for-testing | xcpretty
             
       - name: Run tests with coverage
+        timeout-minutes: 15
         run: |
           set -o pipefail
           NSUnbufferedIO=YES xcodebuild \
@@ -70,8 +72,6 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
             -enableCodeCoverage YES \
             -derivedDataPath DerivedData \
-            -parallel-testing-enabled YES \
-            -maximum-parallel-testing-workers auto \
             test-without-building | xcpretty --report junit --output junit.xml
             
       - name: Generate coverage report
