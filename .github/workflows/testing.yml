@@ -15,7 +15,8 @@ jobs:
       - name: Select Xcode version
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '26.0.0'
+          # Use the latest stable Xcode available on the GitHub macOS runner
+          xcode-version: 'latest-stable'
           
       - name: Setup environment
         run: |
@@ -65,14 +66,19 @@ jobs:
           
           echo "✅ Found profdata: $PROFDATA_FILE"
           
-          # Find the test binary
-          TEST_BINARY=$(find DerivedData -name "SwiftyMarvelTests" -type f | head -n 1)
-          APP_BINARY=$(find DerivedData -name "SwiftyMarvel.app" -type d | head -n 1)
+          # Find the app and test bundles/binaries more reliably
+          APP_BUNDLE=$(find DerivedData -name "SwiftyMarvel.app" -type d | head -n 1)
+          TEST_BUNDLE=$(find DerivedData -name "SwiftyMarvelTests.xctest" -type d | head -n 1)
           
-          if [ -z "$TEST_BINARY" ] || [ -z "$APP_BINARY" ]; then
+          APP_BINARY="$APP_BUNDLE/SwiftyMarvel"
+          TEST_BINARY="$TEST_BUNDLE/SwiftyMarvelTests"
+          
+          if [ -z "$APP_BUNDLE" ] || [ -z "$TEST_BUNDLE" ] || [ ! -f "$APP_BINARY" ] || [ ! -f "$TEST_BINARY" ]; then
             echo "❌ Could not find test or app binaries"
-            echo "Test binary: $TEST_BINARY"
+            echo "App bundle: $APP_BUNDLE"
             echo "App binary: $APP_BINARY"
+            echo "Test bundle: $TEST_BUNDLE"
+            echo "Test binary: $TEST_BINARY"
             exit 1
           fi
           
@@ -83,11 +89,14 @@ jobs:
           xcrun llvm-cov export \
             -format="lcov" \
             -instr-profile="$PROFDATA_FILE" \
-            "$APP_BINARY/SwiftyMarvel" \
+            "$APP_BINARY" \
             -object "$TEST_BINARY" \
             -ignore-filename-regex=".*Tests.*" \
             -ignore-filename-regex=".*MockingbirdMocks.*" \
             -ignore-filename-regex=".*ArkanaKeys.*" \
+            -ignore-filename-regex=".*SourcePackages.*" \
+            -ignore-filename-regex=".*DerivedData.*" \
+            -path-equivalence "$GITHUB_WORKSPACE" "." \
             > coverage.lcov
             
           echo "✅ Generated coverage.lcov"

@@ -16,8 +16,8 @@ alt="License: MIT" />
 <a href="https://github.com/Mohanedy98/swifty-marvel">
 <img src="https://img.shields.io/github/stars/mohanedy98/swifty-marvel.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github">
 </a>
-<a href="https://codecov.io/gh/Mohanedy98/swifty-marvel">
-<img src="https://codecov.io/gh/Mohanedy98/swifty-marvel/branch/main/graph/badge.svg" alt="codecov">
+<a href="https://codecov.io/github/mohanedy/swifty-marvel">
+<img src="https://codecov.io/github/mohanedy/swifty-marvel/graph/badge.svg?token=QVKW1V2G2A" alt="codecov">
 </a>
 <a href="https://github.com/Mohanedy98/swifty-marvel/actions/workflows/testing.yml">
 <img src="https://github.com/Mohanedy98/swifty-marvel/actions/workflows/testing.yml/badge.svg" alt="Build Status">
@@ -38,14 +38,14 @@ This app is created as a personal project to showcase my skills and passion for 
 
 <!-- TOC -->
 
-* [Screenshots](#screenshots)
-* [Quick start](#quick-start)
-* [Project Structure](#project-structure)
-    * [Folder Structure](#folder-structure)
-* [Tools & Frameworks Used](#tools--frameworks-used)
-* [Development Environment](#development-environment)
-* [CI Pipeline](#ci-pipeline)
-* [License](#license)
+- [Screenshots](#screenshots)
+- [Quick start](#quick-start)
+- [Project Structure](#project-structure)
+  - [Folder Structure](#folder-structure)
+- [Tools \& Frameworks Used](#tools--frameworks-used)
+- [Development Environment](#development-environment)
+- [CI Pipeline](#ci-pipeline)
+- [License](#license)
 
 <!-- TOC -->
 
