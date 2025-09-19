@@ -19,6 +19,7 @@
 		09081BD82A61E18E003AF407 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081BD72A61E18E003AF407 /* ComicModel.swift */; };
 		09081BDA2A61E217003AF407 /* ComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081BD92A61E217003AF407 /* ComicsRepository.swift */; };
 		09081BDC2A61E250003AF407 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081BDB2A61E250003AF407 /* Comic.swift */; };
+		0915685F2E7DD52600885DD5 /* Mockingbird in Frameworks */ = {isa = PBXBuildFile; productRef = 0915685E2E7DD52600885DD5 /* Mockingbird */; };
 		091BF24C2AA33DA800B783F1 /* SwiftyMarvel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 091BF24A2AA33DA800B783F1 /* SwiftyMarvel.xcdatamodeld */; };
 		091BF24E2AA341C900B783F1 /* CharacterEntity+DomainMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BF24D2AA341C900B783F1 /* CharacterEntity+DomainMappers.swift */; };
 		091BF2542AA347E900B783F1 /* CoreDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BF2532AA347E900B783F1 /* CoreDataMapper.swift */; };
@@ -34,7 +35,6 @@
 		092917792A6BE7FE00E3FEE5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0929177B2A6BE7FE00E3FEE5 /* Localizable.strings */; };
 		0929177E2A6BEB8900E3FEE5 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0929177D2A6BEB8900E3FEE5 /* String+Localization.swift */; };
 		092E58BF2A651337005AC237 /* CharacterProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E58BE2A651337005AC237 /* CharacterProfileViewModelTests.swift */; };
-		0937EBA72A5EB65C006A78FC /* Mockingbird in Frameworks */ = {isa = PBXBuildFile; productRef = 0937EBA62A5EB65C006A78FC /* Mockingbird */; };
 		095948582A58751100C91E83 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095948572A58751100C91E83 /* BaseResponse.swift */; };
 		0959485A2A58756000C91E83 /* BaseResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095948592A58756000C91E83 /* BaseResponseModel.swift */; };
 		0959485C2A58759300C91E83 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959485B2A58759300C91E83 /* CharacterModel.swift */; };
@@ -193,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0937EBA72A5EB65C006A78FC /* Mockingbird in Frameworks */,
+				0915685F2E7DD52600885DD5 /* Mockingbird in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,7 +836,7 @@
 			);
 			name = SwiftyMarvelTests;
 			packageProductDependencies = (
-				0937EBA62A5EB65C006A78FC /* Mockingbird */,
+				0915685E2E7DD52600885DD5 /* Mockingbird */,
 			);
 			productName = SwiftyMarvelTests;
 			productReference = 0990B0822A5571FD00CB8CF5 /* SwiftyMarvelTests.xctest */;
@@ -873,9 +873,9 @@
 			packageReferences = (
 				095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */,
 				09E4D73F2A599AA300716470 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
-				0937EBA52A5EB65C006A78FC /* XCRemoteSwiftPackageReference "mockingbird" */,
 				099A6EC52A65C5250025178F /* XCRemoteSwiftPackageReference "Nuke" */,
 				09BCC0152E7DC91000A8DE46 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				0915685D2E7DD52600885DD5 /* XCRemoteSwiftPackageReference "mockingbird" */,
 			);
 			productRefGroup = 0990B0732A5571FC00CB8CF5 /* Products */;
 			projectDirPath = "";
@@ -1305,20 +1305,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0915685D2E7DD52600885DD5 /* XCRemoteSwiftPackageReference "mockingbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/birdrides/mockingbird";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.20.0;
+			};
+		};
 		091A01EB2A5EAF0A0089E440 /* XCRemoteSwiftPackageReference "mockingbird" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/birdrides/mockingbird";
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 0.20.0;
-			};
-		};
-		0937EBA52A5EB65C006A78FC /* XCRemoteSwiftPackageReference "mockingbird" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/birdrides/mockingbird";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.20.2;
 			};
 		};
 		095948832A58A3C500C91E83 /* XCRemoteSwiftPackageReference "Swinject" */ = {
@@ -1356,9 +1356,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0937EBA62A5EB65C006A78FC /* Mockingbird */ = {
+		0915685E2E7DD52600885DD5 /* Mockingbird */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0937EBA52A5EB65C006A78FC /* XCRemoteSwiftPackageReference "mockingbird" */;
+			package = 0915685D2E7DD52600885DD5 /* XCRemoteSwiftPackageReference "mockingbird" */;
 			productName = Mockingbird;
 		};
 		094F3A432A5EB0E90060E930 /* Mockingbird */ = {
