@@ -57,7 +57,6 @@ jobs:
             -enableCodeCoverage YES \
             -derivedDataPath DerivedData \
             -parallelizeTargets \
-            -quiet \
             clean build-for-testing | xcpretty
             
       - name: Run tests with coverage
@@ -69,7 +68,8 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
             -enableCodeCoverage YES \
             -derivedDataPath DerivedData \
-            -quiet \
+            -parallel-testing-enabled YES \
+            -maximum-parallel-testing-workers auto \
             test-without-building | xcpretty --report junit --output junit.xml
             
       - name: Generate coverage report
