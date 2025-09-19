@@ -1,11 +1,6 @@
+# This file is kept for backward compatibility but not used
+# The new workflow uses llvm-cov directly
 coverage_service: cobertura_xml
 xcodeproj: SwiftyMarvel.xcodeproj
 scheme: SwiftyMarvel
 output_directory: ./
-build_directory: ./DerivedData
-ignore:
-  - "SwiftyMarvelTests/*"
-  - "SwiftyMarvelUITests/*"
-  - "MockingbirdMocks/*"
-  - "MockingbirdSupport/*"
-  - "ArkanaKeys/*"

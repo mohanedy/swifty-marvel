@@ -1,117 +1,110 @@
-name: Build Status
+name: Build and Test
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
-  build-and-test:
+  test:
     runs-on: macos-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Setup Xcode
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Select Xcode version
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: latest
-      - name: Add .env file
+          xcode-version: '15.4'
+          
+      - name: Setup environment
         run: |
           touch .env
           echo "MarvelPublicKey=$MarvelPublicKey" >> .env
           echo "MarvelPrivateKey=$MarvelPrivateKey" >> .env
-      - name: Install Bundler
-        run: gem install bundler
-      - name: Install xcpretty and coverage tools
+        env:
+          MarvelPublicKey: ${{ secrets.MarvelPublicKey }}
+          MarvelPrivateKey: ${{ secrets.MarvelPrivateKey }}
+          
+      - name: Cache Ruby gems
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+            
+      - name: Install Ruby dependencies
         run: |
-          gem install xcpretty
-          gem install slather
-          # Install xcparse for better xcresult handling
-          brew install chargepoint/xcparse/xcparse
-          # Install xccov-to-cobertura-xml for direct conversion
-          npm install -g xccov-to-cobertura-xml
-      - name: Install Gems
-        run: |
-          bundle install
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
           bundle binstubs arkana
           bin/arkana
-      - name: Build & Test
+          
+      - name: Run tests with coverage
         run: |
-          xcodebuild clean build test \
+          set -o pipefail
+          NSUnbufferedIO=YES xcodebuild \
             -project SwiftyMarvel.xcodeproj \
             -scheme SwiftyMarvel \
-            -destination "platform=iOS Simulator,name=iPhone 15" \
-            -derivedDataPath ./DerivedData \
-            -resultBundlePath ./TestResults.xcresult \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            ONLY_ACTIVE_ARCH=YES \
-            -enableCodeCoverage YES | xcpretty
-      - name: Debug - List coverage files
-        run: |
-          echo "Checking for coverage files..."
-          find ./DerivedData -name "*.profdata" 2>/dev/null || echo "No .profdata files found in DerivedData"
-          find ./TestResults.xcresult -name "*.xccovreport" 2>/dev/null || echo "No .xccovreport files found in TestResults"
-          echo "TestResults.xcresult contents:"
-          ls -la ./TestResults.xcresult/ || echo "TestResults.xcresult not found"
-          echo "DerivedData contents:"
-          find ./DerivedData -type d -name "*coverage*" 2>/dev/null || echo "No coverage directories found"
-      - name: Prepare code coverage report
-        run: |
-          echo "Trying multiple approaches to extract coverage..."
-          
-          # Method 1: Try xcparse
-          echo "1. Trying xcparse..."
-          if xcparse codecov ./TestResults.xcresult coverage.xml; then
-            echo "✅ xcparse succeeded"
-            mv coverage.xml cobertura.xml
-          else
-            echo "❌ xcparse failed"
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+            -enableCodeCoverage YES \
+            -derivedDataPath DerivedData \
+            clean test | xcpretty --report junit --output junit.xml
             
-            # Method 2: Try xccov-to-cobertura-xml
-            echo "2. Trying xccov-to-cobertura-xml..."
-            if xcrun xccov view --report --json ./TestResults.xcresult > coverage-report.json && \
-               xccov-to-cobertura-xml coverage-report.json > cobertura.xml; then
-              echo "✅ xccov-to-cobertura-xml succeeded"
-            else
-              echo "❌ xccov-to-cobertura-xml failed"
-              
-              # Method 3: Extract profdata and use slather
-              echo "3. Trying to extract profdata for slather..."
-              find ./TestResults.xcresult -name "*.profdata" -exec cp {} ./coverage.profdata \;
-              
-              if [ -f "./coverage.profdata" ]; then
-                echo "Found profdata file, copying to DerivedData..."
-                mkdir -p ./DerivedData/Build/ProfileData
-                cp ./coverage.profdata ./DerivedData/Build/ProfileData/
-                
-                echo "Running slather with profdata..."
-                slather coverage \
-                  --scheme SwiftyMarvel \
-                  --configuration Debug \
-                  --build-directory ./DerivedData \
-                  SwiftyMarvel.xcodeproj
-              else
-                echo "❌ No profdata found, trying basic slather..."
-                slather coverage \
-                  --scheme SwiftyMarvel \
-                  --configuration Debug \
-                  SwiftyMarvel.xcodeproj
-              fi
-            fi
-          fi
-      - name: Verify coverage file
+      - name: Generate coverage report
         run: |
-          if [ -f "cobertura.xml" ]; then
-            echo "✅ cobertura.xml found"
-            head -20 cobertura.xml
-          else
-            echo "❌ cobertura.xml not found"
-            ls -la *.xml || echo "No XML files found"
+          # Find the profdata file
+          PROFDATA_FILE=$(find DerivedData -name "*.profdata" | head -n 1)
+          
+          if [ -z "$PROFDATA_FILE" ]; then
+            echo "❌ No profdata file found"
+            exit 1
           fi
-      - name: Upload Code Coverage to Codecov
-        uses: codecov/codecov-action@v3
+          
+          echo "✅ Found profdata: $PROFDATA_FILE"
+          
+          # Find the test binary
+          TEST_BINARY=$(find DerivedData -name "SwiftyMarvelTests" -type f | head -n 1)
+          APP_BINARY=$(find DerivedData -name "SwiftyMarvel.app" -type d | head -n 1)
+          
+          if [ -z "$TEST_BINARY" ] || [ -z "$APP_BINARY" ]; then
+            echo "❌ Could not find test or app binaries"
+            echo "Test binary: $TEST_BINARY"
+            echo "App binary: $APP_BINARY"
+            exit 1
+          fi
+          
+          echo "✅ Found test binary: $TEST_BINARY"
+          echo "✅ Found app binary: $APP_BINARY"
+          
+          # Generate coverage report using llvm-cov
+          xcrun llvm-cov export \
+            -format="lcov" \
+            -instr-profile="$PROFDATA_FILE" \
+            "$APP_BINARY/SwiftyMarvel" \
+            -object "$TEST_BINARY" \
+            -ignore-filename-regex=".*Tests.*" \
+            -ignore-filename-regex=".*MockingbirdMocks.*" \
+            -ignore-filename-regex=".*ArkanaKeys.*" \
+            > coverage.lcov
+            
+          echo "✅ Generated coverage.lcov"
+          
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./cobertura.xml
-          fail_ci_if_error: true
+          file: ./coverage.lcov
+          fail_ci_if_error: false
           verbose: true
+          
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            junit.xml
+            coverage.lcov
