@@ -50,7 +50,7 @@ jobs:
       - name: Build for testing
         run: |
           set -o pipefail
-          timeout 900 NSUnbufferedIO=YES xcodebuild \
+          NSUnbufferedIO=YES xcodebuild \
             -project SwiftyMarvel.xcodeproj \
             -scheme SwiftyMarvel \
             -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
