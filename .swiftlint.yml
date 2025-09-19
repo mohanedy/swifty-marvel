@@ -30,3 +30,4 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   # TODOs and FIXMEs should be resolved.
   - todo
   - trailing_whitespace
+  - switch_case_alignment

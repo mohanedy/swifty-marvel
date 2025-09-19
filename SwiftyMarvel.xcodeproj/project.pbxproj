@@ -810,7 +810,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0990B0962A5571FD00CB8CF5 /* Build configuration list for PBXNativeTarget "SwiftyMarvel" */;
 			buildPhases = (
-				09770BB82A5A9E91002BF7DE /* Lint Checking */,
 				0990B06E2A5571FC00CB8CF5 /* Sources */,
 				0990B06F2A5571FC00CB8CF5 /* Frameworks */,
 				0990B0702A5571FC00CB8CF5 /* Resources */,
@@ -818,6 +817,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				09CA46F82E7E10EC0094BD53 /* PBXTargetDependency */,
 			);
 			name = SwiftyMarvel;
 			packageProductDependencies = (
@@ -920,24 +920,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09770BB82A5A9E91002BF7DE /* Lint Checking */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Lint Checking";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "SWIFT_PACKAGE_DIR=\"${BUILD_DIR%Build/*}SourcePackages/artifacts\"\nSWIFTLINT_CMD=\"$SWIFT_PACKAGE_DIR/swiftlintplugins/SwiftLintBinary/SwiftLintBinary.artifactbundle/macos/swiftlint\"\n\nif test -f \"$SWIFTLINT_CMD\" 2>&1\nthen\n    \"$SWIFTLINT_CMD\"\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#xcode-run-script-build-phase for installation instructions.\"\nfi\n";
-		};
 		8FCED0AB7A4238A93CC396A6 /* Generate Mockingbird Mocks */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1055,6 +1037,10 @@
 		094F3A442A5EB0E90060E930 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 094F3A432A5EB0E90060E930 /* Mockingbird */;
+		};
+		09CA46F82E7E10EC0094BD53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 09CA46F72E7E10EC0094BD53 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1391,6 +1377,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 099A6EC52A65C5250025178F /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
+		};
+		09CA46F72E7E10EC0094BD53 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09BCC0152E7DC91000A8DE46 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 		09E4D72A2A59891900716470 /* ArkanaKeys */ = {
 			isa = XCSwiftPackageProductDependency;

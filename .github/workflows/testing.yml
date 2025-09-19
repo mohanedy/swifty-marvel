@@ -114,7 +114,7 @@ jobs:
             -ignore-filename-regex=".*ArkanaKeys.*" \
             -ignore-filename-regex=".*SourcePackages.*" \
             -ignore-filename-regex=".*DerivedData.*" \
-            -path-equivalence "$GITHUB_WORKSPACE" "." \
+            -path-equivalence="$GITHUB_WORKSPACE,." \
             > coverage.lcov
             
           echo "✅ Generated coverage.lcov"

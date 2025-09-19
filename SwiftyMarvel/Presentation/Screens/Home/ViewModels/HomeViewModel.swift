@@ -70,13 +70,8 @@ extension HomeViewModel {
                 } else {
                     characters.append(contentsOf: data.results ?? [])
                 }
-                
                 totalCount = data.total ?? 0
-                
-                
                 state = characters.isEmpty ? .empty : .success
-                
-                
             case .failure(let err):
                 state = .error(err.localizedDescription)
         }
