@@ -10,7 +10,7 @@ import OSLog
 
 extension Logger {
     
-    private static var subsystem = Bundle.main.bundleIdentifier!
+    private static var subsystem = Bundle.main.bundleIdentifier ?? "com.swiftymarvel.app"
     
     /// Logs related to the networking.
     static let networking = Logger(subsystem: subsystem, category: "networking")
