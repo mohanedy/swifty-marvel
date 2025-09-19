@@ -27,24 +27,27 @@ struct HomeView: View {
                 }//: BaseStateView
             } //: ZStack
         } //: NavigationStack
+        .refreshable {
+            await viewModel.loadCharacters(from: 0)
+        }
     }
     
     var content: some View {
         CustomListView(items: viewModel.characters) { item in
             CharacterProfileView(character: item)
         }
-    itemView: { item in
-        CharacterView(character: item)
-            .task {
-                await viewModel
-                    .loadMoreCharactersIfNeeded(currentItem: item)
-            }
+        itemView: { item in
+            CharacterView(character: item)
+                .task {
+                    await viewModel
+                        .loadMoreCharactersIfNeeded(currentItem: item)
+                }
+        }
     }
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
+    
+    struct HomeView_Previews: PreviewProvider {
+        static var previews: some View {
+            HomeView()
+        }
     }
 }
