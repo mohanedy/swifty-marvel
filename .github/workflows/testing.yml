@@ -56,7 +56,7 @@ jobs:
           xcrun simctl delete unavailable
           
           # Create a fresh iPhone 17 simulator
-          DEVICE_ID=$(xcrun simctl create "iPhone 17 Test" "iPhone 17" "iOS17.0" 2>/dev/null || xcrun simctl create "iPhone 17 Test" "iPhone 17" "latest")
+          DEVICE_ID=$(xcrun simctl create "iPhone 17 Test" "iPhone 17" "iOS26.0" 2>/dev/null || xcrun simctl create "iPhone 17 Test" "iPhone 17" "iOS26.0")
           echo "Created simulator: $DEVICE_ID"
           
           # Boot the simulator
