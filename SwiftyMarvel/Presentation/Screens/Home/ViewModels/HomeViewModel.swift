@@ -41,7 +41,7 @@ final class HomeViewModel: ViewModel {
         setupSearchDebouncer()
         
         Task {
-          await  loadCharacters()
+            await  loadCharacters()
         }
     }
     
@@ -64,16 +64,21 @@ extension HomeViewModel {
                                       searchKey: debouncedSearchText.isEmpty
                                       ? nil : debouncedSearchText))
         switch result {
-        case .success(let data):
-            characters.append(contentsOf: data.results ?? [])
-            totalCount = data.total ?? 0
-            if characters.isEmpty {
-                state = .empty
-            } else {
-                state = .success
-            }
-        case .failure(let err):
-            state = .error(err.localizedDescription)
+            case .success(let data):
+                if offset == 0 {
+                    characters = data.results ?? []
+                } else {
+                    characters.append(contentsOf: data.results ?? [])
+                }
+                
+                totalCount = data.total ?? 0
+                
+                
+                state = characters.isEmpty ? .empty : .success
+                
+                
+            case .failure(let err):
+                state = .error(err.localizedDescription)
         }
     }
     
