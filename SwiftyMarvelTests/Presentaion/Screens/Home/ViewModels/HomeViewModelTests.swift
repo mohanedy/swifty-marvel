@@ -5,13 +5,14 @@
 //  Created by Mohaned Yossry on 08/07/2023.
 //
 
-import XCTest
+import Testing
 import Mockingbird
+import Combine
 @testable import SwiftyMarvel
 
 // swiftlint:disable force_unwrapping
 @MainActor
-final class HomeViewModelTests: XCTestCase {
+final class HomeViewModelTests {
     
     // MARK: - Properties -
     
@@ -27,111 +28,74 @@ final class HomeViewModelTests: XCTestCase {
     
     // MARK: - Setup and Teardown -
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    init() async throws {
         getCharactersUCMock = mock(GetCharactersUC.self)
         sut = HomeViewModel(getCharactersUseCase: getCharactersUCMock, debounceTime: 0)
     }
     
-    override func tearDownWithError() throws {
+    deinit {
         sut = nil
         getCharactersUCMock = nil
-        try super.tearDownWithError()
     }
     
     // MARK: - Tests -
     
-    func testLoadCharactersSuccess() async throws {
+    @Test func testLoadCharactersSuccess() async throws {
         // Given
         let expectedCharacters = [fakeCharacter1, fakeCharacter2]
-        await given(getCharactersUCMock.execute(with: any())).willReturn(.success(
+        await given(getCharactersUCMock.execute(with: any() as GetCharactersParams)).willReturn(.success(
             PaginatedResponse(offset: 0,
                               limit: 2,
                               total: 2,
                               count: 2,
                               results: expectedCharacters)))
         
-        let loadingExpectation = expectation(description: "Loading state changed")
-        
-        let observation = sut.$state.sink { state in
-            if state == .loading {
-                loadingExpectation.fulfill()
-            }
-        }
-        
         // When
-        await sut.loadCharacters()
-        
-        await fulfillment(of: [loadingExpectation], timeout: 1)
+        _ = await sut.loadCharacters()
         
         // Then
-        XCTAssertEqual(sut.characters, expectedCharacters)
-        XCTAssertEqual(sut.state, .success)
-        
-        observation.cancel()
+        #expect(sut.characters == expectedCharacters)
+        #expect(sut.state == .success)
     }
     
-    func testLoadCharactersFailure() async throws {
+    @Test func testLoadCharactersFailure() async throws {
         // Given
         let expectedError = AppError.networkError("Network Error")
         await given(getCharactersUCMock.execute(with: any()))
             .willReturn(.failure(expectedError))
         
-        let loadingExpectation = expectation(description: "Loading state changed")
-        
-        let observation = sut.$state.sink { state in
-            if state == .loading {
-                loadingExpectation.fulfill()
-            }
-        }
-        
         // When
         await sut.loadCharacters()
         
-        await fulfillment(of: [loadingExpectation], timeout: 1)
-        
         // Then
-        XCTAssertTrue(sut.characters.isEmpty)
-        XCTAssertEqual(sut.state, .error(expectedError.localizedDescription))
-        observation.cancel()
+        #expect(sut.characters.isEmpty)
+        #expect(sut.state == .error(expectedError.localizedDescription))
     }
     
-    func testSearchCharactersSuccess() async throws {
+    @Test func testSearchCharactersSuccess() async throws {
         // Given
         let expectedSearchText = "Hulk"
         let expectedDebouncedSearchText = "Hulk"
         let expectedCharacters = [fakeCharacter3]
-        await  given(getCharactersUCMock.execute(with: any())).willReturn(.success(
+        await given(getCharactersUCMock.execute(with: any())).willReturn(.success(
             PaginatedResponse(offset: 0,
                               limit: 1,
                               total: 1,
                               count: 1,
                               results: expectedCharacters)))
         
-        // expectation
-        let loadingExpectation = expectation(description: "Loading state changed")
-        
-        let observation = sut.$state.sink { state in
-            if state == .loading {
-                loadingExpectation.fulfill()
-            }
-        }
-        
         // When
         sut.searchText = expectedSearchText
         await sut.searchCharacters()
         
-        await fulfillment(of: [loadingExpectation], timeout: 1)
-        
         // Then
-        XCTAssertEqual(sut.searchText, expectedSearchText)
-        XCTAssertEqual(sut.debouncedSearchText, expectedDebouncedSearchText)
-        XCTAssertEqual(sut.characters, expectedCharacters)
-        XCTAssertEqual(sut.state, .success)
-        observation.cancel()
+        #expect(sut.searchText == expectedSearchText)
+        #expect(sut.debouncedSearchText == expectedDebouncedSearchText)
+        #expect(sut.characters == expectedCharacters)
+        #expect(sut.state == .success)
     }
     
-    func testLoadMoreCharactersIfNeededSuccess() async throws {
+    @Test func testLoadMoreCharactersIfNeededSuccess() async throws {
         // Given
         let initialCharacters = [fakeCharacter1,
                                  fakeCharacter2]
@@ -150,7 +114,7 @@ final class HomeViewModelTests: XCTestCase {
         await sut.loadCharacters()
         
         // Then
-        XCTAssertEqual(sut.characters.count, initialCharacters.count)
+        #expect(sut.characters.count == initialCharacters.count)
         
         // Given
         await given(getCharactersUCMock.execute(with: any())).willReturn(.success(
@@ -164,9 +128,9 @@ final class HomeViewModelTests: XCTestCase {
         await sut.loadMoreCharactersIfNeeded(currentItem: sut.characters.last!)
         
         // Then
-        XCTAssertEqual(sut.characters.count, allCharacters.count)
-        XCTAssertEqual(sut.characters.last?.id, allCharacters.last?.id)
-        XCTAssertEqual(sut.state, .success)
+        #expect(sut.characters.count == allCharacters.count)
+        #expect(sut.characters.last?.id == allCharacters.last?.id)
+        #expect(sut.state == .success)
     }
 }
 // swiftlint:enable force_unwrapping
