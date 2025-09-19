@@ -128,21 +128,39 @@ jobs:
           echo "✅ Found test binary: $TEST_BINARY"
           echo "✅ Found app binary: $APP_BINARY"
           
-          # Generate coverage report using llvm-cov
+          # Generate coverage report using llvm-cov with proper filtering
           xcrun llvm-cov export \
             -format="lcov" \
             -instr-profile="$PROFDATA_FILE" \
             "$APP_BINARY" \
             -object "$TEST_BINARY" \
-            -ignore-filename-regex=".*Tests.*" \
-            -ignore-filename-regex=".*MockingbirdMocks.*" \
-            -ignore-filename-regex=".*ArkanaKeys.*" \
-            -ignore-filename-regex=".*SourcePackages.*" \
-            -ignore-filename-regex=".*DerivedData.*" \
-            -path-equivalence="$GITHUB_WORKSPACE,." \
-            > coverage.lcov
-            
-          echo "✅ Generated coverage.lcov"
+            -ignore-filename-regex=".*/Tests/.*" \
+            -ignore-filename-regex=".*/MockingbirdMocks/.*" \
+            -ignore-filename-regex=".*/MockingbirdSupport/.*" \
+            -ignore-filename-regex=".*/ArkanaKeys/.*" \
+            -ignore-filename-regex=".*/SourcePackages/.*" \
+            -ignore-filename-regex=".*/DerivedData/.*" \
+            -ignore-filename-regex=".*/vendor/.*" \
+            -ignore-filename-regex=".*/bin/.*" \
+            -ignore-filename-regex=".*\.pbxproj" \
+            > coverage_raw.lcov
+          
+          # Clean up the coverage report to fix path issues
+          sed "s|$GITHUB_WORKSPACE/||g" coverage_raw.lcov | \
+          grep -v "^SF:/Users/" | \
+          grep -v "fixtures" | \
+          grep -v "gems/" > coverage.lcov
+          
+          # Verify the coverage file has content
+          if [ ! -s coverage.lcov ]; then
+            echo "❌ Coverage file is empty after processing"
+            echo "Raw coverage content:"
+            head -20 coverage_raw.lcov
+            exit 1
+          fi
+          
+          echo "✅ Generated and cleaned coverage.lcov"
+          echo "Coverage file size: $(wc -l < coverage.lcov) lines"
           
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
