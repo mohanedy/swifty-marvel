@@ -5,11 +5,11 @@
 //  Created by Mohaned Yossry on 02/09/2023.
 //
 
-import XCTest
+import Testing
 import CoreData
 @testable import SwiftyMarvel
 
-class DefaultFavoritesDataSourceTests: XCTestCase {
+@Suite struct DefaultFavoritesDataSourceTests {
     
     // MARK: - Properties -
     
@@ -23,21 +23,15 @@ class DefaultFavoritesDataSourceTests: XCTestCase {
     
     // MARK: - Setup and Teardown -
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    init() async throws {
         coreDataStack = TestCoreDataStack()
         sut = DefaultFavoritesDataSource(dataStack: coreDataStack)
     }
     
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-        sut = nil
-        coreDataStack = nil
-    }
-    
     // MARK: - Tests -
     
-    func testGetFavoritesSuccess() {
+    @Test("Get favorites success - should return all favorite characters")
+    func testGetFavoritesSuccess() throws {
         let derivedContext = coreDataStack.newDerivedContext()
         
         // Given
@@ -52,51 +46,42 @@ class DefaultFavoritesDataSourceTests: XCTestCase {
         try? derivedContext.save()
         
         // When
-        do {
-            let favorites = try sut.getFavorites()
-            
-            // Then
-            XCTAssertEqual(favorites.count, 2)
-            XCTAssertTrue(favorites.contains(where: { $0.id == fakeCharacter1.id }))
-            XCTAssertTrue(favorites.contains(where: { $0.id == fakeCharacter2.id }))
-        } catch {
-            XCTFail("Expected success, but got failure: \(error)")
-        }
+        let favorites = try sut.getFavorites()
+        
+        // Then
+        #expect(favorites.count == 2)
+        #expect(favorites.contains(where: { $0.id == fakeCharacter1.id }))
+        #expect(favorites.contains(where: { $0.id == fakeCharacter2.id }))
     }
     
-    func testAddFavoriteSuccess() {
+    @Test("Add favorite success - should add character to favorites")
+    func testAddFavoriteSuccess() throws {
         // When
-        do {
-            try sut.addFavorite(character: fakeCharacter1)
-            
-            // Then
-            XCTAssertEqual(try? sut.getFavorites().count, 1)
-        } catch {
-            XCTFail("Expected success, but got failure: \(error)")
-        }
+        try sut.addFavorite(character: fakeCharacter1)
+        
+        // Then
+        #expect(try sut.getFavorites().count == 1)
     }
     
-    func testRemoveFavoriteSuccess() {
+    @Test("Remove favorite success - should remove character from favorites")
+    func testRemoveFavoriteSuccess() throws {
         // Given
         let derivedContext = coreDataStack.newDerivedContext()
         let characterEntity = CharacterEntity(context: derivedContext)
         characterEntity.id = 1
         characterEntity.name = "Character 1"
-        try? derivedContext.save()
+        try derivedContext.save()
         
-        do {
-            // When
-            try sut.removeFavorite(character: fakeCharacter1)
-            
-            // Then
-            XCTAssertEqual(try? sut.getFavorites().count, 0)
-
-        } catch {
-            XCTFail("Expected success, but got failure: \(error)")
-        }
+        
+        try sut.removeFavorite(character: fakeCharacter1)
+        
+        // Then
+        #expect(try sut.getFavorites().count ==  0)
+        
     }
     
-    func testIsFavorite() {
+    @Test("Is favorite check - should return true if character is favorite, false otherwise")
+    func testIsFavorite() throws {
         // Given
         let derivedContext = coreDataStack.newDerivedContext()
         let characterEntity1 = CharacterEntity(context: derivedContext)
@@ -107,20 +92,16 @@ class DefaultFavoritesDataSourceTests: XCTestCase {
         characterEntity2.id = 2
         characterEntity2.name = "Character 2"
         
-        try? derivedContext.save()
+        try derivedContext.save()
         
         // When
-        do {
-            let isFavorite1 = try sut.isFavorite(character: fakeCharacter1)
-            let isFavorite2 = try sut.isFavorite(character: fakeCharacter2)
-            let isNotFavorite = try sut.isFavorite(character: Character(id: 3, name: "Character 3"))
-            
-            // Then
-            XCTAssertTrue(isFavorite1)
-            XCTAssertTrue(isFavorite2)
-            XCTAssertFalse(isNotFavorite)
-        } catch {
-            XCTFail("Expected success, but got failure: \(error)")
-        }
+        let isFavorite1 = try sut.isFavorite(character: fakeCharacter1)
+        let isFavorite2 = try sut.isFavorite(character: fakeCharacter2)
+        let isNotFavorite = try sut.isFavorite(character: Character(id: 3, name: "Character 3"))
+        
+        // Then
+        #expect(isFavorite1)
+        #expect(isFavorite2)
+        #expect(!isNotFavorite)
     }
 }

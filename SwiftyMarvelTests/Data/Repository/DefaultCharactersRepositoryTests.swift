@@ -5,11 +5,11 @@
 //  Created by Mohaned Yossry on 15/07/2023.
 //
 
-import XCTest
+import Testing
 import Mockingbird
 @testable import SwiftyMarvel
 
-final class DefaultCharactersRepositoryTests: XCTestCase {
+@Suite struct DefaultCharactersRepositoryTests {
     
     // MARK: - Properties -
     
@@ -31,20 +31,15 @@ final class DefaultCharactersRepositoryTests: XCTestCase {
     
     // MARK: - Setup and Teardown -
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    init() async throws {
         dataSourceMock = mock(CharactersDataSource.self)
         sut = DefaultCharactersRepository(charactersDataSource: dataSourceMock)
     }
     
-    override func tearDownWithError() throws {
-        sut = nil
-        dataSourceMock = nil
-        try super.tearDownWithError()
-    }
     
     // MARK: - Tests -
     
+    @Test("Get characters success - should return paginated characters response")
     func testGetCharactersSuccess() async throws {
         // Given
         await given(dataSourceMock.getCharacters(from: any(), by: any()))
@@ -54,6 +49,8 @@ final class DefaultCharactersRepositoryTests: XCTestCase {
         let result = await sut.getCharacters(from: 0, by: nil)
         
         // Then
-        XCTAssertNoThrow(try result.get())
+        #expect(result == .success(fakeResponse.toDomain(dataType: Character.self)))
+        #expect(throws: Never.self) { try result.get() }
     }
+    
 }

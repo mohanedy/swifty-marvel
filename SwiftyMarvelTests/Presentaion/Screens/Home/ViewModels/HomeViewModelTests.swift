@@ -10,9 +10,9 @@ import Mockingbird
 import Combine
 @testable import SwiftyMarvel
 
-// swiftlint:disable force_unwrapping
+
 @MainActor
-final class HomeViewModelTests {
+@Suite struct HomeViewModelTests {
     
     // MARK: - Properties -
     
@@ -33,14 +33,10 @@ final class HomeViewModelTests {
         sut = HomeViewModel(getCharactersUseCase: getCharactersUCMock, debounceTime: 0)
     }
     
-    deinit {
-        sut = nil
-        getCharactersUCMock = nil
-    }
-    
     // MARK: - Tests -
     
-    @Test func testLoadCharactersSuccess() async throws {
+    @Test("Load characters success - should update characters and state")
+    func testLoadCharactersSuccess() async throws {
         // Given
         let expectedCharacters = [fakeCharacter1, fakeCharacter2]
         await given(getCharactersUCMock.execute(with: any() as GetCharactersParams)).willReturn(.success(
@@ -58,7 +54,8 @@ final class HomeViewModelTests {
         #expect(sut.state == .success)
     }
     
-    @Test func testLoadCharactersFailure() async throws {
+    @Test("Load characters failure - should update state with error message")
+    func testLoadCharactersFailure() async throws {
         // Given
         let expectedError = AppError.networkError("Network Error")
         await given(getCharactersUCMock.execute(with: any()))
@@ -72,7 +69,8 @@ final class HomeViewModelTests {
         #expect(sut.state == .error(expectedError.localizedDescription))
     }
     
-    @Test func testSearchCharactersSuccess() async throws {
+    @Test("Search characters success - should update searchText, debouncedSearchText, characters, and state")
+    func testSearchCharactersSuccess() async throws {
         // Given
         let expectedSearchText = "Hulk"
         let expectedDebouncedSearchText = "Hulk"
@@ -95,7 +93,8 @@ final class HomeViewModelTests {
         #expect(sut.state == .success)
     }
     
-    @Test func testLoadMoreCharactersIfNeededSuccess() async throws {
+    @Test("Load more characters if needed success - should append more characters and update state")
+    func testLoadMoreCharactersIfNeededSuccess() async throws {
         // Given
         let initialCharacters = [fakeCharacter1,
                                  fakeCharacter2]
@@ -133,4 +132,3 @@ final class HomeViewModelTests {
         #expect(sut.state == .success)
     }
 }
-// swiftlint:enable force_unwrapping

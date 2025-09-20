@@ -80,16 +80,16 @@ get them by following these steps:
 
 This project uses Clean Architecture and is separated into four main layers:
 
-* **Data**: Contains the repositories implementations responsible for abstracting
+- **Data**: Contains the repositories implementations responsible for abstracting
   the data source used. In this case, the data sources are a REST API and a Core Data database.
-* **Domain**: Holds the business logic layer, which contains the use cases responsible for handling
+- **Domain**: Holds the business logic layer, which contains the use cases responsible for handling
   the business logic of the application and the abstract repositories. The use cases are the entry
   point to the domain layer.
-* **Presentation**: Contains the UI responsible for presenting the data to the user and handling
+- **Presentation**: Contains the UI responsible for presenting the data to the user and handling
   user interactions. It also contains the ViewModels, which are
   responsible for preparing the data to be presented and for handling the interactions between the
   view and the use cases.
-* **Core**: Contains the common code between the other layers, like the extensions and the dependency
+- **Core**: Contains the common code between the other layers, like the extensions and the dependency
   injection code.
 
 ### Folder Structure
@@ -132,12 +132,13 @@ This project uses Clean Architecture and is separated into four main layers:
 | [Nuke](https://github.com/kean/Nuke)                                                                  | Image Loading & Caching                                              |
 | [SwiftLint](https://github.com/realm/SwiftLint)                                                       | Code Linting                                                         |
 | [Mockingbird](https://github.com/birdrides/mockingbird)                                               | Generating mock, stub, and verify objects in Swift unit tests        |
+| [Swift Testing Framework](https://developer.apple.com/documentation/testing)   | Unit Testing Framework                                              |
 
 ## Development Environment
 
-* Xcode 14.3.1
-* Swift 5.8.1
-* iOS Deployment Target 16.2
+- Xcode 26.0
+- Swift 6.2
+- iOS Deployment Target 26.0
 
 ## CI Pipeline
 
@@ -149,4 +150,3 @@ made to the main branch.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-

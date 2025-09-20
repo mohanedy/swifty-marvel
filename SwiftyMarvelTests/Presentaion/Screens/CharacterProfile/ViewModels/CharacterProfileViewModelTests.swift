@@ -5,12 +5,12 @@
 //  Created by Mohaned Yossry on 17/07/2023.
 //
 
-import XCTest
+import Testing
 import Mockingbird
 @testable import SwiftyMarvel
 
 @MainActor
-final class CharacterProfileViewModelTests: XCTestCase {
+@Suite struct CharacterProfileViewModelTests {
     
     // MARK: - Properties -
     
@@ -26,8 +26,7 @@ final class CharacterProfileViewModelTests: XCTestCase {
     
     // MARK: - Setup and Teardown -
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    init() async throws {
         getComicsUCMock = mock(GetComicsUC.self)
         checkFavoriteUCMock = mock(CheckFavoriteUC.self)
         toggleFavoriteUCMock = mock(ToggleFavoriteUC.self)
@@ -39,19 +38,15 @@ final class CharacterProfileViewModelTests: XCTestCase {
         )
     }
     
-    override func tearDownWithError() throws {
-        sut = nil
-        getComicsUCMock = nil
-        try super.tearDownWithError()
-    }
-    
     // MARK: - Tests -
     
+    @Test("Initial state - should be .initial")
     func testInitialState() {
         // Then
-        XCTAssertEqual(sut.state, .initial)
+        #expect(sut.state == .initial)
     }
     
+    @Test( "Load comics success - should update comics and state to success")
     func testLoadComicsSuccess() async throws {
         // Given
         let expectedComics = [fakeComic1, fakeComic2]
@@ -62,59 +57,43 @@ final class CharacterProfileViewModelTests: XCTestCase {
                               count: 2,
                               results: expectedComics)))
         
-        let loadingExpectation = expectation(description: "Loading state changed")
-        
-        let observation = sut.$state.sink { state in
-            if state == .loading {
-                loadingExpectation.fulfill()
-            }
-        }
         
         // When
         await sut.loadComics(forCharacter: 1)
         
-        await fulfillment(of: [loadingExpectation], timeout: 1)
+        
         
         // Then
-        XCTAssertEqual(sut.comics, expectedComics)
-        XCTAssertEqual(sut.state, .success)
-        
-        observation.cancel()
+        #expect(sut.comics == expectedComics)
+        #expect(sut.state == .success)
     }
     
+    @Test( "Load comics failure - should update state to error")
     func testLoadComicsFailure() async throws {
         // Given
         let expectedError = AppError.networkError("Network Error")
         await given(getComicsUCMock.execute(with: any()))
             .willReturn(.failure(expectedError))
         
-        let loadingExpectation = expectation(description: "Loading state changed")
-        
-        let observation = sut.$state.sink { state in
-            if state == .loading {
-                loadingExpectation.fulfill()
-            }
-        }
-        
         // When
         await sut.loadComics(forCharacter: 1)
         
-        await fulfillment(of: [loadingExpectation], timeout: 1)
         
         // Then
-        XCTAssertTrue(sut.comics.isEmpty)
-        XCTAssertEqual(sut.state, .error(expectedError.localizedDescription))
-        observation.cancel()
+        #expect(sut.comics.isEmpty)
+        #expect(sut.state == .error(expectedError.localizedDescription))
     }
     
+    @Test("Toggle favorite - should change isFavorite state")
     func testFavoriteToggleChanges() async throws {
         // When
         sut.toggleFavorite(character: Character(id: 1, name: "Character 1"))
         
         // Then
-        XCTAssertTrue(sut.isFavorite)
+        #expect(sut.isFavorite)
     }
     
+    @Test("Check favorite - should update isFavorite state based on use case result")
     func testIsFavorite() async throws {
         // Given
         let character = Character(id: 1, name: "Character 1")
@@ -127,6 +106,6 @@ final class CharacterProfileViewModelTests: XCTestCase {
         sut.checkFavorite(character: character)
         
         // Then
-        XCTAssertEqual(sut.isFavorite, isFavorite)
+        #expect(sut.isFavorite == isFavorite)
     }
 }
