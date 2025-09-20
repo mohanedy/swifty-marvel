@@ -128,21 +128,17 @@ jobs:
           echo "✅ Found test binary: $TEST_BINARY"
           echo "✅ Found app binary: $APP_BINARY"
           
-          # Generate coverage report using llvm-cov with proper filtering
+          # Generate coverage report using llvm-cov with minimal filtering (only exclude test files)
           xcrun llvm-cov export \
             -format="lcov" \
             -instr-profile="$PROFDATA_FILE" \
             "$APP_BINARY" \
             -object "$TEST_BINARY" \
-            -ignore-filename-regex=".*/Tests/.*" \
+            -ignore-filename-regex=".*Tests\.swift$" \
             -ignore-filename-regex=".*/MockingbirdMocks/.*" \
             -ignore-filename-regex=".*/MockingbirdSupport/.*" \
-            -ignore-filename-regex=".*/ArkanaKeys/.*" \
             -ignore-filename-regex=".*/SourcePackages/.*" \
-            -ignore-filename-regex=".*/DerivedData/.*" \
             -ignore-filename-regex=".*/vendor/.*" \
-            -ignore-filename-regex=".*/bin/.*" \
-            -ignore-filename-regex=".*\.pbxproj" \
             > coverage_raw.lcov
           
           # Clean up the coverage report to fix path issues
