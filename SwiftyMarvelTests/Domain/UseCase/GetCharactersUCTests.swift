@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import XCTest
+import Testing
 import Mockingbird
 @testable import SwiftyMarvel
 
-final class GetCharactersUCTests: XCTestCase {
+@Suite struct GetCharactersUCTests {
     
     // MARK: - Properties -
     
@@ -25,23 +25,16 @@ final class GetCharactersUCTests: XCTestCase {
     let fakeError = AppError.networkError("Network Error")
     
     // MARK: - Setup and Teardown -
-    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    init() async throws {
         repositoryMock = mock(CharactersRepository.self)
         sut = DefaultGetCharactersUC(repository: repositoryMock)
         params = GetCharactersParams(offset: 0, searchKey: nil)
     }
     
-    override func tearDownWithError() throws {
-        sut = nil
-        repositoryMock = nil
-        params = nil
-        try super.tearDownWithError()
-    }
     
     // MARK: - Tests -
     
+    @Test("Get characters success - should return paginated characters response")
     func testExecuteSuccess() async throws {
         // Given
         let expectedResponse = PaginatedResponse(offset: 0,
@@ -57,9 +50,10 @@ final class GetCharactersUCTests: XCTestCase {
         let result = await sut.execute(with: params)
         
         // Then
-        XCTAssertEqual(result, .success(expectedResponse))
+        #expect(result == .success(expectedResponse))
     }
     
+    @Test("Get characters failure - should return an error")
     func testExecuteFailure() async throws {
         // Given
         await given(repositoryMock.getCharacters(from: any(), by: any()))
@@ -69,9 +63,10 @@ final class GetCharactersUCTests: XCTestCase {
         let result = await sut.execute(with: params)
         
         // Then
-        XCTAssertEqual(result, .failure(fakeError))
+        #expect(result == .failure(fakeError))
     }
     
+    @Test("Get characters pagination - should return paginated characters response for different offsets")
     func testExecutePagination() async throws {
         // Given
         let expectedResponse1 = PaginatedResponse(offset: 0,
@@ -96,8 +91,7 @@ final class GetCharactersUCTests: XCTestCase {
         let result2 = await sut.execute(with: GetCharactersParams(offset: 2, searchKey: nil))
 
         // Then
-        XCTAssertEqual(result1, .success(expectedResponse1))
-        XCTAssertEqual(result2, .success(expectedResponse2))
+        #expect(result1 == .success(expectedResponse1))
+        #expect(result2 == .success(expectedResponse2))
     }
-
 }

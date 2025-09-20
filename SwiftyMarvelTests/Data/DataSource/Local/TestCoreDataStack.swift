@@ -5,7 +5,6 @@
 //  Created by Mohaned Yossry on 03/09/2023.
 //
 
-import XCTest
 import CoreData
 import SwiftyMarvel
 
