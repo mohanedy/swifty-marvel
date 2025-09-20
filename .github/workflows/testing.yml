@@ -134,19 +134,8 @@ jobs:
             -instr-profile="$PROFDATA_FILE" \
             "$APP_BINARY" \
             -object "$TEST_BINARY" \
-            -ignore-filename-regex=".*Tests\.swift$" \
-            -ignore-filename-regex=".*/MockingbirdMocks/.*" \
-            -ignore-filename-regex=".*/MockingbirdSupport/.*" \
-            -ignore-filename-regex=".*/SourcePackages/.*" \
-            -ignore-filename-regex=".*/vendor/.*" \
-            > coverage_raw.lcov
-          
-          # Clean up the coverage report to fix path issues
-          sed "s|$GITHUB_WORKSPACE/||g" coverage_raw.lcov | \
-          grep -v "^SF:/Users/" | \
-          grep -v "fixtures" | \
-          grep -v "gems/" > coverage.lcov
-          
+            > coverage.lcov
+
           # Verify the coverage file has content
           if [ ! -s coverage.lcov ]; then
             echo "❌ Coverage file is empty after processing"
