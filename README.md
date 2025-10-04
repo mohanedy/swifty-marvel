@@ -84,7 +84,11 @@ get them by following these steps:
     bin/arkana
     ```
 
-1. Now you can open the project in Xcode and run it.
+1. After generating the ArkanaKeys package, you will need to add it to the project. To do this:
+    - open the `SwiftyMarvel.xcodeproj` file in Xcode, then go to `File > Add Package Dependencies > Add Local...` and select the `ArkanaKeys/ArkanaKeys` folder that was generated in the root directory of the project.
+    - Make sure to add `SwiftyMarvel` to the target.
+
+1. Now you can run the project in Xcode.
 
 ## Project Structure
 
