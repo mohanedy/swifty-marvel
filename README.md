@@ -35,7 +35,6 @@ This app is created as a personal project to showcase my skills and passion for 
 <br>
 </p>
 
-
 <!-- TOC -->
 
 - [Screenshots](#screenshots)
