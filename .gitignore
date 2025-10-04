@@ -105,3 +105,4 @@ Gemfile.lock
 cobertura.xml
 
 .idea/
+.DS_Store
