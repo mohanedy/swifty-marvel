@@ -58,22 +58,33 @@ As this project uses the Marvel API, you need to get your own API keys to run th
 get them by following these steps:
 
 1. Go to the [Marvel Developer Portal](https://developer.marvel.com/) and create an account.
-2. Once you have an account, go to the [Get a Key](https://developer.marvel.com/account) page and
+1. Once you have an account, go to the [Get a Key](https://developer.marvel.com/account) page and
    get your public and private keys.
-3. Create a file called `.env` in the root directory of the project and add the following lines to
+1. Create a file called `.env` in the root directory of the project and add the following lines to
    it:
+
     ```shell
     MarvelPublicKey=your_public_key
     MarvelPrivateKey=your_private_key
     ```
-4. Run the following command to generate the [ArkanaKeys](https://github.com/rogerluan/arkana) local
+
+1. Install the [Arkana](https://github.com/rogerluan/arkana) gem by running the following command in your terminal:
+
+    ```shell
+    bundle install
+    ```
+
+    > You must have ruby and bundler installed on your machine to run the above command. If you don't have them, you can install them by following the instructions [here for Ruby](https://www.ruby-lang.org/en/documentation/installation/) and [here for Bundler](https://bundler.io/).
+
+1. Run the following command to generate the [ArkanaKeys](https://github.com/rogerluan/arkana) local
    package that will be used to securely
    fetch your keys in runtime:
+
     ```shell
     bin/arkana
     ```
 
-5. Now you can open the project in Xcode and run it.
+1. Now you can open the project in Xcode and run it.
 
 ## Project Structure
 
