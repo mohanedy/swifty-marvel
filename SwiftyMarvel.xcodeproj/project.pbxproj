@@ -89,6 +89,7 @@
 		09E4D7742A59F84500716470 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D7732A59F84500716470 /* HomeViewModelTests.swift */; };
 		09F1BD9F2A55EA0A00F0EA8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F1BD9E2A55EA0A00F0EA8B /* Launch Screen.storyboard */; };
 		09F6A3A62A6AAEEA00317A19 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F6A3A52A6AAEEA00317A19 /* Logger.swift */; };
+		2DB8EFDC2E9132AA004A9B35 /* ArkanaKeys in Frameworks */ = {isa = PBXBuildFile; productRef = 2DB8EFDB2E9132AA004A9B35 /* ArkanaKeys */; };
 		4092B13146100BC6968200AB /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485F170BE0EE9461F3326EC /* SwiftyMarvelTests-SwiftyMarvelMocks.generated.swift */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB8EFDC2E9132AA004A9B35 /* ArkanaKeys in Frameworks */,
 				09E4D72B2A59891900716470 /* ArkanaKeys in Frameworks */,
 				095948852A58A3C500C91E83 /* Swinject in Frameworks */,
 				09E4D7412A599AA300716470 /* CryptoSwift in Frameworks */,
@@ -836,6 +838,7 @@
 				09E4D72A2A59891900716470 /* ArkanaKeys */,
 				09E4D7402A599AA300716470 /* CryptoSwift */,
 				099A6EC62A65C5250025178F /* NukeUI */,
+				2DB8EFDB2E9132AA004A9B35 /* ArkanaKeys */,
 			);
 			productName = SwiftyMarvel;
 			productReference = 0990B0722A5571FC00CB8CF5 /* SwiftyMarvel.app */;
@@ -1403,6 +1406,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 09E4D73F2A599AA300716470 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		2DB8EFDB2E9132AA004A9B35 /* ArkanaKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArkanaKeys;
 		};
 /* End XCSwiftPackageProductDependency section */
 
